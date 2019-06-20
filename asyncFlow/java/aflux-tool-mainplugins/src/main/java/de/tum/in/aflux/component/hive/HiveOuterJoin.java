@@ -1,7 +1,7 @@
 
 /*
  * aFlux: JVM based IoT Mashup Tool
- * Copyright [2019] [Tanmaya Mahapatra]
+ * Copyright 2019 Tanmaya Mahapatra
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
