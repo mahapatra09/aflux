@@ -1,0 +1,754 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+
+<id>plugin-jar-with-dependencies</id>
+  <formats>
+    <format>jar</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+
+  <dependencySets>
+    <dependencySet>
+      <outputDirectory>/</outputDirectory>
+      <useProjectArtifact>true</useProjectArtifact>
+      <unpack>true</unpack>
+      <scope>runtime</scope>
+      <excludes>
+        <exclude>junit:junit</exclude>
+        <exclude>de.tum.in.aflux:aflux-tool-base</exclude>
+        <exclude>com.typesafe.akka:akka-stream_2.11</exclude>
+        <exclude>org.scala-lang:scala-library</exclude>
+        <exclude>com.typesafe.akka:akka-actor_2.11</exclude>
+        <exclude>com.typesafe:config</exclude>
+        <exclude>org.scala-lang.modules:scala-java8-compat_2.11</exclude>
+        <exclude>org.reactivestreams:reactive-streams</exclude>
+        <exclude>com.typesafe:ssl-config-core_2.11</exclude>
+        <exclude>org.scala-lang.modules:scala-parser-combinators_2.11</exclude>
+        <exclude>org.springframework:spring-context</exclude>
+        <exclude>org.springframework:spring-aop</exclude>
+        <exclude>org.springframework:spring-beans</exclude>
+        <exclude>org.springframework:spring-core</exclude>
+        <exclude>commons-logging:commons-logging</exclude>
+        <exclude>org.springframework:spring-expression</exclude>
+        <exclude>org.slf4j:slf4j-api</exclude>
+
+		<exclude>com.fasterxml.jackson.core:jackson-annotations:2.8.0</exclude>
+
+
+
+
+
+
+<exclude>org.springframework.data:spring-data-hadoop-store</exclude>
+<exclude>org.springframework:spring-messaging</exclude>
+<exclude>org.apache.hadoop:hadoop-yarn-common</exclude>
+<exclude>org.apache.hadoop:hadoop-yarn-api</exclude>
+<exclude>javax.xml.bind:jaxb-api</exclude>
+<exclude>javax.xml.stream:stax-api</exclude>
+<exclude>javax.activation:activation</exclude>
+<exclude>org.apache.commons:commons-compress</exclude>
+<exclude>org.tukaani:xz</exclude>
+<exclude>commons-lang:commons-lang</exclude>
+<exclude>commons-codec:commons-codec</exclude>
+<exclude>org.mortbay.jetty:jetty-util</exclude>
+<exclude>com.sun.jersey:jersey-core</exclude>
+<exclude>com.sun.jersey:jersey-client</exclude>
+<exclude>org.codehaus.jackson:jackson-core-asl</exclude>
+<exclude>org.codehaus.jackson:jackson-mapper-asl</exclude>
+<exclude>org.codehaus.jackson:jackson-jaxrs</exclude>
+<exclude>org.codehaus.jackson:jackson-xc</exclude>
+<exclude>com.google.guava:guava</exclude>
+<exclude>commons-cli:commons-cli</exclude>
+<exclude>org.apache.hadoop:hadoop-annotations</exclude>
+<exclude>jdk.tools:jdk.tools</exclude>
+<exclude>com.google.inject.extensions:guice-servlet</exclude>
+<exclude>com.google.protobuf:protobuf-java</exclude>
+<exclude>commons-io:commons-io</exclude>
+<exclude>com.google.inject:guice</exclude>
+<exclude>javax.inject:javax.inject</exclude>
+<exclude>aopalliance:aopalliance</exclude>
+<exclude>com.sun.jersey:jersey-server</exclude>
+<exclude>asm:asm</exclude>
+<exclude>com.sun.jersey:jersey-json</exclude>
+<exclude>org.codehaus.jettison:jettison</exclude>
+<exclude>com.sun.xml.bind:jaxb-impl</exclude>
+<exclude>com.sun.jersey.contribs:jersey-guice</exclude>
+<exclude>org.apache.hadoop:hadoop-hdfs</exclude>
+<exclude>org.mortbay.jetty:jetty</exclude>
+<exclude>commons-daemon:commons-daemon</exclude>
+<exclude>xmlenc:xmlenc</exclude>
+<exclude>io.netty:netty-all</exclude>
+<exclude>xerces:xercesImpl</exclude>
+<exclude>org.apache.htrace:htrace-core</exclude>
+<exclude>org.fusesource.leveldbjni:leveldbjni-all</exclude>
+<exclude>org.apache.hadoop:hadoop-mapreduce-client-core</exclude>
+<exclude>org.apache.avro:avro</exclude>
+<exclude>com.thoughtworks.paranamer:paranamer</exclude>
+<exclude>org.xerial.snappy:snappy-java</exclude>
+<exclude>io.netty:netty</exclude>
+<exclude>org.apache.hadoop:hadoop-common</exclude>
+
+<exclude>org.apache.commons:commons-math3</exclude>
+<exclude>commons-httpclient:commons-httpclient</exclude>
+<exclude>commons-net:commons-net</exclude>
+<exclude>commons-collections:commons-collections</exclude>
+<exclude>javax.servlet.jsp:jsp-api</exclude>
+<exclude>net.java.dev.jets3t:jets3t</exclude>
+<exclude>org.apache.httpcomponents:httpclient</exclude>
+<exclude>org.apache.httpcomponents:httpcore</exclude>
+<exclude>com.jamesmurty.utils:java-xmlbuilder</exclude>
+<exclude>commons-configuration:commons-configuration</exclude>
+<exclude>commons-digester:commons-digester</exclude>
+<exclude>commons-beanutils:commons-beanutils</exclude>
+<exclude>commons-beanutils:commons-beanutils-core</exclude>
+<exclude>com.google.code.gson:gson</exclude>
+<exclude>org.apache.hadoop:hadoop-auth</exclude>
+<exclude>org.apache.directory.server:apacheds-kerberos-codec:jar</exclude>
+<exclude>org.apache.directory.server:apacheds-i18n</exclude>
+<exclude>org.apache.directory.api:api-asn1-api</exclude>
+<exclude>org.apache.directory.api:api-util</exclude>
+<exclude>org.apache.curator:curator-framework</exclude>
+<exclude>com.jcraft:jsch:jar</exclude>
+<exclude>org.apache.curator:curator-client</exclude>
+<exclude>org.apache.curator:curator-recipes</exclude>
+<exclude>com.google.code.findbugs:jsr305</exclude>
+<exclude>org.apache.zookeeper:zookeeper</exclude>
+<exclude>org.springframework.data:spring-data-hadoop-config</exclude>
+<exclude>org.springframework.data:spring-data-hadoop-core</exclude>
+<exclude>org.springframework:spring-context-support</exclude>
+<exclude>org.apache.hadoop:hadoop-streaming</exclude>
+<exclude>org.kitesdk:kite-data-core</exclude>
+<exclude>org.kitesdk:kite-hadoop-compatibility</exclude>
+<exclude>com.twitter:parquet-avro</exclude>
+<exclude>com.twitter:parquet-column</exclude>
+<exclude>com.twitter:parquet-common</exclude>
+<exclude>com.twitter:parquet-encoding</exclude>
+<exclude>com.twitter:parquet-generator</exclude>
+<exclude>com.twitter:parquet-hadoop</exclude>
+<exclude>com.twitter:parquet-jackson</exclude>
+<exclude>com.twitter:parquet-format</exclude>
+<exclude>net.sf.opencsv:opencsv</exclude>
+<exclude>org.apache.commons:commons-jexl</exclude>
+<exclude>com.fasterxml.jackson.core:jackson-databind</exclude>
+<exclude>com.fasterxml.jackson.core:jackson-core</exclude>
+<exclude>org.apache.hadoop:hadoop-distcp</exclude>
+<exclude>org.apache.hadoop:hadoop-mapreduce-client-jobclient</exclude>
+<exclude>org.apache.hadoop:hadoop-mapreduce-client-common</exclude>
+<exclude>org.apache.hadoop:hadoop-yarn-client</exclude>
+<exclude>org.apache.hadoop:hadoop-yarn-server-common</exclude>
+<exclude>org.apache.hadoop:hadoop-mapreduce-client-shuffle</exclude>
+<exclude>org.apache.hadoop:hadoop-yarn-server-nodemanager</exclude>
+
+
+<!--  added pig and hive -->
+
+<exclude>org.springframework.data:spring-data-hadoop-pig</exclude>
+<exclude>org.springframework.data:spring-data-hadoop-core</exclude>
+<exclude>org.springframework.batch:spring-batch-core</exclude>
+<exclude>com.ibm.jbatch:com.ibm.jbatch-tck-spi</exclude>
+<exclude>javax.batch:javax.batch-api</exclude>
+<exclude>com.thoughtworks.xstream:xstream</exclude>
+<exclude>xmlpull:xmlpull</exclude>
+<exclude>xpp3:xpp3_min</exclude>
+<exclude>org.codehaus.jettison:jettison</exclude>
+<exclude>org.springframework.batch:spring-batch-infrastructure</exclude>
+<exclude>org.springframework.retry:spring-retry</exclude>
+<exclude>org.springframework:spring-tx</exclude>
+<exclude>org.springframework.data:spring-data-hadoop-hive</exclude>
+<exclude>org.springframework.data:spring-data-hadoop-hbase</exclude>
+<exclude>org.apache.pig:pig</exclude>
+<exclude>commons-cli:commons-cli</exclude>
+<exclude>xmlenc:xmlenc</exclude>
+<exclude>commons-httpclient:commons-httpclient</exclude>
+<exclude>commons-codec:commons-codec</exclude>
+<exclude>commons-net:commons-net</exclude>
+<exclude>org.mortbay.jetty:jetty-util</exclude>
+<exclude>tomcat:jasper-runtime</exclude>
+<exclude>tomcat:jasper-compiler</exclude>
+<exclude>org.mortbay.jetty:jsp-api-2.1</exclude>
+<exclude>org.mortbay.jetty:jsp-2.1</exclude>
+<exclude>org.eclipse.jdt:core</exclude>
+<exclude>ant:ant</exclude>
+<exclude>commons-el:commons-el</exclude>
+<exclude>net.java.dev.jets3t:jets3t</exclude>
+<exclude>net.sf.kosmosfs:kfs</exclude>
+<exclude>hsqldb:hsqldb</exclude>
+<exclude>oro:oro</exclude>
+<exclude>org.antlr:ST4</exclude>
+<exclude>org.antlr:antlr-runtime</exclude>
+<exclude>org.antlr:stringtemplate</exclude>
+<exclude>antlr:antlr</exclude>
+<exclude>dk.brics.automaton:automaton</exclude>
+<exclude>com.google.guava:guava</exclude>
+<exclude>org.codehaus.jackson:jackson-mapper-asl</exclude>
+<exclude>org.codehaus.jackson:jackson-core-asl</exclude>
+<exclude>joda-time:joda-time</exclude>
+<exclude>org.apache.avro:avro</exclude>
+<exclude>com.thoughtworks.paranamer:paranamer</exclude>
+<exclude>org.xerial.snappy:snappy-java</exclude>
+<exclude>org.apache.ivy:ivy</exclude>
+<exclude>org.codehaus.groovy:groovy-all</exclude>
+<exclude>org.apache.pig:piggybank</exclude>
+<exclude>commons-lang:commons-lang</exclude>
+<exclude>log4j:log4j</exclude>
+<exclude>commons-logging:commons-logging</exclude>
+<exclude>com.googlecode.json-simple:json-simple</exclude>
+<exclude>nl.basjes.parse.httpdlog:httpdlog-pigloader</exclude>
+<exclude>nl.basjes.parse.httpdlog:httpdlog-inputformat</exclude>
+<exclude>nl.basjes.parse.httpdlog:httpdlog-parser</exclude>
+<exclude>nl.basjes.parse:parser-core</exclude>
+<exclude>org.apache.pig:pig</exclude>
+<exclude>org.mortbay.jetty:servlet-api-2.5</exclude>
+<exclude>jline:jline</exclude>
+<exclude>org.apache.hbase:hbase-client</exclude>
+<exclude>org.apache.hbase:hbase-annotations</exclude>
+<exclude>com.github.stephenc.findbugs:findbugs-annotations</exclude>
+<exclude>org.apache.hbase:hbase-common</exclude>
+<exclude>org.apache.hbase:hbase-protocol</exclude>
+<exclude>commons-io:commons-io</exclude>
+<exclude>com.google.protobuf:protobuf-java</exclude>
+<exclude>io.netty:netty-all</exclude>
+<exclude>org.apache.zookeeper:zookeeper</exclude>
+<exclude>org.apache.htrace:htrace-core</exclude>
+<exclude>org.jruby.jcodings:jcodings</exclude>
+<exclude>org.jruby.joni:joni</exclude>
+<exclude>com.yammer.metrics:metrics-core</exclude>
+<exclude>org.apache.hadoop:hadoop-auth</exclude>
+<exclude>org.apache.directory.server:apacheds-kerberos-codec</exclude>
+<exclude>org.apache.directory.server:apacheds-i18n</exclude>
+<exclude>org.apache.directory.api:api-asn1-api</exclude>
+<exclude>org.apache.directory.api:api-util</exclude>
+<exclude>org.apache.hive:hive-jdbc</exclude>
+<exclude>org.apache.hive:hive-common</exclude>
+<exclude>org.json:json</exclude>
+<exclude>org.apache.hive:hive-service</exclude>
+<exclude>net.sf.jpam:jpam</exclude>
+<exclude>org.apache.hive:hive-serde</exclude>
+<exclude>com.twitter:parquet-hadoop-bundle</exclude>
+<exclude>org.apache.hive:hive-metastore</exclude>
+<exclude>com.jolbox:bonecp</exclude>
+<exclude>org.apache.derby:derby</exclude>
+<exclude>org.datanucleus:datanucleus-api-jdo</exclude>
+<exclude>org.datanucleus:datanucleus-rdbms</exclude>
+<exclude>commons-pool:commons-pool</exclude>
+<exclude>commons-dbcp:commons-dbcp</exclude>
+<exclude>javax.jdo:jdo-api</exclude>
+<exclude>javax.transaction:jta</exclude>
+<exclude>org.apache.hive:hive-shims</exclude>
+<exclude>org.apache.hive.shims:hive-shims-common</exclude>
+<exclude>org.apache.hive.shims:hive-shims-0.20S</exclude>
+<exclude>org.apache.hive.shims:hive-shims-0.23</exclude>
+<exclude>org.apache.hadoop:hadoop-yarn-server-resourcemanager</exclude>
+<exclude>org.apache.hadoop:hadoop-yarn-server-applicationhistoryservice</exclude>
+<exclude>org.apache.hadoop:hadoop-yarn-server-web-proxy</exclude>
+<exclude>org.apache.hive.shims:hive-shims-scheduler</exclude>
+<exclude>org.apache.httpcomponents:httpclient</exclude>
+<exclude>org.apache.httpcomponents:httpcore</exclude>
+<exclude>org.apache.thrift:libthrift</exclude>
+<exclude>org.apache.curator:curator-framework</exclude>
+<exclude>org.slf4j:slf4j-log4j12</exclude>
+<exclude>org.apache.hive:hive-exec</exclude>
+<exclude>org.apache.hive:hive-ant</exclude>
+<exclude>org.apache.velocity:velocity</exclude>
+<exclude>log4j:apache-log4j-extras</exclude>
+<exclude>org.apache.ant:ant</exclude>
+<exclude>org.apache.ant:ant-launcher</exclude>
+<exclude>org.apache.commons:commons-compress</exclude>
+<exclude>org.tukaani:xz</exclude>
+<exclude>org.apache.thrift:libfb303</exclude>
+<exclude>org.apache.curator:apache-curator</exclude>
+<exclude>org.datanucleus:datanucleus-core</exclude>
+<exclude>org.apache.calcite:calcite-core</exclude>
+<exclude>org.apache.calcite:calcite-linq4j</exclude>
+<exclude>net.hydromatic:eigenbase-properties</exclude>
+<exclude>org.codehaus.janino:janino</exclude>
+<exclude>org.codehaus.janino:commons-compiler</exclude>
+<exclude>org.pentaho:pentaho-aggdesigner-algorithm</exclude>
+<exclude>org.apache.calcite:calcite-avatica</exclude>
+<exclude>stax:stax-api</exclude>
+
+<exclude>org.springframework.data:spring-data-hadoop</exclude>
+<exclude>org.springframework:spring-jdbc</exclude>
+<exclude>org.springframework:spring-tx</exclude>
+<exclude>org.springframework.data:spring-data-hadoop-batch:jar</exclude>
+
+
+
+
+
+        <exclude>org.mongodb:mongodb-driver</exclude>
+        <exclude>org.mongodb:bson</exclude>
+        <exclude>org.mongodb:mongodb-driver-core</exclude>
+
+      </excludes>
+
+    </dependencySet>
+
+  </dependencySets>
+
+
+</assembly>
+
+
+<!-- they was in previous version -->
+
+
+<!--  
+
+result of mvn dependency:tree on aflux-tool-base
+
+These libraries should be excluded in assembly
+
+
+
+[INFO] +- org.springframework.data:spring-data-hadoop-store:jar:2.4.0.RELEASE:compile
+[INFO] |  +- org.springframework:spring-messaging:jar:4.2.5.RELEASE:compile
+[INFO] |  +- org.apache.hadoop:hadoop-yarn-common:jar:2.7.1:compile
+[INFO] |  |  +- org.apache.hadoop:hadoop-yarn-api:jar:2.7.1:compile
+[INFO] |  |  +- javax.xml.bind:jaxb-api:jar:2.2.2:compile
+[INFO] |  |  |  +- javax.xml.stream:stax-api:jar:1.0-2:compile
+[INFO] |  |  |  \- javax.activation:activation:jar:1.1:compile
+[INFO] |  |  +- org.apache.commons:commons-compress:jar:1.4.1:compile
+[INFO] |  |  |  \- org.tukaani:xz:jar:1.0:compile
+[INFO] |  |  +- commons-lang:commons-lang:jar:2.6:compile
+[INFO] |  |  +- commons-codec:commons-codec:jar:1.4:compile
+[INFO] |  |  +- org.mortbay.jetty:jetty-util:jar:6.1.26:compile
+[INFO] |  |  +- com.sun.jersey:jersey-core:jar:1.9:compile
+[INFO] |  |  +- com.sun.jersey:jersey-client:jar:1.9:compile
+[INFO] |  |  +- org.codehaus.jackson:jackson-core-asl:jar:1.9.13:compile
+[INFO] |  |  +- org.codehaus.jackson:jackson-mapper-asl:jar:1.9.13:compile
+[INFO] |  |  +- org.codehaus.jackson:jackson-jaxrs:jar:1.9.13:compile
+[INFO] |  |  +- org.codehaus.jackson:jackson-xc:jar:1.9.13:compile
+[INFO] |  |  +- com.google.guava:guava:jar:11.0.2:compile
+[INFO] |  |  +- commons-cli:commons-cli:jar:1.2:compile
+[INFO] |  |  +- org.apache.hadoop:hadoop-annotations:jar:2.7.1:compile
+[INFO] |  |  |  \- jdk.tools:jdk.tools:jar:1.8:system
+[INFO] |  |  +- com.google.inject.extensions:guice-servlet:jar:3.0:compile
+[INFO] |  |  +- com.google.protobuf:protobuf-java:jar:2.5.0:compile
+[INFO] |  |  +- commons-io:commons-io:jar:2.4:compile
+[INFO] |  |  +- com.google.inject:guice:jar:3.0:compile
+[INFO] |  |  |  +- javax.inject:javax.inject:jar:1:compile
+[INFO] |  |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  |  +- com.sun.jersey:jersey-server:jar:1.9:compile
+[INFO] |  |  |  \- asm:asm:jar:3.1:compile
+[INFO] |  |  +- com.sun.jersey:jersey-json:jar:1.9:compile
+[INFO] |  |  |  +- org.codehaus.jettison:jettison:jar:1.1:compile
+[INFO] |  |  |  \- com.sun.xml.bind:jaxb-impl:jar:2.2.3-1:compile
+[INFO] |  |  \- com.sun.jersey.contribs:jersey-guice:jar:1.9:compile
+[INFO] |  +- org.apache.hadoop:hadoop-hdfs:jar:2.7.1:compile
+[INFO] |  |  +- org.mortbay.jetty:jetty:jar:6.1.26:compile
+[INFO] |  |  +- commons-daemon:commons-daemon:jar:1.0.13:compile
+[INFO] |  |  +- xmlenc:xmlenc:jar:0.52:compile
+[INFO] |  |  +- io.netty:netty-all:jar:4.0.23.Final:compile
+[INFO] |  |  +- xerces:xercesImpl:jar:2.9.1:compile
+[INFO] |  |  +- org.apache.htrace:htrace-core:jar:3.1.0-incubating:compile
+[INFO] |  |  \- org.fusesource.leveldbjni:leveldbjni-all:jar:1.8:compile
+[INFO] |  +- org.apache.hadoop:hadoop-mapreduce-client-core:jar:2.7.1:compile
+[INFO] |  |  +- org.apache.avro:avro:jar:1.7.4:compile
+[INFO] |  |  |  +- com.thoughtworks.paranamer:paranamer:jar:2.3:compile
+[INFO] |  |  |  \- org.xerial.snappy:snappy-java:jar:1.0.4.1:compile
+[INFO] |  |  \- io.netty:netty:jar:3.6.2.Final:compile
+[INFO] |  +- org.apache.hadoop:hadoop-common:jar:2.7.1:compile
+[INFO] |  |  +- org.apache.commons:commons-math3:jar:3.1.1:compile
+[INFO] |  |  +- commons-httpclient:commons-httpclient:jar:3.1:compile
+[INFO] |  |  +- commons-net:commons-net:jar:3.1:compile
+[INFO] |  |  +- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] |  |  +- javax.servlet.jsp:jsp-api:jar:2.1:runtime
+[INFO] |  |  +- net.java.dev.jets3t:jets3t:jar:0.9.0:compile
+[INFO] |  |  |  +- org.apache.httpcomponents:httpclient:jar:4.1.2:compile
+[INFO] |  |  |  +- org.apache.httpcomponents:httpcore:jar:4.1.2:compile
+[INFO] |  |  |  \- com.jamesmurty.utils:java-xmlbuilder:jar:0.4:compile
+[INFO] |  |  +- commons-configuration:commons-configuration:jar:1.6:compile
+[INFO] |  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+[INFO] |  |  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+[INFO] |  |  |  \- commons-beanutils:commons-beanutils-core:jar:1.8.0:compile
+[INFO] |  |  +- com.google.code.gson:gson:jar:2.2.4:compile
+[INFO] |  |  +- org.apache.hadoop:hadoop-auth:jar:2.7.1:compile
+[INFO] |  |  |  +- org.apache.directory.server:apacheds-kerberos-codec:jar:2.0.0-M15:compile
+[INFO] |  |  |  |  +- org.apache.directory.server:apacheds-i18n:jar:2.0.0-M15:compile
+[INFO] |  |  |  |  +- org.apache.directory.api:api-asn1-api:jar:1.0.0-M20:compile
+[INFO] |  |  |  |  \- org.apache.directory.api:api-util:jar:1.0.0-M20:compile
+[INFO] |  |  |  \- org.apache.curator:curator-framework:jar:2.7.1:compile
+[INFO] |  |  +- com.jcraft:jsch:jar:0.1.42:compile
+[INFO] |  |  +- org.apache.curator:curator-client:jar:2.7.1:compile
+[INFO] |  |  +- org.apache.curator:curator-recipes:jar:2.7.1:compile
+[INFO] |  |  +- com.google.code.findbugs:jsr305:jar:3.0.0:compile
+[INFO] |  |  \- org.apache.zookeeper:zookeeper:jar:3.4.6:compile
+[INFO] |  +- org.springframework.data:spring-data-hadoop-config:jar:2.4.0.RELEASE:compile
+[INFO] |  |  \- org.springframework.data:spring-data-hadoop-core:jar:2.4.0.RELEASE:compile
+[INFO] |  +- org.springframework:spring-context-support:jar:4.2.5.RELEASE:compile
+[INFO] |  +- org.apache.hadoop:hadoop-streaming:jar:2.7.1:compile
+[INFO] |  +- org.kitesdk:kite-data-core:jar:1.0.0:compile
+[INFO] |  |  +- org.kitesdk:kite-hadoop-compatibility:jar:1.0.0:compile
+[INFO] |  |  +- com.twitter:parquet-avro:jar:1.4.1:compile
+[INFO] |  |  |  +- com.twitter:parquet-column:jar:1.4.1:compile
+[INFO] |  |  |  |  +- com.twitter:parquet-common:jar:1.4.1:compile
+[INFO] |  |  |  |  \- com.twitter:parquet-encoding:jar:1.4.1:compile
+[INFO] |  |  |  |     \- com.twitter:parquet-generator:jar:1.4.1:compile
+[INFO] |  |  |  +- com.twitter:parquet-hadoop:jar:1.4.1:compile
+[INFO] |  |  |  |  \- com.twitter:parquet-jackson:jar:1.4.1:compile
+[INFO] |  |  |  \- com.twitter:parquet-format:jar:2.0.0:compile
+[INFO] |  |  +- net.sf.opencsv:opencsv:jar:2.3:compile
+[INFO] |  |  +- org.apache.commons:commons-jexl:jar:2.1.1:compile
+[INFO] |  |  \- com.fasterxml.jackson.core:jackson-databind:jar:2.3.1:compile
+[INFO] |  |     \- com.fasterxml.jackson.core:jackson-core:jar:2.3.1:compile
+[INFO] |  +- org.apache.hadoop:hadoop-distcp:jar:2.7.1:compile
+[INFO] |  \- org.apache.hadoop:hadoop-mapreduce-client-jobclient:jar:2.7.1:compile
+[INFO] |     +- org.apache.hadoop:hadoop-mapreduce-client-common:jar:2.7.1:compile
+[INFO] |     |  +- org.apache.hadoop:hadoop-yarn-client:jar:2.7.1:compile
+[INFO] |     |  \- org.apache.hadoop:hadoop-yarn-server-common:jar:2.7.1:compile
+[INFO] |     \- org.apache.hadoop:hadoop-mapreduce-client-shuffle:jar:2.7.1:compile
+[INFO] |        \- org.apache.hadoop:hadoop-yarn-server-nodemanager:jar:2.7.1:compile
+
+
+[INFO] +- org.springframework.data:spring-data-hadoop-pig:jar:2.4.0.RELEASE:compile
+[INFO] |  +- org.springframework.data:spring-data-hadoop-core:jar:2.4.0.RELEASE:compile
+[INFO] |  \- org.springframework.batch:spring-batch-core:jar:3.0.6.RELEASE:compile
+[INFO] |     +- com.ibm.jbatch:com.ibm.jbatch-tck-spi:jar:1.0:compile
+[INFO] |     |  \- javax.batch:javax.batch-api:jar:1.0:compile
+[INFO] |     +- com.thoughtworks.xstream:xstream:jar:1.4.7:compile
+[INFO] |     |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+[INFO] |     |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+[INFO] |     +- org.codehaus.jettison:jettison:jar:1.2:compile
+[INFO] |     +- org.springframework.batch:spring-batch-infrastructure:jar:3.0.6.RELEASE:compile
+[INFO] |     |  \- org.springframework.retry:spring-retry:jar:1.1.0.RELEASE:compile
+[INFO] |     \- org.springframework:spring-tx:jar:4.0.5.RELEASE:compile
+[INFO] +- org.springframework.data:spring-data-hadoop-hive:jar:2.4.0.RELEASE:compile
+[INFO] +- org.springframework.data:spring-data-hadoop-hbase:jar:2.4.0.RELEASE:compile
+[INFO] +- org.apache.pig:pig:jar:h2:0.16.0:compile
+[INFO] |  +- commons-cli:commons-cli:jar:1.2:compile
+[INFO] |  +- xmlenc:xmlenc:jar:0.52:compile
+[INFO] |  +- commons-httpclient:commons-httpclient:jar:3.1:compile
+[INFO] |  +- commons-codec:commons-codec:jar:1.4:compile
+[INFO] |  +- commons-net:commons-net:jar:1.4.1:compile
+[INFO] |  +- org.mortbay.jetty:jetty-util:jar:6.1.26:compile
+[INFO] |  +- tomcat:jasper-runtime:jar:5.5.12:compile
+[INFO] |  +- tomcat:jasper-compiler:jar:5.5.12:compile
+[INFO] |  +- org.mortbay.jetty:jsp-api-2.1:jar:6.1.14:compile
+[INFO] |  +- org.mortbay.jetty:jsp-2.1:jar:6.1.14:compile
+[INFO] |  |  +- org.eclipse.jdt:core:jar:3.1.1:compile
+[INFO] |  |  \- ant:ant:jar:1.6.5:compile
+[INFO] |  +- commons-el:commons-el:jar:1.0:compile
+[INFO] |  +- net.java.dev.jets3t:jets3t:jar:0.7.1:compile
+[INFO] |  +- net.sf.kosmosfs:kfs:jar:0.3:compile
+[INFO] |  +- hsqldb:hsqldb:jar:1.8.0.10:compile
+[INFO] |  +- oro:oro:jar:2.0.8:compile
+[INFO] |  +- org.antlr:ST4:jar:4.0.4:compile
+[INFO] |  +- org.antlr:antlr-runtime:jar:3.4:compile
+[INFO] |  |  +- org.antlr:stringtemplate:jar:3.2.1:compile
+[INFO] |  |  \- antlr:antlr:jar:2.7.7:compile
+[INFO] |  +- dk.brics.automaton:automaton:jar:1.11-8:compile
+[INFO] |  +- com.google.guava:guava:jar:11.0:compile
+[INFO] |  +- org.codehaus.jackson:jackson-mapper-asl:jar:1.8.8:compile
+[INFO] |  +- org.codehaus.jackson:jackson-core-asl:jar:1.8.8:compile
+[INFO] |  +- joda-time:joda-time:jar:2.1:compile
+[INFO] |  +- org.apache.avro:avro:jar:1.7.4:compile
+[INFO] |  |  +- com.thoughtworks.paranamer:paranamer:jar:2.3:compile
+[INFO] |  |  \- org.xerial.snappy:snappy-java:jar:1.0.4.1:compile
+[INFO] |  +- org.apache.ivy:ivy:jar:2.2.0:compile
+[INFO] |  \- org.codehaus.groovy:groovy-all:jar:1.8.6:compile
+[INFO] +- org.apache.pig:piggybank:jar:0.16.0:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.4:compile
+[INFO] |  +- log4j:log4j:jar:1.2.16:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.1.1:compile
+[INFO] |  +- com.googlecode.json-simple:json-simple:jar:1.1:compile
+[INFO] |  +- nl.basjes.parse.httpdlog:httpdlog-pigloader:jar:2.2:compile
+[INFO] |  |  \- nl.basjes.parse.httpdlog:httpdlog-inputformat:jar:2.2:compile
+[INFO] |  |     \- nl.basjes.parse.httpdlog:httpdlog-parser:jar:2.2:compile
+[INFO] |  |        \- nl.basjes.parse:parser-core:jar:2.2:compile
+[INFO] |  \- org.apache.pig:pig:jar:0.16.0:compile
+[INFO] |     \- org.mortbay.jetty:servlet-api-2.5:jar:6.1.14:compile
+[INFO] +- jline:jline:jar:0.9.94:compile
+[INFO] +- org.apache.hbase:hbase-client:jar:1.3.0:compile
+[INFO] |  +- org.apache.hbase:hbase-annotations:jar:1.3.0:compile
+[INFO] |  |  \- com.github.stephenc.findbugs:findbugs-annotations:jar:1.3.9-1:compile
+[INFO] |  +- org.apache.hbase:hbase-common:jar:1.3.0:compile
+[INFO] |  +- org.apache.hbase:hbase-protocol:jar:1.3.0:compile
+[INFO] |  +- commons-io:commons-io:jar:2.4:compile
+[INFO] |  +- com.google.protobuf:protobuf-java:jar:2.5.0:compile
+[INFO] |  +- io.netty:netty-all:jar:4.0.23.Final:compile
+[INFO] |  +- org.apache.zookeeper:zookeeper:jar:3.4.6:compile
+[INFO] |  +- org.apache.htrace:htrace-core:jar:3.1.0-incubating:compile
+[INFO] |  +- org.jruby.jcodings:jcodings:jar:1.0.8:compile
+[INFO] |  +- org.jruby.joni:joni:jar:2.1.2:compile
+[INFO] |  +- com.yammer.metrics:metrics-core:jar:2.2.0:compile
+[INFO] |  \- org.apache.hadoop:hadoop-auth:jar:2.5.1:compile
+[INFO] |     \- org.apache.directory.server:apacheds-kerberos-codec:jar:2.0.0-M15:compile
+[INFO] |        +- org.apache.directory.server:apacheds-i18n:jar:2.0.0-M15:compile
+[INFO] |        +- org.apache.directory.api:api-asn1-api:jar:1.0.0-M20:compile
+[INFO] |        \- org.apache.directory.api:api-util:jar:1.0.0-M20:compile
+[INFO] +- org.apache.hive:hive-jdbc:jar:1.2.1:compile
+[INFO] |  +- org.apache.hive:hive-common:jar:1.2.1:compile
+[INFO] |  |  \- org.json:json:jar:20090211:compile
+[INFO] |  +- org.apache.hive:hive-service:jar:1.2.1:compile
+[INFO] |  |  \- net.sf.jpam:jpam:jar:1.1:compile
+[INFO] |  +- org.apache.hive:hive-serde:jar:1.2.1:compile
+[INFO] |  |  \- com.twitter:parquet-hadoop-bundle:jar:1.6.0:compile
+[INFO] |  +- org.apache.hive:hive-metastore:jar:1.2.1:compile
+[INFO] |  |  +- com.jolbox:bonecp:jar:0.8.0.RELEASE:compile
+[INFO] |  |  +- org.apache.derby:derby:jar:10.10.2.0:compile
+[INFO] |  |  +- org.datanucleus:datanucleus-api-jdo:jar:3.2.6:compile
+[INFO] |  |  +- org.datanucleus:datanucleus-rdbms:jar:3.2.9:compile
+[INFO] |  |  +- commons-pool:commons-pool:jar:1.5.4:compile
+[INFO] |  |  +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  |  \- javax.jdo:jdo-api:jar:3.0.1:compile
+[INFO] |  |     \- javax.transaction:jta:jar:1.1:compile
+[INFO] |  +- org.apache.hive:hive-shims:jar:1.2.1:compile
+[INFO] |  |  +- org.apache.hive.shims:hive-shims-common:jar:1.2.1:compile
+[INFO] |  |  +- org.apache.hive.shims:hive-shims-0.20S:jar:1.2.1:runtime
+[INFO] |  |  +- org.apache.hive.shims:hive-shims-0.23:jar:1.2.1:runtime
+[INFO] |  |  |  \- org.apache.hadoop:hadoop-yarn-server-resourcemanager:jar:2.6.0:runtime
+[INFO] |  |  |     +- org.apache.hadoop:hadoop-yarn-server-applicationhistoryservice:jar:2.6.0:runtime
+[INFO] |  |  |     \- org.apache.hadoop:hadoop-yarn-server-web-proxy:jar:2.6.0:runtime
+[INFO] |  |  \- org.apache.hive.shims:hive-shims-scheduler:jar:1.2.1:runtime
+[INFO] |  +- org.apache.httpcomponents:httpclient:jar:4.4:compile
+[INFO] |  +- org.apache.httpcomponents:httpcore:jar:4.4:compile
+[INFO] |  +- org.apache.thrift:libthrift:jar:0.9.2:compile
+[INFO] |  +- org.apache.curator:curator-framework:jar:2.6.0:compile
+[INFO] |  \- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] +- org.apache.hive:hive-exec:jar:1.2.1:compile
+[INFO] |  +- org.apache.hive:hive-ant:jar:1.2.1:compile
+[INFO] |  |  \- org.apache.velocity:velocity:jar:1.5:compile
+[INFO] |  +- log4j:apache-log4j-extras:jar:1.2.17:compile
+[INFO] |  +- org.apache.ant:ant:jar:1.9.1:compile
+[INFO] |  |  \- org.apache.ant:ant-launcher:jar:1.9.1:compile
+[INFO] |  +- org.apache.commons:commons-compress:jar:1.4.1:compile
+[INFO] |  |  \- org.tukaani:xz:jar:1.0:compile
+[INFO] |  +- org.apache.thrift:libfb303:jar:0.9.2:compile
+[INFO] |  +- org.apache.curator:apache-curator:pom:2.6.0:compile
+[INFO] |  +- org.datanucleus:datanucleus-core:jar:3.2.10:compile
+[INFO] |  +- org.apache.calcite:calcite-core:jar:1.2.0-incubating:compile
+[INFO] |  |  +- org.apache.calcite:calcite-linq4j:jar:1.2.0-incubating:compile
+[INFO] |  |  +- net.hydromatic:eigenbase-properties:jar:1.1.5:compile
+[INFO] |  |  +- org.codehaus.janino:janino:jar:2.7.6:compile
+[INFO] |  |  +- org.codehaus.janino:commons-compiler:jar:2.7.6:compile
+[INFO] |  |  \- org.pentaho:pentaho-aggdesigner-algorithm:jar:5.1.5-jhyde:compile
+[INFO] |  +- org.apache.calcite:calcite-avatica:jar:1.2.0-incubating:compile
+[INFO] |  \- stax:stax-api:jar:1.0.1:compile
+[INFO] +- org.springframework.data:spring-data-hadoop:jar:2.4.0.RELEASE:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.2.5.RELEASE:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.2.5.RELEASE:compile
+[INFO] |  \- org.springframework.data:spring-data-hadoop-batch:jar:2.4.0.RELEASE:compile
+
+
+
+[INFO] de.tum.in.aflux:aflux-tool-base:jar:0.0.2-SNAPSHOT
+[INFO] +- com.typesafe.akka:akka-stream_2.11:jar:2.5.1:compile
+[INFO] |  +- org.scala-lang:scala-library:jar:2.11.11:compile
+[INFO] |  +- com.typesafe.akka:akka-actor_2.11:jar:2.5.1:compile
+[INFO] |  |  +- com.typesafe:config:jar:1.3.1:compile
+[INFO] |  |  \- org.scala-lang.modules:scala-java8-compat_2.11:jar:0.7.0:compile
+[INFO] |  +- org.reactivestreams:reactive-streams:jar:1.0.0:compile
+[INFO] |  \- com.typesafe:ssl-config-core_2.11:jar:0.2.1:compile
+[INFO] |     \- org.scala-lang.modules:scala-parser-combinators_2.11:jar:1.0.4:compile
+[INFO] +- org.springframework:spring-context:jar:4.3.8.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.3.8.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.3.8.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.3.8.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.3.8.RELEASE:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.25:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.0:compile
+[INFO] +- org.springframework.data:spring-data-hadoop-store:jar:2.4.0.RELEASE:compile
+[INFO] |  +- org.springframework:spring-messaging:jar:4.2.5.RELEASE:compile
+[INFO] |  +- org.apache.hadoop:hadoop-yarn-common:jar:2.7.1:compile
+[INFO] |  |  +- org.apache.hadoop:hadoop-yarn-api:jar:2.7.1:compile
+[INFO] |  |  +- javax.xml.bind:jaxb-api:jar:2.2.2:compile
+[INFO] |  |  |  +- javax.xml.stream:stax-api:jar:1.0-2:compile
+[INFO] |  |  |  \- javax.activation:activation:jar:1.1:compile
+[INFO] |  |  +- com.sun.jersey:jersey-core:jar:1.9:compile
+[INFO] |  |  +- com.sun.jersey:jersey-client:jar:1.9:compile
+[INFO] |  |  +- org.codehaus.jackson:jackson-jaxrs:jar:1.9.13:compile
+[INFO] |  |  +- org.codehaus.jackson:jackson-xc:jar:1.9.13:compile
+[INFO] |  |  +- org.apache.hadoop:hadoop-annotations:jar:2.7.1:compile
+[INFO] |  |  |  \- jdk.tools:jdk.tools:jar:1.8:system
+[INFO] |  |  +- com.google.inject.extensions:guice-servlet:jar:3.0:compile
+[INFO] |  |  +- com.google.inject:guice:jar:3.0:compile
+[INFO] |  |  |  +- javax.inject:javax.inject:jar:1:compile
+[INFO] |  |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  |  +- com.sun.jersey:jersey-server:jar:1.9:compile
+[INFO] |  |  |  \- asm:asm:jar:3.1:compile
+[INFO] |  |  +- com.sun.jersey:jersey-json:jar:1.9:compile
+[INFO] |  |  |  \- com.sun.xml.bind:jaxb-impl:jar:2.2.3-1:compile
+[INFO] |  |  \- com.sun.jersey.contribs:jersey-guice:jar:1.9:compile
+[INFO] |  +- org.apache.hadoop:hadoop-hdfs:jar:2.7.1:compile
+[INFO] |  |  +- org.mortbay.jetty:jetty:jar:6.1.26:compile
+[INFO] |  |  +- commons-daemon:commons-daemon:jar:1.0.13:compile
+[INFO] |  |  +- xerces:xercesImpl:jar:2.9.1:compile
+[INFO] |  |  \- org.fusesource.leveldbjni:leveldbjni-all:jar:1.8:compile
+[INFO] |  +- org.apache.hadoop:hadoop-mapreduce-client-core:jar:2.7.1:compile
+[INFO] |  |  \- io.netty:netty:jar:3.6.2.Final:compile
+[INFO] |  +- org.apache.hadoop:hadoop-common:jar:2.7.1:compile
+[INFO] |  |  +- org.apache.commons:commons-math3:jar:3.1.1:compile
+[INFO] |  |  +- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] |  |  +- javax.servlet.jsp:jsp-api:jar:2.1:runtime
+[INFO] |  |  +- commons-configuration:commons-configuration:jar:1.6:compile
+[INFO] |  |  |  +- commons-digester:commons-digester:jar:1.8:compile
+[INFO] |  |  |  |  \- commons-beanutils:commons-beanutils:jar:1.7.0:compile
+[INFO] |  |  |  \- commons-beanutils:commons-beanutils-core:jar:1.8.0:compile
+[INFO] |  |  +- com.google.code.gson:gson:jar:2.2.4:compile
+[INFO] |  |  +- com.jcraft:jsch:jar:0.1.42:compile
+[INFO] |  |  +- org.apache.curator:curator-client:jar:2.7.1:compile
+[INFO] |  |  +- org.apache.curator:curator-recipes:jar:2.7.1:compile
+[INFO] |  |  \- com.google.code.findbugs:jsr305:jar:3.0.0:compile
+[INFO] |  +- org.springframework.data:spring-data-hadoop-config:jar:2.4.0.RELEASE:compile
+[INFO] |  +- org.springframework:spring-context-support:jar:4.2.5.RELEASE:compile
+[INFO] |  +- org.apache.hadoop:hadoop-streaming:jar:2.7.1:compile
+[INFO] |  +- org.kitesdk:kite-data-core:jar:1.0.0:compile
+[INFO] |  |  +- org.kitesdk:kite-hadoop-compatibility:jar:1.0.0:compile
+[INFO] |  |  +- com.twitter:parquet-avro:jar:1.4.1:compile
+[INFO] |  |  |  +- com.twitter:parquet-column:jar:1.4.1:compile
+[INFO] |  |  |  |  +- com.twitter:parquet-common:jar:1.4.1:compile
+[INFO] |  |  |  |  \- com.twitter:parquet-encoding:jar:1.4.1:compile
+[INFO] |  |  |  |     \- com.twitter:parquet-generator:jar:1.4.1:compile
+[INFO] |  |  |  +- com.twitter:parquet-hadoop:jar:1.4.1:compile
+[INFO] |  |  |  |  \- com.twitter:parquet-jackson:jar:1.4.1:compile
+[INFO] |  |  |  \- com.twitter:parquet-format:jar:2.0.0:compile
+[INFO] |  |  +- net.sf.opencsv:opencsv:jar:2.3:compile
+[INFO] |  |  +- org.apache.commons:commons-jexl:jar:2.1.1:compile
+[INFO] |  |  \- com.fasterxml.jackson.core:jackson-databind:jar:2.3.1:compile
+[INFO] |  |     \- com.fasterxml.jackson.core:jackson-core:jar:2.3.1:compile
+[INFO] |  +- org.apache.hadoop:hadoop-distcp:jar:2.7.1:compile
+[INFO] |  \- org.apache.hadoop:hadoop-mapreduce-client-jobclient:jar:2.7.1:compile
+[INFO] |     +- org.apache.hadoop:hadoop-mapreduce-client-common:jar:2.7.1:compile
+[INFO] |     |  +- org.apache.hadoop:hadoop-yarn-client:jar:2.7.1:compile
+[INFO] |     |  \- org.apache.hadoop:hadoop-yarn-server-common:jar:2.7.1:compile
+[INFO] |     \- org.apache.hadoop:hadoop-mapreduce-client-shuffle:jar:2.7.1:compile
+[INFO] |        \- org.apache.hadoop:hadoop-yarn-server-nodemanager:jar:2.7.1:compile
+[INFO] +- org.springframework.data:spring-data-hadoop-pig:jar:2.4.0.RELEASE:compile
+[INFO] |  +- org.springframework.data:spring-data-hadoop-core:jar:2.4.0.RELEASE:compile
+[INFO] |  \- org.springframework.batch:spring-batch-core:jar:3.0.6.RELEASE:compile
+[INFO] |     +- com.ibm.jbatch:com.ibm.jbatch-tck-spi:jar:1.0:compile
+[INFO] |     |  \- javax.batch:javax.batch-api:jar:1.0:compile
+[INFO] |     +- com.thoughtworks.xstream:xstream:jar:1.4.7:compile
+[INFO] |     |  +- xmlpull:xmlpull:jar:1.1.3.1:compile
+[INFO] |     |  \- xpp3:xpp3_min:jar:1.1.4c:compile
+[INFO] |     +- org.codehaus.jettison:jettison:jar:1.2:compile
+[INFO] |     \- org.springframework.batch:spring-batch-infrastructure:jar:3.0.6.RELEASE:compile
+[INFO] |        \- org.springframework.retry:spring-retry:jar:1.1.0.RELEASE:compile
+[INFO] +- org.springframework.data:spring-data-hadoop-hive:jar:2.4.0.RELEASE:compile
+[INFO] +- org.springframework.data:spring-data-hadoop-hbase:jar:2.4.0.RELEASE:compile
+[INFO] +- org.apache.pig:pig:jar:h2:0.16.0:compile
+[INFO] |  +- commons-cli:commons-cli:jar:1.2:compile
+[INFO] |  +- xmlenc:xmlenc:jar:0.52:compile
+[INFO] |  +- commons-httpclient:commons-httpclient:jar:3.1:compile
+[INFO] |  +- commons-codec:commons-codec:jar:1.4:compile
+[INFO] |  +- commons-net:commons-net:jar:1.4.1:compile
+[INFO] |  +- org.mortbay.jetty:jetty-util:jar:6.1.26:compile
+[INFO] |  +- tomcat:jasper-runtime:jar:5.5.12:compile
+[INFO] |  +- tomcat:jasper-compiler:jar:5.5.12:compile
+[INFO] |  +- org.mortbay.jetty:jsp-api-2.1:jar:6.1.14:compile
+[INFO] |  +- org.mortbay.jetty:jsp-2.1:jar:6.1.14:compile
+[INFO] |  |  +- org.eclipse.jdt:core:jar:3.1.1:compile
+[INFO] |  |  \- ant:ant:jar:1.6.5:compile
+[INFO] |  +- commons-el:commons-el:jar:1.0:compile
+[INFO] |  +- net.java.dev.jets3t:jets3t:jar:0.7.1:compile
+[INFO] |  +- net.sf.kosmosfs:kfs:jar:0.3:compile
+[INFO] |  +- hsqldb:hsqldb:jar:1.8.0.10:compile
+[INFO] |  +- oro:oro:jar:2.0.8:compile
+[INFO] |  +- org.antlr:ST4:jar:4.0.4:compile
+[INFO] |  +- org.antlr:antlr-runtime:jar:3.4:compile
+[INFO] |  |  +- org.antlr:stringtemplate:jar:3.2.1:compile
+[INFO] |  |  \- antlr:antlr:jar:2.7.7:compile
+[INFO] |  +- dk.brics.automaton:automaton:jar:1.11-8:compile
+[INFO] |  +- com.google.guava:guava:jar:11.0:compile
+[INFO] |  +- org.codehaus.jackson:jackson-mapper-asl:jar:1.8.8:compile
+[INFO] |  +- org.codehaus.jackson:jackson-core-asl:jar:1.8.8:compile
+[INFO] |  +- joda-time:joda-time:jar:2.1:compile
+[INFO] |  +- org.apache.avro:avro:jar:1.7.4:compile
+[INFO] |  |  +- com.thoughtworks.paranamer:paranamer:jar:2.3:compile
+[INFO] |  |  \- org.xerial.snappy:snappy-java:jar:1.0.4.1:compile
+[INFO] |  +- org.apache.ivy:ivy:jar:2.2.0:compile
+[INFO] |  \- org.codehaus.groovy:groovy-all:jar:1.8.6:compile
+[INFO] +- org.apache.pig:piggybank:jar:0.16.0:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.4:compile
+[INFO] |  +- log4j:log4j:jar:1.2.16:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.1.1:compile
+[INFO] |  +- com.googlecode.json-simple:json-simple:jar:1.1:compile
+[INFO] |  +- nl.basjes.parse.httpdlog:httpdlog-pigloader:jar:2.2:compile
+[INFO] |  |  \- nl.basjes.parse.httpdlog:httpdlog-inputformat:jar:2.2:compile
+[INFO] |  |     \- nl.basjes.parse.httpdlog:httpdlog-parser:jar:2.2:compile
+[INFO] |  |        \- nl.basjes.parse:parser-core:jar:2.2:compile
+[INFO] |  \- org.apache.pig:pig:jar:0.16.0:compile
+[INFO] |     \- org.mortbay.jetty:servlet-api-2.5:jar:6.1.14:compile
+[INFO] +- jline:jline:jar:0.9.94:compile
+[INFO] +- org.apache.hbase:hbase-client:jar:1.3.0:compile
+[INFO] |  +- org.apache.hbase:hbase-annotations:jar:1.3.0:compile
+[INFO] |  |  \- com.github.stephenc.findbugs:findbugs-annotations:jar:1.3.9-1:compile
+[INFO] |  +- org.apache.hbase:hbase-common:jar:1.3.0:compile
+[INFO] |  +- org.apache.hbase:hbase-protocol:jar:1.3.0:compile
+[INFO] |  +- commons-io:commons-io:jar:2.4:compile
+[INFO] |  +- com.google.protobuf:protobuf-java:jar:2.5.0:compile
+[INFO] |  +- io.netty:netty-all:jar:4.0.23.Final:compile
+[INFO] |  +- org.apache.zookeeper:zookeeper:jar:3.4.6:compile
+[INFO] |  +- org.apache.htrace:htrace-core:jar:3.1.0-incubating:compile
+[INFO] |  +- org.jruby.jcodings:jcodings:jar:1.0.8:compile
+[INFO] |  +- org.jruby.joni:joni:jar:2.1.2:compile
+[INFO] |  +- com.yammer.metrics:metrics-core:jar:2.2.0:compile
+[INFO] |  \- org.apache.hadoop:hadoop-auth:jar:2.5.1:compile
+[INFO] |     \- org.apache.directory.server:apacheds-kerberos-codec:jar:2.0.0-M15:compile
+[INFO] |        +- org.apache.directory.server:apacheds-i18n:jar:2.0.0-M15:compile
+[INFO] |        +- org.apache.directory.api:api-asn1-api:jar:1.0.0-M20:compile
+[INFO] |        \- org.apache.directory.api:api-util:jar:1.0.0-M20:compile
+[INFO] +- org.apache.hive:hive-jdbc:jar:1.2.1:compile
+[INFO] |  +- org.apache.hive:hive-common:jar:1.2.1:compile
+[INFO] |  |  \- org.json:json:jar:20090211:compile
+[INFO] |  +- org.apache.hive:hive-service:jar:1.2.1:compile
+[INFO] |  |  \- net.sf.jpam:jpam:jar:1.1:compile
+[INFO] |  +- org.apache.hive:hive-serde:jar:1.2.1:compile
+[INFO] |  |  \- com.twitter:parquet-hadoop-bundle:jar:1.6.0:compile
+[INFO] |  +- org.apache.hive:hive-metastore:jar:1.2.1:compile
+[INFO] |  |  +- com.jolbox:bonecp:jar:0.8.0.RELEASE:compile
+[INFO] |  |  +- org.apache.derby:derby:jar:10.10.2.0:compile
+[INFO] |  |  +- org.datanucleus:datanucleus-api-jdo:jar:3.2.6:compile
+[INFO] |  |  +- org.datanucleus:datanucleus-rdbms:jar:3.2.9:compile
+[INFO] |  |  +- commons-pool:commons-pool:jar:1.5.4:compile
+[INFO] |  |  +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  |  \- javax.jdo:jdo-api:jar:3.0.1:compile
+[INFO] |  |     \- javax.transaction:jta:jar:1.1:compile
+[INFO] |  +- org.apache.hive:hive-shims:jar:1.2.1:compile
+[INFO] |  |  +- org.apache.hive.shims:hive-shims-common:jar:1.2.1:compile
+[INFO] |  |  +- org.apache.hive.shims:hive-shims-0.20S:jar:1.2.1:runtime
+[INFO] |  |  +- org.apache.hive.shims:hive-shims-0.23:jar:1.2.1:runtime
+[INFO] |  |  |  \- org.apache.hadoop:hadoop-yarn-server-resourcemanager:jar:2.6.0:runtime
+[INFO] |  |  |     +- org.apache.hadoop:hadoop-yarn-server-applicationhistoryservice:jar:2.6.0:runtime
+[INFO] |  |  |     \- org.apache.hadoop:hadoop-yarn-server-web-proxy:jar:2.6.0:runtime
+[INFO] |  |  \- org.apache.hive.shims:hive-shims-scheduler:jar:1.2.1:runtime
+[INFO] |  +- org.apache.httpcomponents:httpclient:jar:4.4:compile
+[INFO] |  +- org.apache.httpcomponents:httpcore:jar:4.4:compile
+[INFO] |  +- org.apache.thrift:libthrift:jar:0.9.2:compile
+[INFO] |  +- org.apache.curator:curator-framework:jar:2.6.0:compile
+[INFO] |  \- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] +- org.apache.hive:hive-exec:jar:1.2.1:compile
+[INFO] |  +- org.apache.hive:hive-ant:jar:1.2.1:compile
+[INFO] |  |  \- org.apache.velocity:velocity:jar:1.5:compile
+[INFO] |  +- log4j:apache-log4j-extras:jar:1.2.17:compile
+[INFO] |  +- org.apache.ant:ant:jar:1.9.1:compile
+[INFO] |  |  \- org.apache.ant:ant-launcher:jar:1.9.1:compile
+[INFO] |  +- org.apache.commons:commons-compress:jar:1.4.1:compile
+[INFO] |  |  \- org.tukaani:xz:jar:1.0:compile
+[INFO] |  +- org.apache.thrift:libfb303:jar:0.9.2:compile
+[INFO] |  +- org.apache.curator:apache-curator:pom:2.6.0:compile
+[INFO] |  +- org.datanucleus:datanucleus-core:jar:3.2.10:compile
+[INFO] |  +- org.apache.calcite:calcite-core:jar:1.2.0-incubating:compile
+[INFO] |  |  +- org.apache.calcite:calcite-linq4j:jar:1.2.0-incubating:compile
+[INFO] |  |  +- net.hydromatic:eigenbase-properties:jar:1.1.5:compile
+[INFO] |  |  +- org.codehaus.janino:janino:jar:2.7.6:compile
+[INFO] |  |  +- org.codehaus.janino:commons-compiler:jar:2.7.6:compile
+[INFO] |  |  \- org.pentaho:pentaho-aggdesigner-algorithm:jar:5.1.5-jhyde:compile
+[INFO] |  +- org.apache.calcite:calcite-avatica:jar:1.2.0-incubating:compile
+[INFO] |  \- stax:stax-api:jar:1.0.1:compile
+[INFO] +- org.springframework.data:spring-data-hadoop:jar:2.4.0.RELEASE:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.2.5.RELEASE:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.2.5.RELEASE:compile
+[INFO] |  \- org.springframework.data:spring-data-hadoop-batch:jar:2.4.0.RELEASE:compile
+[INFO] \- junit:junit:jar:3.8.1:test
+
+
+
+
+[INFO] \- junit:junit:jar:3.8.1:test
+
+
+
+
+-->

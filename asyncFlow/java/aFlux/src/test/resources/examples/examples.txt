@@ -1,0 +1,80 @@
+Pig Example
+
+student = LOAD 'hdfs://localhost:9000/pig_data/student.txt' USING
+   PigStorage(',') as (id:int,name:chararray,city:chararray);
+  
+Store student;
+Element 1:
+Pig. LOAD element
+	target: student
+	source data: pig_data/student.txt
+	function: PigStorage(',')
+	schema: id:int,name:chararray,city:chararray
+	
+	movieId:int,imdbId:int,tmdbId:int
+	
+	
+Connected to 
+Pig	EXECUTE element
+	script: DUMP student INTO 'output';
+	
+Connect 3 outputs to 
+Show Value	
+	
+=============================
+	
+Store student example 2
+Element 1:
+Pig. LOAD element
+	alias: student
+	source data: /user/root/pig_data/student.txt
+	function: PigStorage(',')
+	schema: id:int,name:chararray,city:chararray
+	
+	
+Connected to 
+Pig	STORE element
+	alias: 
+	function:
+	directory: output3
+	
+Connected to 
+Pig	EXECUTE element
+	script: 
+	
+Connect 3 outputs to 
+Show Value	
+	
+================================
+
+similar examples
+
+DESCRIBE
+	
+	
+	
+Environment preparation
+
+Create /student.txt
+1,first,london
+2,anywhere,other place
+3,third student,buenos aires
+
+check running
+pig -x mapreduce
+
+fs -mkdir /user/root/pig_data
+fs -put /student.txt /user/root/pig_data/.
+fs -chmod 777 /user/root/pig_data
+
+check
+fs -ls /user/root/pig_data
+
+
+fs -ls
+should be shown
+student.txt
+
+fs -chmod 777 /user/root
+	to allow output folder
+	

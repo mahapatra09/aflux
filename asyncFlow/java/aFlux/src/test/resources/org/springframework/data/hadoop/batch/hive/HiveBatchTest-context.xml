@@ -1,0 +1,100 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:hdp="http://www.springframework.org/schema/hadoop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      	http://www.springframework.org/schema/batch	http://www.springframework.org/schema/batch/spring-batch.xsd
+      	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+      	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+      	http://www.springframework.org/schema/hadoop http://www.springframework.org/schema/hadoop/spring-hadoop.xsd">
+
+	<import resource="../../batch-common.xml"/>
+	<import resource="../../hadoop-ctx.xml"/>
+
+	<hdp:hive-server properties-ref="props" properties-location="cfg-1.properties, cfg-2.properties" port="${hive.port}" max-threads="10" configuration-ref="hadoopConfiguration">
+		star=chasing
+		return=captain eo
+		train=last
+	</hdp:hive-server>
+
+	<util:properties id="props" location="props.properties"/>
+
+	<!--use the bean definition to go beyond the configuration options provided by the namespace -->
+	<bean name="ppc" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" 
+		p:valueSeparator="|" p:systemPropertiesModeName="SYSTEM_PROPERTIES_MODE_OVERRIDE" p:order="100">
+		
+		<property name="locations">
+			<array>
+				<value>test.properties</value>
+				<value>org/springframework/data/hadoop/batch/hive/hive-extra.properties</value>
+			</array>
+		</property>
+	</bean>
+	
+	
+	<job id="mainJob" xmlns="http://www.springframework.org/schema/batch">
+		<step id="bean" next="ns">
+			<tasklet ref="tasklet"/>
+		</step>
+		<step id="ns">
+			<tasklet ref="hive-script"/>
+		</step>
+	</job>
+
+	<bean id="tasklet" class="org.springframework.data.hadoop.batch.hive.HiveTasklet" p:hive-client-factory-ref="hiveClientFactory">
+		<property name="scripts">
+			<list>
+				<bean class="org.springframework.data.hadoop.hive.HiveScript">
+					<constructor-arg><value>classpath:org/springframework/data/hadoop/hive/script.q</value></constructor-arg>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean id="hiveDriver" class="org.apache.hive.jdbc.HiveDriver"/>
+	<bean id="hiveDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<constructor-arg name="driver" ref="hiveDriver"/>
+		<constructor-arg name="url" value="${hive.url}"/>
+	</bean>
+
+	<bean class="org.springframework.data.hadoop.hive.HiveTemplate" p:hive-client-factory-ref="hiveClientFactory"/>
+	
+	<hdp:hive-tasklet id="hive-script" scope="prototype">
+		<hdp:script>
+			DROP TABLE IF EXISTS ${hive.table}; 
+			CREATE TABLE testHiveBatchTable (key int, value string);
+			DESCRIBE testHiveBatchTable;
+		</hdp:script>
+		<hdp:script location="org/springframework/data/hadoop/hive/script.q">
+			<hdp:arguments>
+				war=web
+				blue=water
+				white=${hive.white}
+			</hdp:arguments>
+		</hdp:script>
+	</hdp:hive-tasklet>
+	
+	
+	<hdp:script id="nop-script" language="javascript">
+	print("Called script")
+	</hdp:script>
+	
+ 
+	<hdp:hive-runner id="hive-scripts" pre-action="nop-script" post-action="nop-script">
+		<hdp:script>
+			DROP TABLE IF EXISTS testHiveBatchTable; 
+			CREATE TABLE testHiveBatchTable (key int, value string);
+			DESCRIBE testHiveBatchTable;
+			
+			<hdp:arguments>
+				war=web
+				blue=water
+				white=wash
+			</hdp:arguments>
+		</hdp:script>
+		<hdp:script location="org/springframework/data/hadoop/hive/script.q" />
+	</hdp:hive-runner>	
+</beans>

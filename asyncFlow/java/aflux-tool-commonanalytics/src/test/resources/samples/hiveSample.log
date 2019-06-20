@@ -1,0 +1,944 @@
+2017-08-25 01:05:44 DEBUG cluster:56 - Checking status of 192.168.1.25:27017
+2017-08-25 01:05:44 DEBUG cluster:56 - Updating cluster description to  {type=STANDALONE, servers=[{address=192.168.1.25:27017, type=STANDALONE, roundTripTime=8.8 ms, state=CONNECTED}]
+2017-08-25 01:05:45 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//run/CAMainSample/3]
+2017-08-25 01:05:45 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /run/CAMainSample/3
+2017-08-25 01:05:45 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.runActivity(java.lang.String,java.lang.Long)]
+2017-08-25 01:05:45 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:05:45 DEBUG DispatcherServlet:955 - Last-Modified value for [//run/CAMainSample/3] is: -1
+2017-08-25 01:05:45 DEBUG MongoTemplate:1729 - findOne using query: { "$sample" : { $java : Example(probe=FlowJob [id=null, name=CAMainSample, activities=null], matcher=ExampleMatcher(nullHandler=IGNORE, defaultStringMatcher=DEFAULT, propertySpecifiers=org.springframework.data.domain.ExampleMatcher$PropertySpecifiers@3b, ignoredPaths=[], defaultIgnoreCase=false, mode=ALL)) } } fields: null for class: class de.tum.in.aflux.model.FlowJob in collection: flowJob
+2017-08-25 01:05:45 DEBUG MongoDbUtils:122 - Getting Mongo Database name=[test]
+2017-08-25 01:05:45 DEBUG MongoTemplate:2183 - findOne using query: { "name" : "CAMainSample" , "_class" : { "$in" : [ "de.tum.in.aflux.model.FlowJob"]}} in db.collection: test.flowJob
+2017-08-25 01:05:45 DEBUG command:56 - Sending command {find : BsonString{value='flowJob'}} to database test on connection [connectionId{localValue:2, serverValue:119}] to server 192.168.1.25:27017
+2017-08-25 01:05:46 DEBUG command:56 - Command execution completed
+2017-08-25 01:05:46 INFO  log:67 - ExecutionModel:FlowExecutionModel [
+	executors={1=AbstractMainExecutor [flowId=1, inputs=[null], outputs=[null], finished=false, actorInstance=null, actorInstanceName=null, actorSystem=null, identifier=de.tum.in.aflux.component.hive.HiveCreate, propertyValues=[Hive CREATE TABLE, 120, #90CAF9, , , false, true, MOVIES, movieId INT,title STRING,genres STRING, , , SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' WITH SERDEPROPERTIES ("separatorChar" = ",","quoteChar" = "'","escapeChar" = "\\"), TEXTFILE, /user/root/pig_data/movies.csv], fluxEnvironment=de.tum.in.aflux.flux_engine.impl.FluxEnvironmentImpl@49b304c1], 4=AbstractMainExecutor [flowId=4, inputs=[null], outputs=[null], finished=false, actorInstance=null, actorInstanceName=null, actorSystem=null, identifier=de.tum.in.aflux.component.hive.HiveInnerJoin, propertyValues=[Hive INNER JOIN, 120, #90CAF9, , , true, GROUP_T, GROUP_D.genres=GROUP_T.genres], fluxEnvironment=de.tum.in.aflux.flux_engine.impl.FluxEnvironmentImpl@49b304c1], 5=AbstractMainExecutor [flowId=5, inputs=[null], outputs=[null, null, null, null], finished=false, actorInstance=null, actorInstanceName=null, actorSystem=null, identifier=de.tum.in.aflux.component.hive.HiveExecute, propertyValues=[Hive Execute, 120, #90CAF9, , ], fluxEnvironment=de.tum.in.aflux.flux_engine.impl.FluxEnvironmentImpl@49b304c1], 6=AbstractMainExecutor [flowId=6, inputs=[null], outputs=[], finished=false, actorInstance=null, actorInstanceName=null, actorSystem=null, identifier=de.tum.in.aflux.component.strings.ShowStringValue, propertyValues=[show value, 120, #90CAF9, , ], fluxEnvironment=de.tum.in.aflux.flux_engine.impl.FluxEnvironmentImpl@49b304c1], 8=AbstractMainExecutor [flowId=8, inputs=[null], outputs=[null], finished=false, actorInstance=null, actorInstanceName=null, actorSystem=null, identifier=de.tum.in.aflux.component.hive.HiveSelect, propertyValues=[Hive SELECT, 120, #90CAF9, , , ALL, genres,COUNT(*) AS COUNT_D, MOVIES, title<'D', genres, , , , , GROUP_D], fluxEnvironment=de.tum.in.aflux.flux_engine.impl.FluxEnvironmentImpl@49b304c1], 9=AbstractMainExecutor [flowId=9, inputs=[null], outputs=[null], finished=false, actorInstance=null, actorInstanceName=null, actorSystem=null, identifier=de.tum.in.aflux.component.hive.HiveSelect, propertyValues=[Hive SELECT, 120, #90CAF9, , , ALL, genres,COUNT(*) AS COUNT_T, MOVIES, title>'T', genres, , , , , GROUP_T], fluxEnvironment=de.tum.in.aflux.flux_engine.impl.FluxEnvironmentImpl@49b304c1], 10=AbstractMainExecutor [flowId=10, inputs=[null], outputs=[null], finished=false, actorInstance=null, actorInstanceName=null, actorSystem=null, identifier=de.tum.in.aflux.component.hive.HiveSelect, propertyValues=[Hive SELECT, 120, #90CAF9, , , ALL, GROUP_D.genres,COUNT_D,COUNT_T, GROUP_D, , , , , , , ], fluxEnvironment=de.tum.in.aflux.flux_engine.impl.FluxEnvironmentImpl@49b304c1]}, 
+	connectors=[FlowExecutionConnector [sourceExecutionId=4, targetExecutionId=5]
+FlowConnector [id=4, 
+sourceElement=FlowElement [id=4, name=Hive INNER JOIN, inputInterfaces=1, outputInterfaces=1, activity=], 
+sourceIndex=1, 
+targetElement=FlowElement [id=5, name=Hive Execute, inputInterfaces=1, outputInterfaces=4, activity=], 
+targetIndex=1, deleted=false, 
+sourceId=4, 
+targetId=5], FlowExecutionConnector [sourceExecutionId=5, targetExecutionId=6]
+FlowConnector [id=5, 
+sourceElement=FlowElement [id=5, name=Hive Execute, inputInterfaces=1, outputInterfaces=4, activity=], 
+sourceIndex=1, 
+targetElement=FlowElement [id=6, name=show value, inputInterfaces=1, outputInterfaces=0, activity=], 
+targetIndex=1, deleted=false, 
+sourceId=5, 
+targetId=6], FlowExecutionConnector [sourceExecutionId=5, targetExecutionId=6]
+FlowConnector [id=6, 
+sourceElement=FlowElement [id=5, name=Hive Execute, inputInterfaces=1, outputInterfaces=4, activity=], 
+sourceIndex=4, 
+targetElement=FlowElement [id=6, name=show value, inputInterfaces=1, outputInterfaces=0, activity=], 
+targetIndex=1, deleted=false, 
+sourceId=5, 
+targetId=6], FlowExecutionConnector [sourceExecutionId=1, targetExecutionId=8]
+FlowConnector [id=7, 
+sourceElement=FlowElement [id=1, name=Hive CREATE TABLE, inputInterfaces=1, outputInterfaces=1, activity=], 
+sourceIndex=1, 
+targetElement=FlowElement [id=8, name=Hive SELECT, inputInterfaces=1, outputInterfaces=1, activity=], 
+targetIndex=1, deleted=false, 
+sourceId=1, 
+targetId=8], FlowExecutionConnector [sourceExecutionId=8, targetExecutionId=9]
+FlowConnector [id=8, 
+sourceElement=FlowElement [id=8, name=Hive SELECT, inputInterfaces=1, outputInterfaces=1, activity=], 
+sourceIndex=1, 
+targetElement=FlowElement [id=9, name=Hive SELECT, inputInterfaces=1, outputInterfaces=1, activity=], 
+targetIndex=1, deleted=false, 
+sourceId=8, 
+targetId=9], FlowExecutionConnector [sourceExecutionId=9, targetExecutionId=10]
+FlowConnector [id=9, 
+sourceElement=FlowElement [id=9, name=Hive SELECT, inputInterfaces=1, outputInterfaces=1, activity=], 
+sourceIndex=1, 
+targetElement=FlowElement [id=10, name=Hive SELECT, inputInterfaces=1, outputInterfaces=1, activity=], 
+targetIndex=1, deleted=false, 
+sourceId=9, 
+targetId=10], FlowExecutionConnector [sourceExecutionId=10, targetExecutionId=4]
+FlowConnector [id=10, 
+sourceElement=FlowElement [id=10, name=Hive SELECT, inputInterfaces=1, outputInterfaces=1, activity=], 
+sourceIndex=1, 
+targetElement=FlowElement [id=4, name=Hive INNER JOIN, inputInterfaces=1, outputInterfaces=1, activity=], 
+targetIndex=1, deleted=false, 
+sourceId=10, 
+targetId=4]]]
+AbstractMainExecutor.instantiate()1
+AbstractMainExecutor.instantiate()2
+AbstractMainExecutor.instantiate()3
+AbstractMainExecutor.instantiate()4
+AbstractMainExecutor.instantiate()5
+AbstractMainExecutor.instantiate()6
+AbstractMainExecutor.instantiate()7
+Run --------------------------------------------------------------------------------------------------------
+{1=1}
+AbstractMainExecutor.send()1
+AbstractMainExecutor.send(nosender)
+Actor[akka://HiveSample_20170825010546145/user/1#210333252]
+2017-08-25 01:05:46 INFO  HiveCreateActor:63 - CREATE EXTERNAL TABLE IF NOT EXISTS MOVIES (movieId INT,title STRING,genres STRING) ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' WITH SERDEPROPERTIES ("separatorChar" = ",","quoteChar" = "'","escapeChar" = "\\")  STORED AS TEXTFILE LOCATION '/user/root/pig_data/movies.csv'
+Run --------------------------------------------------------------------------------------------------------
+{1=1, 8=1}
+AbstractMainExecutor.send()8
+AbstractMainExecutor.send(sender)
+Actor[akka://HiveSample_20170825010546145/user/5#346072485]
+Finishing --------------------------------------------------------------------------------------------------------
+{8=1}
+Executing --------------------------------------------------------------------------------------------------------
+{8=1}
+2017-08-25 01:05:46 INFO  HiveSelectActor:63 - SELECT  ALL genres,COUNT(*) AS COUNT_D FROM MOVIES
+Run --------------------------------------------------------------------------------------------------------
+{8=1, 9=1}
+AbstractMainExecutor.send()9
+AbstractMainExecutor.send(sender)
+Actor[akka://HiveSample_20170825010546145/user/6#769231849]
+Finishing --------------------------------------------------------------------------------------------------------
+{9=1}
+Executing --------------------------------------------------------------------------------------------------------
+{9=1}
+2017-08-25 01:05:46 INFO  HiveSelectActor:63 - SELECT  ALL genres,COUNT(*) AS COUNT_T FROM MOVIES
+Run --------------------------------------------------------------------------------------------------------
+{9=1, 10=1}
+AbstractMainExecutor.send()10
+AbstractMainExecutor.send(sender)
+Actor[akka://HiveSample_20170825010546145/user/7#2032210194]
+Finishing --------------------------------------------------------------------------------------------------------
+{10=1}
+Executing --------------------------------------------------------------------------------------------------------
+{10=1}
+2017-08-25 01:05:46 INFO  HiveSelectActor:63 - SELECT  ALL GROUP_D.genres,COUNT_D,COUNT_T FROM GROUP_D
+Run --------------------------------------------------------------------------------------------------------
+{4=1, 10=1}
+AbstractMainExecutor.send()4
+AbstractMainExecutor.send(sender)
+Actor[akka://HiveSample_20170825010546145/user/2#1711118454]
+Finishing --------------------------------------------------------------------------------------------------------
+{4=1}
+Executing --------------------------------------------------------------------------------------------------------
+{4=1}
+Run --------------------------------------------------------------------------------------------------------
+{4=1, 5=1}
+AbstractMainExecutor.send()5
+AbstractMainExecutor.send(sender)
+Actor[akka://HiveSample_20170825010546145/user/3#2022221579]
+Finishing --------------------------------------------------------------------------------------------------------
+{5=1}
+Executing --------------------------------------------------------------------------------------------------------
+{5=1}
+2017-08-25 01:05:46 INFO  HiveExecuteActor:15 - aflux Hive Executor----------------------
+2017-08-25 01:05:46 DEBUG HiveExecuteActor:18 - HiveExecutionSentence [sentence=CREATE EXTERNAL TABLE IF NOT EXISTS MOVIES (movieId INT,title STRING,genres STRING) ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' WITH SERDEPROPERTIES ("separatorChar" = ",","quoteChar" = "'","escapeChar" = "\\")  STORED AS TEXTFILE LOCATION '/user/root/pig_data/movies.csv', type=UPDATEnewTableName=null]
+2017-08-25 01:05:46 DEBUG JdbcTemplate:522 - Executing SQL update [CREATE EXTERNAL TABLE IF NOT EXISTS MOVIES (movieId INT,title STRING,genres STRING) ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' WITH SERDEPROPERTIES ("separatorChar" = ",","quoteChar" = "'","escapeChar" = "\\")  STORED AS TEXTFILE LOCATION '/user/root/pig_data/movies.csv']
+2017-08-25 01:05:46 DEBUG DataSourceUtils:110 - Fetching JDBC Connection from DataSource
+2017-08-25 01:05:46 DEBUG SimpleDriverDataSource:138 - Creating new JDBC Driver Connection to [jdbc:hive2://localhost:10000/default]
+2017-08-25 01:05:46 INFO  Utils:310 - Supplied authorities: localhost:10000
+2017-08-25 01:05:46 INFO  Utils:397 - Resolved authority: localhost:10000
+2017-08-25 01:05:46 INFO  HiveConnection:203 - Will try to open client transport with JDBC Uri: jdbc:hive2://localhost:10000/default
+2017-08-25 01:05:46 DEBUG TSaslTransport:261 - opening transport org.apache.thrift.transport.TSaslClientTransport@3f970c9d
+2017-08-25 01:05:46 DEBUG TSaslClientTransport:96 - Sending mechanism name PLAIN and initial response of length 20
+2017-08-25 01:05:46 DEBUG TSaslTransport:162 - CLIENT: Writing message with status START and payload length 5
+2017-08-25 01:05:46 DEBUG TSaslTransport:162 - CLIENT: Writing message with status COMPLETE and payload length 20
+2017-08-25 01:05:46 DEBUG TSaslTransport:273 - CLIENT: Start message handled
+2017-08-25 01:05:46 DEBUG TSaslTransport:296 - CLIENT: Main negotiation loop complete
+2017-08-25 01:05:46 DEBUG TSaslTransport:306 - CLIENT: SASL Client receiving last message
+2017-08-25 01:05:46 DEBUG TSaslTransport:206 - CLIENT: Received message with status COMPLETE and payload length 0
+2017-08-25 01:05:46 DEBUG TSaslTransport:498 - writing data length: 71
+2017-08-25 01:05:46 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@4faa5279] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:46 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:46 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:46 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:05:46 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:05:46 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:05:46 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:05:46 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:05:46 DEBUG TSaslTransport:459 - CLIENT: reading data length: 109
+2017-08-25 01:05:46 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[OutputElement [fluxId=1, timeStamp=Fri Aug 25 01:05:46 ART 2017, message=added class de.tum.in.aflux.component.hive.actor.HiveCreateActor]
+, OutputElement [fluxId=4, timeStamp=Fri Aug 25 01:05:46 ART 2017, message=added class de.tum.in.aflux.component.hive.actor.HiveInnerJoinActor]
+, OutputElement [fluxId=5, timeStamp=Fri Aug 25 01:05:46 ART 2017, message=added class de.tum.in.aflux.component.hive.actor.HiveExecuteActor]
+, OutputElement [fluxId=6, timeStamp=Fri Aug 25 01:05:46 ART 2017, message=added class de.tum.in.aflux.component.strings.actor.ShowStringValueActor]
+, OutputElement [fluxId=8, timeStamp=Fri Aug 25 01:05:46 ART 2017, message=added class de.tum.in.aflux.component.hive.actor.HiveSelectActor]
+, OutputElement [fluxId=9, timeStamp=Fri Aug 25 01:05:46 ART 2017, message=added class de.tum.in.aflux.component.hive.actor.HiveSelectActor]
+, OutputElement [fluxId=10, timeStamp=Fri Aug 25 01:05:46 ART 2017, message=added class de.tum.in.aflux.component.hive.actor.HiveSelectActor]
+, OutputElement [fluxId=1, timeStamp=Fri Aug 25 01:05:46 ART 2017, message=HiveExecutionSentence [sentence=CREATE EXTERNAL TABLE IF NOT EXISTS MOVIES (movieId INT,title STRING,genres STRING) ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' WITH SERDEPROPERTIES ("separatorChar" = ",","quoteChar" = "'","escapeChar" = "\\")  STORED AS TEXTFILE LOCATION '/user/root/pig_data/movies.csv', type=UPDATEnewTableName=null] ]
+, OutputElement [fluxId=8, timeStamp=Fri Aug 25 01:05:46 ART 2017, message=HiveExecutionSentence [sentence=SELECT  ALL genres,COUNT(*) AS COUNT_D FROM MOVIES, type=QUERYnewTableName=GROUP_D]   WHERE title<'D'   GROUP BY genres]
+, OutputElement [fluxId=9, timeStamp=Fri Aug 25 01:05:46 ART 2017, message=HiveExecutionSentence [sentence=SELECT  ALL genres,COUNT(*) AS COUNT_T FROM MOVIES, type=QUERYnewTableName=GROUP_T]   WHERE title>'T'   GROUP BY genres]
+, OutputElement [fluxId=10, timeStamp=Fri Aug 25 01:05:46 ART 2017, message=HiveExecutionSentence [sentence=SELECT  ALL GROUP_D.genres,COUNT_D,COUNT_T FROM GROUP_D, type=QUERYnewTableName=]   ]
+, OutputElement [fluxId=4, timeStamp=Fri Aug 25 01:05:46 ART 2017, message=HiveExecutionSentence [sentence=SELECT  ALL GROUP_D.genres,COUNT_D,COUNT_T FROM GROUP_D  INNER JOIN GROUP_T ON GROUP_D.genres=GROUP_T.genres, type=QUERYnewTableName=null]   ]
+, OutputElement [fluxId=5, timeStamp=Fri Aug 25 01:05:46 ART 2017, message=CREATE EXTERNAL TABLE IF NOT EXISTS MOVIES (movieId INT,title STRING,genres STRING) ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' WITH SERDEPROPERTIES ("separatorChar" = ",","quoteChar" = "'","escapeChar" = "\\")  STORED AS TEXTFILE LOCATION '/user/root/pig_data/movies.csv']
+]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:46 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:46 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:46 DEBUG TSaslTransport:498 - writing data length: 397
+2017-08-25 01:05:46 DEBUG TSaslTransport:459 - CLIENT: reading data length: 109
+2017-08-25 01:05:46 DEBUG TSaslTransport:498 - writing data length: 100
+2017-08-25 01:05:46 DEBUG TSaslTransport:459 - CLIENT: reading data length: 53
+2017-08-25 01:05:46 DEBUG JdbcTemplate:529 - SQL update affected 0 rows
+2017-08-25 01:05:46 DEBUG TSaslTransport:498 - writing data length: 96
+2017-08-25 01:05:46 DEBUG TSaslTransport:459 - CLIENT: reading data length: 42
+2017-08-25 01:05:46 DEBUG DataSourceUtils:327 - Returning JDBC Connection to DataSource
+2017-08-25 01:05:46 DEBUG TSaslTransport:498 - writing data length: 83
+2017-08-25 01:05:47 DEBUG TSaslTransport:459 - CLIENT: reading data length: 40
+2017-08-25 01:05:47 DEBUG HiveExecuteActor:18 - HiveExecutionSentence [sentence=SELECT  ALL genres,COUNT(*) AS COUNT_D FROM MOVIES, type=QUERYnewTableName=GROUP_D]
+2017-08-25 01:05:47 DEBUG JdbcTemplate:522 - Executing SQL update [CREATE TABLE IF NOT EXISTS GROUP_D row format delimited fields terminated by '|' STORED AS RCFile AS SELECT  ALL genres,COUNT(*) AS COUNT_D FROM MOVIES]
+2017-08-25 01:05:47 DEBUG DataSourceUtils:110 - Fetching JDBC Connection from DataSource
+2017-08-25 01:05:47 DEBUG SimpleDriverDataSource:138 - Creating new JDBC Driver Connection to [jdbc:hive2://localhost:10000/default]
+2017-08-25 01:05:47 INFO  Utils:310 - Supplied authorities: localhost:10000
+2017-08-25 01:05:47 INFO  Utils:397 - Resolved authority: localhost:10000
+2017-08-25 01:05:47 INFO  HiveConnection:203 - Will try to open client transport with JDBC Uri: jdbc:hive2://localhost:10000/default
+2017-08-25 01:05:47 DEBUG TSaslTransport:261 - opening transport org.apache.thrift.transport.TSaslClientTransport@5a15cf7b
+2017-08-25 01:05:47 DEBUG TSaslClientTransport:96 - Sending mechanism name PLAIN and initial response of length 20
+2017-08-25 01:05:47 DEBUG TSaslTransport:162 - CLIENT: Writing message with status START and payload length 5
+2017-08-25 01:05:47 DEBUG TSaslTransport:162 - CLIENT: Writing message with status COMPLETE and payload length 20
+2017-08-25 01:05:47 DEBUG TSaslTransport:273 - CLIENT: Start message handled
+2017-08-25 01:05:47 DEBUG TSaslTransport:296 - CLIENT: Main negotiation loop complete
+2017-08-25 01:05:47 DEBUG TSaslTransport:306 - CLIENT: SASL Client receiving last message
+2017-08-25 01:05:47 DEBUG TSaslTransport:206 - CLIENT: Received message with status COMPLETE and payload length 0
+2017-08-25 01:05:47 DEBUG TSaslTransport:498 - writing data length: 71
+2017-08-25 01:05:47 DEBUG TSaslTransport:459 - CLIENT: reading data length: 109
+2017-08-25 01:05:47 DEBUG TSaslTransport:498 - writing data length: 258
+2017-08-25 01:05:47 DEBUG TSaslTransport:459 - CLIENT: reading data length: 109
+2017-08-25 01:05:47 DEBUG TSaslTransport:498 - writing data length: 100
+2017-08-25 01:05:47 DEBUG TSaslTransport:459 - CLIENT: reading data length: 53
+2017-08-25 01:05:47 DEBUG JdbcTemplate:529 - SQL update affected 0 rows
+2017-08-25 01:05:47 DEBUG TSaslTransport:498 - writing data length: 96
+2017-08-25 01:05:47 DEBUG TSaslTransport:459 - CLIENT: reading data length: 42
+2017-08-25 01:05:47 DEBUG DataSourceUtils:327 - Returning JDBC Connection to DataSource
+2017-08-25 01:05:47 DEBUG TSaslTransport:498 - writing data length: 83
+2017-08-25 01:05:47 DEBUG TSaslTransport:459 - CLIENT: reading data length: 40
+2017-08-25 01:05:47 DEBUG HiveExecuteActor:18 - HiveExecutionSentence [sentence=SELECT  ALL genres,COUNT(*) AS COUNT_T FROM MOVIES, type=QUERYnewTableName=GROUP_T]
+2017-08-25 01:05:47 DEBUG JdbcTemplate:522 - Executing SQL update [CREATE TABLE IF NOT EXISTS GROUP_T row format delimited fields terminated by '|' STORED AS RCFile AS SELECT  ALL genres,COUNT(*) AS COUNT_T FROM MOVIES]
+2017-08-25 01:05:47 DEBUG DataSourceUtils:110 - Fetching JDBC Connection from DataSource
+2017-08-25 01:05:47 DEBUG SimpleDriverDataSource:138 - Creating new JDBC Driver Connection to [jdbc:hive2://localhost:10000/default]
+2017-08-25 01:05:47 INFO  Utils:310 - Supplied authorities: localhost:10000
+2017-08-25 01:05:47 INFO  Utils:397 - Resolved authority: localhost:10000
+2017-08-25 01:05:47 INFO  HiveConnection:203 - Will try to open client transport with JDBC Uri: jdbc:hive2://localhost:10000/default
+2017-08-25 01:05:47 DEBUG TSaslTransport:261 - opening transport org.apache.thrift.transport.TSaslClientTransport@3544dae9
+2017-08-25 01:05:47 DEBUG TSaslClientTransport:96 - Sending mechanism name PLAIN and initial response of length 20
+2017-08-25 01:05:47 DEBUG TSaslTransport:162 - CLIENT: Writing message with status START and payload length 5
+2017-08-25 01:05:47 DEBUG TSaslTransport:162 - CLIENT: Writing message with status COMPLETE and payload length 20
+2017-08-25 01:05:47 DEBUG TSaslTransport:273 - CLIENT: Start message handled
+2017-08-25 01:05:47 DEBUG TSaslTransport:296 - CLIENT: Main negotiation loop complete
+2017-08-25 01:05:47 DEBUG TSaslTransport:306 - CLIENT: SASL Client receiving last message
+2017-08-25 01:05:47 DEBUG TSaslTransport:206 - CLIENT: Received message with status COMPLETE and payload length 0
+2017-08-25 01:05:47 DEBUG TSaslTransport:498 - writing data length: 71
+2017-08-25 01:05:47 DEBUG TSaslTransport:459 - CLIENT: reading data length: 109
+2017-08-25 01:05:47 DEBUG TSaslTransport:498 - writing data length: 258
+2017-08-25 01:05:47 DEBUG TSaslTransport:459 - CLIENT: reading data length: 109
+2017-08-25 01:05:47 DEBUG TSaslTransport:498 - writing data length: 100
+2017-08-25 01:05:47 DEBUG TSaslTransport:459 - CLIENT: reading data length: 53
+2017-08-25 01:05:47 DEBUG JdbcTemplate:529 - SQL update affected 0 rows
+2017-08-25 01:05:47 DEBUG TSaslTransport:498 - writing data length: 96
+2017-08-25 01:05:47 DEBUG TSaslTransport:459 - CLIENT: reading data length: 42
+2017-08-25 01:05:47 DEBUG DataSourceUtils:327 - Returning JDBC Connection to DataSource
+2017-08-25 01:05:47 DEBUG TSaslTransport:498 - writing data length: 83
+2017-08-25 01:05:47 DEBUG TSaslTransport:459 - CLIENT: reading data length: 40
+2017-08-25 01:05:47 DEBUG HiveExecuteActor:18 - HiveExecutionSentence [sentence=SELECT  ALL GROUP_D.genres,COUNT_D,COUNT_T FROM GROUP_D  INNER JOIN GROUP_T ON GROUP_D.genres=GROUP_T.genres, type=QUERYnewTableName=null]
+2017-08-25 01:05:47 DEBUG JdbcTemplate:451 - Executing SQL query [SELECT  ALL GROUP_D.genres,COUNT_D,COUNT_T FROM GROUP_D  INNER JOIN GROUP_T ON GROUP_D.genres=GROUP_T.genres]
+2017-08-25 01:05:47 DEBUG DataSourceUtils:110 - Fetching JDBC Connection from DataSource
+2017-08-25 01:05:47 DEBUG SimpleDriverDataSource:138 - Creating new JDBC Driver Connection to [jdbc:hive2://localhost:10000/default]
+2017-08-25 01:05:47 INFO  Utils:310 - Supplied authorities: localhost:10000
+2017-08-25 01:05:47 INFO  Utils:397 - Resolved authority: localhost:10000
+2017-08-25 01:05:47 INFO  HiveConnection:203 - Will try to open client transport with JDBC Uri: jdbc:hive2://localhost:10000/default
+2017-08-25 01:05:47 DEBUG TSaslTransport:261 - opening transport org.apache.thrift.transport.TSaslClientTransport@65b6f57
+2017-08-25 01:05:47 DEBUG TSaslClientTransport:96 - Sending mechanism name PLAIN and initial response of length 20
+2017-08-25 01:05:47 DEBUG TSaslTransport:162 - CLIENT: Writing message with status START and payload length 5
+2017-08-25 01:05:47 DEBUG TSaslTransport:162 - CLIENT: Writing message with status COMPLETE and payload length 20
+2017-08-25 01:05:47 DEBUG TSaslTransport:273 - CLIENT: Start message handled
+2017-08-25 01:05:47 DEBUG TSaslTransport:296 - CLIENT: Main negotiation loop complete
+2017-08-25 01:05:47 DEBUG TSaslTransport:306 - CLIENT: SASL Client receiving last message
+2017-08-25 01:05:47 DEBUG TSaslTransport:206 - CLIENT: Received message with status COMPLETE and payload length 0
+2017-08-25 01:05:47 DEBUG TSaslTransport:498 - writing data length: 71
+2017-08-25 01:05:47 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:05:47 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:05:47 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:05:47 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:05:47 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:05:47 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@43243042] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:47 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:47 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:48 DEBUG TSaslTransport:459 - CLIENT: reading data length: 109
+2017-08-25 01:05:48 DEBUG TSaslTransport:498 - writing data length: 215
+2017-08-25 01:05:48 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:05:48 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:05:48 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:05:48 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:05:48 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:05:48 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[OutputElement [fluxId=5, timeStamp=Fri Aug 25 01:05:47 ART 2017, message=SELECT  ALL genres,COUNT(*) AS COUNT_D FROM MOVIES]
+, OutputElement [fluxId=5, timeStamp=Fri Aug 25 01:05:47 ART 2017, message=SELECT  ALL genres,COUNT(*) AS COUNT_T FROM MOVIES]
+, OutputElement [fluxId=5, timeStamp=Fri Aug 25 01:05:47 ART 2017, message=SELECT  ALL GROUP_D.genres,COUNT_D,COUNT_T FROM GROUP_D  INNER JOIN GROUP_T ON GROUP_D.genres=GROUP_T.genres]
+]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:48 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:48 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:48 DEBUG TSaslTransport:459 - CLIENT: reading data length: 109
+2017-08-25 01:05:48 DEBUG TSaslTransport:498 - writing data length: 100
+2017-08-25 01:05:49 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:05:49 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:05:49 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:05:49 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:05:49 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:05:49 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@66c6ccf7] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:49 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:49 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:49 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:05:49 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:05:49 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:05:49 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:05:49 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:05:49 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:49 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:49 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:51 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:05:51 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:05:51 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:05:51 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:05:51 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:05:51 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@5467dcdf] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:51 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:51 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:51 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:05:51 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:05:51 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:05:51 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:05:51 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:05:51 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:51 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:51 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:52 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:05:52 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:05:52 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:05:52 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:05:52 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:05:52 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@2fca6ac0] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:52 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:52 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:52 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:05:52 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:05:52 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:05:52 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:05:52 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:05:52 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:52 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:52 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:53 DEBUG TSaslTransport:459 - CLIENT: reading data length: 53
+2017-08-25 01:05:53 DEBUG TSaslTransport:498 - writing data length: 100
+2017-08-25 01:05:54 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:05:54 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:05:54 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:05:54 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:05:54 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:05:54 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@17a2f18d] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:54 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:54 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:54 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:05:54 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:05:54 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:05:54 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:05:54 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:05:54 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:54 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:54 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:54 DEBUG cluster:56 - Checking status of 192.168.1.25:27017
+2017-08-25 01:05:54 DEBUG cluster:56 - Updating cluster description to  {type=STANDALONE, servers=[{address=192.168.1.25:27017, type=STANDALONE, roundTripTime=8.3 ms, state=CONNECTED}]
+2017-08-25 01:05:55 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:05:55 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:05:55 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:05:55 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:05:55 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:05:55 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@4de3c656] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:55 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:55 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:55 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:05:55 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:05:55 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:05:55 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:05:55 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:05:55 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:55 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:55 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:57 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:05:57 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:05:57 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:05:57 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:05:57 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:05:57 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@68012e5f] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:57 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:57 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:57 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:05:57 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:05:57 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:05:57 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:05:57 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:05:57 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:57 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:57 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:58 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:05:58 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:05:58 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:05:58 DEBUG TSaslTransport:459 - CLIENT: reading data length: 53
+2017-08-25 01:05:58 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:05:58 DEBUG TSaslTransport:498 - writing data length: 100
+2017-08-25 01:05:58 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:05:58 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@5aa03823] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:58 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:58 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:58 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:05:58 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:05:58 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:05:58 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:05:58 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:05:58 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:05:58 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:05:58 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:05:59 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:05:59 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:05:59 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:05:59 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:05:59 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:00 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@5f7038c8] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:00 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:00 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:00 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:00 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:00 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:00 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:00 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:00 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:00 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:00 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:01 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:01 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:01 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:01 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:01 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:01 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@a75ab47] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:01 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:01 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:01 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:01 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:01 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:01 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:01 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:01 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:01 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:01 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:02 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:02 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:02 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:02 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:02 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:02 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@49dc5b32] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:02 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:02 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:03 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:03 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:03 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:03 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:03 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:03 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:03 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:03 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:03 DEBUG TSaslTransport:459 - CLIENT: reading data length: 53
+2017-08-25 01:06:03 DEBUG TSaslTransport:498 - writing data length: 100
+2017-08-25 01:06:04 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:04 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:04 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:04 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:04 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:04 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@6c3ea787] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:04 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:04 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:04 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:04 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:04 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:04 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:04 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:04 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:04 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:04 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:04 DEBUG cluster:56 - Checking status of 192.168.1.25:27017
+2017-08-25 01:06:04 DEBUG cluster:56 - Updating cluster description to  {type=STANDALONE, servers=[{address=192.168.1.25:27017, type=STANDALONE, roundTripTime=7.7 ms, state=CONNECTED}]
+2017-08-25 01:06:05 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:05 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:05 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:05 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:05 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:05 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@5e9fb7af] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:05 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:05 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:05 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:05 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:05 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:05 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:05 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:05 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:05 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:05 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:07 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:07 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:07 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:07 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:07 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:07 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@4b03e4ea] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:07 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:07 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:07 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:07 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:07 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:07 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:07 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:07 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:07 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:07 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:08 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:08 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:08 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:08 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:08 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:08 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@2409b5a7] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:08 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:08 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:08 DEBUG TSaslTransport:459 - CLIENT: reading data length: 53
+2017-08-25 01:06:08 DEBUG TSaslTransport:498 - writing data length: 100
+2017-08-25 01:06:08 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:08 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:08 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:08 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:08 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:08 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:08 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:08 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:10 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:10 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:10 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:10 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:10 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:10 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@3d18e177] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:10 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:10 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:10 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:10 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:10 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:10 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:10 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:10 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:10 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:10 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:11 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:11 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:11 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:11 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:11 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:11 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@293c2464] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:11 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:11 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:11 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:11 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:11 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:11 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:11 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:11 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:11 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:11 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:13 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:13 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:13 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:13 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:13 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:13 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@1b9d3218] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:13 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:13 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:13 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:13 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:13 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:13 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:13 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:13 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:13 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:13 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:13 DEBUG TSaslTransport:459 - CLIENT: reading data length: 53
+2017-08-25 01:06:13 DEBUG TSaslTransport:498 - writing data length: 100
+2017-08-25 01:06:14 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:14 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:14 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:14 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:14 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:14 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@14671a51] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:14 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:14 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:14 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:14 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:14 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:14 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:14 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:14 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:14 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:14 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:14 DEBUG cluster:56 - Checking status of 192.168.1.25:27017
+2017-08-25 01:06:14 DEBUG cluster:56 - Updating cluster description to  {type=STANDALONE, servers=[{address=192.168.1.25:27017, type=STANDALONE, roundTripTime=6.8 ms, state=CONNECTED}]
+2017-08-25 01:06:15 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:15 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:15 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:15 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:15 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:15 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@4f398478] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:15 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:15 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:15 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:15 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:15 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:15 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:15 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:15 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:15 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:15 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:17 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:17 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:17 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:17 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:17 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:17 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@1636282d] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:17 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:17 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:17 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:17 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:17 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:17 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:17 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:17 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:17 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:17 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:18 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:18 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:18 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:18 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:18 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:18 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@794df4c0] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:18 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:18 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:18 DEBUG TSaslTransport:459 - CLIENT: reading data length: 53
+2017-08-25 01:06:18 DEBUG TSaslTransport:498 - writing data length: 100
+2017-08-25 01:06:18 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:18 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:18 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:18 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:18 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:18 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:18 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:18 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:19 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:19 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:19 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:19 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:19 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:19 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@71f69490] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:19 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:19 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:20 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:20 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:20 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:20 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:20 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:20 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:20 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:20 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:21 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:21 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:21 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:21 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:21 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:21 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@6807ee77] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:21 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:21 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:21 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:21 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:21 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:21 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:21 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:21 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:21 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:21 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:22 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:22 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:22 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:22 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:22 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:22 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@51760e7c] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:22 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:22 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:22 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:22 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:22 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:22 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:22 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:22 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:22 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:22 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:23 DEBUG TSaslTransport:459 - CLIENT: reading data length: 53
+2017-08-25 01:06:23 DEBUG TSaslTransport:498 - writing data length: 100
+2017-08-25 01:06:24 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:24 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:24 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:24 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:24 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:24 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@6cf13322] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:24 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:24 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:24 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:24 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:24 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:24 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:24 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:24 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:24 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:24 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:24 DEBUG cluster:56 - Checking status of 192.168.1.25:27017
+2017-08-25 01:06:24 DEBUG cluster:56 - Updating cluster description to  {type=STANDALONE, servers=[{address=192.168.1.25:27017, type=STANDALONE, roundTripTime=26.6 ms, state=CONNECTED}]
+2017-08-25 01:06:25 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:25 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:25 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:25 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:25 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:25 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@185f4e60] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:25 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:25 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:25 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:25 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:25 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:25 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:25 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:25 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:25 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:25 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:25 DEBUG TSaslTransport:459 - CLIENT: reading data length: 53
+2017-08-25 01:06:26 DEBUG TSaslTransport:498 - writing data length: 102
+2017-08-25 01:06:26 DEBUG TSaslTransport:459 - CLIENT: reading data length: 205
+2017-08-25 01:06:26 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:26 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:26 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:26 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:26 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:26 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@2acccbad] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:26 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:26 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:26 DEBUG TSaslTransport:498 - writing data length: 112
+2017-08-25 01:06:26 DEBUG TSaslTransport:459 - CLIENT: reading data length: 2319
+2017-08-25 01:06:26 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:26 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:26 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:26 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:26 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:26 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:26 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:26 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG TSaslTransport:498 - writing data length: 112
+2017-08-25 01:06:27 DEBUG TSaslTransport:459 - CLIENT: reading data length: 2136
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG TSaslTransport:498 - writing data length: 112
+2017-08-25 01:06:27 DEBUG TSaslTransport:459 - CLIENT: reading data length: 2047
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG TSaslTransport:498 - writing data length: 112
+2017-08-25 01:06:27 DEBUG TSaslTransport:459 - CLIENT: reading data length: 351
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG HiveQueryResultSet:381 - Fetched row string: 
+2017-08-25 01:06:27 DEBUG TSaslTransport:498 - writing data length: 112
+2017-08-25 01:06:27 DEBUG TSaslTransport:459 - CLIENT: reading data length: 138
+2017-08-25 01:06:27 DEBUG TSaslTransport:498 - writing data length: 96
+2017-08-25 01:06:27 DEBUG TSaslTransport:459 - CLIENT: reading data length: 42
+2017-08-25 01:06:27 DEBUG DataSourceUtils:327 - Returning JDBC Connection to DataSource
+2017-08-25 01:06:27 DEBUG TSaslTransport:498 - writing data length: 83
+2017-08-25 01:06:27 DEBUG TSaslTransport:459 - CLIENT: reading data length: 40
+Run --------------------------------------------------------------------------------------------------------
+{5=1, 6=1}
+AbstractMainExecutor.send()6
+AbstractMainExecutor.send(sender)
+Actor[akka://HiveSample_20170825010546145/user/4#-1294640211]
+Finishing --------------------------------------------------------------------------------------------------------
+{5=1}
+Executing --------------------------------------------------------------------------------------------------------
+{5=1}
+Run --------------------------------------------------------------------------------------------------------
+{5=1, 6=1}
+AbstractMainExecutor.send()6
+AbstractMainExecutor.send(sender)
+Actor[akka://HiveSample_20170825010546145/user/4#-1294640211]
+Finishing --------------------------------------------------------------------------------------------------------
+{6=1}
+Executing --------------------------------------------------------------------------------------------------------
+{6=1}
+Finishing --------------------------------------------------------------------------------------------------------
+{}
+2017-08-25 01:06:27 DEBUG FluxRunnerImpl:271 - FluxRunnerImpl.finish.hasFinished()
+2017-08-25 01:06:27 DEBUG FluxRunnerImpl:271 - FluxRunnerImpl.finish.hasFinished()
+[INFO] [08/25/2017 01:06:27.983] [HiveSample_20170825010546145-akka.actor.default-dispatcher-8] [akka://HiveSample_20170825010546145/user] Message [akka.actor.StopChild] without sender to Actor[akka://HiveSample_20170825010546145/user] was not delivered. [1] dead letters encountered. This logging can be turned off or adjusted with configuration settings 'akka.log-dead-letters' and 'akka.log-dead-letters-during-shutdown'.
+2017-08-25 01:06:28 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//running]
+2017-08-25 01:06:28 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /running
+2017-08-25 01:06:28 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public de.tum.in.aflux.flux_engine.impl.FluxProcessKey[] de.tum.in.aflux.controller.RunFluxController.getRunningProcesses()]
+2017-08-25 01:06:28 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'runFluxController'
+2017-08-25 01:06:28 DEBUG DispatcherServlet:955 - Last-Modified value for [//running] is: -1
+2017-08-25 01:06:28 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[Lde.tum.in.aflux.flux_engine.impl.FluxProcessKey;@366f3dc7] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:28 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:28 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:28 DEBUG DispatcherServlet:869 - DispatcherServlet with name 'aFluxApp' processing GET request for [//showOutput]
+2017-08-25 01:06:28 DEBUG RequestMappingHandlerMapping:310 - Looking up handler method for path /showOutput
+2017-08-25 01:06:28 DEBUG RequestMappingHandlerMapping:317 - Returning handler method [public java.util.List<java.lang.String> de.tum.in.aflux.controller.ShowOutputController.showOutput()]
+2017-08-25 01:06:28 DEBUG DefaultListableBeanFactory:251 - Returning cached instance of singleton bean 'showOutputController'
+2017-08-25 01:06:28 DEBUG DispatcherServlet:955 - Last-Modified value for [//showOutput] is: -1
+2017-08-25 01:06:28 DEBUG RequestResponseBodyMethodProcessor:234 - Written [[OutputElement [fluxId=6, timeStamp=Fri Aug 25 01:06:27 ART 2017, message=[{group_d.genres=(no genres listed), count_d=4, count_t=3}, {group_d.genres=Action, count_d=10, count_t=4}, {group_d.genres=Action|Adventure, count_d=5, count_t=6}, {group_d.genres=Action|Adventure|Animation|Children|Comedy, count_d=2, count_t=1}, {group_d.genres=Action|Adventure|Children|Fantasy, count_d=1, count_t=2}, {group_d.genres=Action|Adventure|Comedy, count_d=8, count_t=4}, {group_d.genres=Action|Adventure|Comedy|Fantasy, count_d=1, count_t=1}, {group_d.genres=Action|Adventure|Drama, count_d=2, count_t=3}, {group_d.genres=Action|Adventure|Drama|Sci-Fi, count_d=1, count_t=1}, {group_d.genres=Action|Adventure|Drama|Sci-Fi|Thriller, count_d=1, count_t=1}, {group_d.genres=Action|Adventure|Drama|Thriller, count_d=1, count_t=1}, {group_d.genres=Action|Adventure|Drama|War, count_d=2, count_t=2}, {group_d.genres=Action|Adventure|Fantasy, count_d=3, count_t=5}, {group_d.genres=Action|Adventure|Fantasy|Sci-Fi, count_d=2, count_t=2}, {group_d.genres=Action|Adventure|Fantasy|Thriller, count_d=1, count_t=1}, {group_d.genres=Action|Adventure|Sci-Fi, count_d=3, count_t=7}, {group_d.genres=Action|Adventure|Sci-Fi|IMAX, count_d=3, count_t=3}, {group_d.genres=Action|Adventure|Sci-Fi|Thriller, count_d=2, count_t=6}, {group_d.genres=Action|Adventure|Sci-Fi|Thriller|War, count_d=1, count_t=1}, {group_d.genres=Action|Adventure|Thriller, count_d=6, count_t=2}, {group_d.genres=Action|Animation|Comedy, count_d=1, count_t=1}, {group_d.genres=Action|Children|Fantasy, count_d=1, count_t=1}, {group_d.genres=Action|Comedy, count_d=7, count_t=9}, {group_d.genres=Action|Comedy|Crime, count_d=9, count_t=2}, {group_d.genres=Action|Comedy|Crime|Drama|Thriller, count_d=2, count_t=1}, {group_d.genres=Action|Comedy|Crime|Thriller, count_d=4, count_t=1}, {group_d.genres=Action|Comedy|Horror, count_d=1, count_t=2}, {group_d.genres=Action|Comedy|Romance, count_d=2, count_t=1}, {group_d.genres=Action|Comedy|Sci-Fi, count_d=1, count_t=1}, {group_d.genres=Action|Comedy|Western, count_d=1, count_t=1}, {group_d.genres=Action|Crime, count_d=3, count_t=1}, {group_d.genres=Action|Crime|Drama, count_d=9, count_t=2}, {group_d.genres=Action|Crime|Drama|Mystery|Thriller, count_d=2, count_t=1}, {group_d.genres=Action|Crime|Drama|Thriller, count_d=8, count_t=5}, {group_d.genres=Action|Crime|Thriller, count_d=4, count_t=10}, {group_d.genres=Action|Drama, count_d=6, count_t=6}, {group_d.genres=Action|Drama|Romance|Thriller, count_d=1, count_t=1}, {group_d.genres=Action|Drama|Thriller, count_d=4, count_t=7}, {group_d.genres=Action|Drama|Thriller|War, count_d=1, count_t=1}, {group_d.genres=Action|Drama|War, count_d=7, count_t=10}, {group_d.genres=Action|Fantasy|Horror|Thriller, count_d=3, count_t=1}, {group_d.genres=Action|Horror|Sci-Fi, count_d=5, count_t=1}, {group_d.genres=Action|Horror|Thriller, count_d=4, count_t=1}, {group_d.genres=Action|Mystery|Thriller, count_d=1, count_t=1}, {group_d.genres=Action|Sci-Fi, count_d=7, count_t=6}, {group_d.genres=Action|Sci-Fi|Thriller, count_d=4, count_t=7}, {group_d.genres=Action|Sci-Fi|Thriller|IMAX, count_d=1, count_t=2}, {group_d.genres=Action|Thriller, count_d=10, count_t=4}, {group_d.genres=Action|War, count_d=2, count_t=1}, {group_d.genres=Action|Western, count_d=1, count_t=1}, {group_d.genres=Adventure, count_d=2, count_t=3}, {group_d.genres=Adventure|Animation|Children|Comedy, count_d=1, count_t=1}, {group_d.genres=Adventure|Animation|Children|Comedy|Fantasy, count_d=2, count_t=4}, {group_d.genres=Adventure|Animation|Children|Fantasy, count_d=1, count_t=1}, {group_d.genres=Adventure|Animation|Children|Sci-Fi, count_d=1, count_t=1}, {group_d.genres=Adventure|Animation|Sci-Fi, count_d=1, count_t=1}, {group_d.genres=Adventure|Children, count_d=5, count_t=3}, {group_d.genres=Adventure|Children|Comedy, count_d=6, count_t=2}, {group_d.genres=Adventure|Children|Drama, count_d=4, count_t=1}, {group_d.genres=Adventure|Comedy, count_d=7, count_t=3}, {group_d.genres=Adventure|Comedy|Drama, count_d=1, count_t=1}, {group_d.genres=Adventure|Documentary, count_d=1, count_t=2}, {group_d.genres=Adventure|Drama, count_d=2, count_t=3}, {group_d.genres=Adventure|Drama|Sci-Fi, count_d=3, count_t=2}, {group_d.genres=Adventure|Drama|Thriller, count_d=2, count_t=1}, {group_d.genres=Adventure|Drama|War|Western, count_d=1, count_t=1}, {group_d.genres=Adventure|Sci-Fi, count_d=3, count_t=2}, {group_d.genres=Animation, count_d=2, count_t=1}, {group_d.genres=Animation|Children, count_d=2, count_t=2}, {group_d.genres=Animation|Children|Comedy, count_d=2, count_t=3}, {group_d.genres=Animation|Comedy, count_d=3, count_t=4}, {group_d.genres=Animation|Drama|Romance, count_d=1, count_t=1}, {group_d.genres=Animation|Fantasy, count_d=1, count_t=1}, {group_d.genres=Children|Comedy, count_d=11, count_t=1}, {group_d.genres=Children|Comedy|Drama, count_d=3, count_t=2}, {group_d.genres=Children|Comedy|Fantasy|Musical, count_d=1, count_t=1}, {group_d.genres=Children|Fantasy|Musical, count_d=1, count_t=1}, {group_d.genres=Comedy, count_d=130, count_t=79}, {group_d.genres=Comedy|Crime, count_d=7, count_t=11}, {group_d.genres=Comedy|Crime|Drama, count_d=6, count_t=3}, {group_d.genres=Comedy|Crime|Thriller, count_d=1, count_t=2}, {group_d.genres=Comedy|Documentary, count_d=4, count_t=3}, {group_d.genres=Comedy|Drama, count_d=62, count_t=42}, {group_d.genres=Comedy|Drama|Fantasy, count_d=2, count_t=1}, {group_d.genres=Comedy|Drama|Fantasy|Romance, count_d=5, count_t=1}, {group_d.genres=Comedy|Drama|Musical, count_d=3, count_t=2}, {group_d.genres=Comedy|Drama|Romance, count_d=47, count_t=25}, {group_d.genres=Comedy|Drama|Thriller, count_d=1, count_t=3}, {group_d.genres=Comedy|Fantasy, count_d=5, count_t=6}, {group_d.genres=Comedy|Fantasy|Romance, count_d=2, count_t=2}, {group_d.genres=Comedy|Horror, count_d=12, count_t=8}, {group_d.genres=Comedy|Horror|Sci-Fi, count_d=2, count_t=3}, {group_d.genres=Comedy|Musical, count_d=9, count_t=4}, {group_d.genres=Comedy|Musical|Romance, count_d=6, count_t=4}, {group_d.genres=Comedy|Mystery|Thriller, count_d=1, count_t=1}, {group_d.genres=Comedy|Romance, count_d=48, count_t=40}, {group_d.genres=Comedy|Sci-Fi, count_d=7, count_t=2}, {group_d.genres=Comedy|Thriller, count_d=5, count_t=2}, {group_d.genres=Comedy|Western, count_d=5, count_t=2}, {group_d.genres=Crime, count_d=3, count_t=1}, {group_d.genres=Crime|Drama, count_d=39, count_t=10}, {group_d.genres=Crime|Drama|Film-Noir, count_d=3, count_t=2}, {group_d.genres=Crime|Drama|Mystery, count_d=3, count_t=1}, {group_d.genres=Crime|Drama|Mystery|Romance|Thriller, count_d=1, count_t=1}, {group_d.genres=Crime|Drama|Mystery|Thriller, count_d=5, count_t=4}, {group_d.genres=Crime|Drama|Romance, count_d=3, count_t=1}, {group_d.genres=Crime|Drama|Sci-Fi|Thriller, count_d=1, count_t=1}, {group_d.genres=Crime|Drama|Thriller, count_d=17, count_t=16}, {group_d.genres=Crime|Film-Noir, count_d=2, count_t=1}, {group_d.genres=Crime|Horror|Thriller, count_d=1, count_t=1}, {group_d.genres=Crime|Mystery|Thriller, count_d=1, count_t=1}, {group_d.genres=Crime|Thriller, count_d=9, count_t=6}, {group_d.genres=Documentary, count_d=57, count_t=43}, {group_d.genres=Documentary|Musical, count_d=3, count_t=3}, {group_d.genres=Documentary|War, count_d=1, count_t=2}, {group_d.genres=Drama, count_d=152, count_t=130}, {group_d.genres=Drama|Fantasy, count_d=6, count_t=2}, {group_d.genres=Drama|Fantasy|Romance, count_d=7, count_t=3}, {group_d.genres=Drama|Film-Noir, count_d=2, count_t=1}, {group_d.genres=Drama|Horror, count_d=6, count_t=2}, {group_d.genres=Drama|Horror|Mystery|Thriller, count_d=2, count_t=2}, {group_d.genres=Drama|Horror|Romance|Thriller, count_d=1, count_t=1}, {group_d.genres=Drama|Horror|Thriller, count_d=6, count_t=6}, {group_d.genres=Drama|Musical, count_d=8, count_t=5}, {group_d.genres=Drama|Musical|Romance, count_d=5, count_t=4}, {group_d.genres=Drama|Mystery, count_d=9, count_t=2}, {group_d.genres=Drama|Mystery|Romance|Thriller, count_d=2, count_t=2}, {group_d.genres=Drama|Mystery|Thriller, count_d=3, count_t=5}, {group_d.genres=Drama|Romance, count_d=56, count_t=40}, {group_d.genres=Drama|Romance|Thriller, count_d=2, count_t=4}, {group_d.genres=Drama|Romance|War, count_d=5, count_t=1}, {group_d.genres=Drama|Romance|Western, count_d=1, count_t=1}, {group_d.genres=Drama|Sci-Fi, count_d=8, count_t=1}, {group_d.genres=Drama|Sci-Fi|IMAX, count_d=1, count_t=1}, {group_d.genres=Drama|Sci-Fi|Thriller, count_d=2, count_t=2}, {group_d.genres=Drama|Sci-Fi|War, count_d=1, count_t=1}, {group_d.genres=Drama|Thriller, count_d=31, count_t=14}, {group_d.genres=Drama|Thriller|War, count_d=3, count_t=3}, {group_d.genres=Drama|War, count_d=19, count_t=6}, {group_d.genres=Drama|Western, count_d=2, count_t=3}, {group_d.genres=Fantasy|Horror, count_d=1, count_t=1}, {group_d.genres=Fantasy|Horror|Sci-Fi|Thriller, count_d=1, count_t=2}, {group_d.genres=Fantasy|Musical|Romance, count_d=1, count_t=1}, {group_d.genres=Fantasy|Sci-Fi, count_d=2, count_t=1}, {group_d.genres=Horror, count_d=26, count_t=18}, {group_d.genres=Horror|Mystery, count_d=1, count_t=2}, {group_d.genres=Horror|Mystery|Thriller, count_d=2, count_t=3}, {group_d.genres=Horror|Sci-Fi, count_d=7, count_t=5}, {group_d.genres=Horror|Sci-Fi|Thriller, count_d=4, count_t=5}, {group_d.genres=Horror|Thriller, count_d=14, count_t=15}, {group_d.genres=Horror|Western, count_d=1, count_t=1}, {group_d.genres=Musical, count_d=2, count_t=1}, {group_d.genres=Mystery|Thriller, count_d=5, count_t=3}, {group_d.genres=Sci-Fi, count_d=4, count_t=1}, {group_d.genres=Sci-Fi|Thriller, count_d=1, count_t=2}, {group_d.genres=Thriller, count_d=13, count_t=3}, {group_d.genres=Western, count_d=4, count_t=4}]]
+, OutputElement [fluxId=6, timeStamp=Fri Aug 25 01:06:27 ART 2017, message=41517 ms]
+]] as "application/hal+json" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@67bd9921]
+2017-08-25 01:06:28 DEBUG DispatcherServlet:1048 - Null ModelAndView returned to DispatcherServlet with name 'aFluxApp': assuming HandlerAdapter completed request handling
+2017-08-25 01:06:28 DEBUG DispatcherServlet:1000 - Successfully completed request
+2017-08-25 01:06:34 DEBUG cluster:56 - Checking status of 192.168.1.25:27017
+2017-08-25 01:06:35 DEBUG cluster:56 - Updating cluster description to  {type=STANDALONE, servers=[{address=192.168.1.25:27017, type=STANDALONE, roundTripTime=25.7 ms, state=CONNECTED}]
+2017-08-25 01:06:45 DEBUG cluster:56 - Checking status of 192.168.1.25:27017
+2017-08-25 01:06:45 DEBUG cluster:56 - Updating cluster description to  {type=STANDALONE, servers=[{address=192.168.1.25:27017, type=STANDALONE, roundTripTime=41.1 ms, state=CONNECTED}]

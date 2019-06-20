@@ -1,0 +1,803 @@
+
+html,
+body {
+  height: 100%;
+  font-family: Helvetica Neue,Helvetica,Arial Unicode MS,Arial;
+  font-size: 10pt;
+  border: none;
+  margin: 0px;
+
+}
+
+
+.AsyncFlowApp {
+  text-align: center;
+  height:100%;
+}
+
+#root {
+  height:100%;
+}
+
+.Workspace {
+  height:90%;
+}
+
+
+.WorkspaceMain  {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 0 -30px 0;
+  /* the bottom margin is the negative value of the footer's height */
+  position: relative;
+  }
+
+
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.HeaderContainer {
+/*
+
+
+*/
+  top: 0px; left: 0px; right: 0px;
+  height: 60px;
+  border: 1px solid gray;
+
+}
+
+
+.SideBarContainer  {
+	left: 0px; top: 95px;
+  border: 1px solid gray;
+  position: absolute;
+  overflow-y: scroll;
+}
+
+.ToolBarContainer {
+left: 0px; right: 0px; top: 60px; height: 34px;
+  border: 1px solid gray;
+  text-align:left
+}
+
+
+.PropertiesContainer {
+	right: 10px;
+	z-index: 1;
+	background-color: whitesmoke;
+	overflow-x: hidden;
+	overflow-y: auto;
+	font-size: 12px;
+	top: 102px;
+	width: 220px;
+	position:absolute;
+}
+
+
+.CanvasContainer {
+	right: 240px; top: 95px;
+	touch-action: none; cursor: default; overflow: auto;
+  padding: 0px 0px 0px 0px;
+  position: absolute;
+  border: 1px solid gray;
+}
+
+.CanvasContainer  svg{
+	height: 2000px;
+	width:2000px;
+
+	}
+
+
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+
+
+.FooterContainer {
+  left: 0px; right: 0px;
+  bottom: 0px;
+  z-index: 10004;
+  margin: 0px 0 0 0;
+  width: 99%;
+    border: 1px solid gray;
+	text-align:left;
+	position:absolute;
+}
+
+.StdOutput {
+	color:#ffffff;
+	background-color:#000000;
+	height:100%;
+	overflow: auto;
+
+}
+
+.AddToolButtonContainer {
+	position: absolute; overflow: hidden; border-width: 3px; left: 0px; height: 36px;
+    border: 1px solid gray;
+}
+
+.AddToolButtonContainer button {
+  width:100%;
+  height:100%;
+}
+
+.FlowTabsContainer {
+	background-color: rgb(220, 220, 220);
+	position: absolute;
+	white-space: nowrap;
+	overflow: hidden; height: 30px;
+	right: 240px;
+	text-align:left;
+
+}
+.FlowTabSet {
+	position: relative;
+	display: inline-block; vertical-align: top; height: 30px; white-space: nowrap; overflow: hidden; font-size: 12px;
+	margin-left: 30px;
+	text-align:left;
+}
+
+.FlowTab {
+display: inline-block; white-space: nowrap; box-sizing: border-box; position: relative; overflow: hidden; margin-left: -1px;
+					height: 30px; padding: 8px 4px;
+
+	border: 1px solid rgb(192, 192, 192); background-color: rgb(220, 220, 220);
+	cursor: default; color: gray; max-width: 140px; width: 140px; text-overflow: ellipsis;
+}
+
+.FlowTabSelected {
+display: inline-block; white-space: nowrap; box-sizing: border-box; position: relative; overflow: hidden; margin-left: -1px;
+	height: 30px; padding: 8px 4px;
+	cursor: default; color: gray; max-width: 140px; width: 140px; text-overflow: ellipsis;
+
+	border-width: 1px; border-style: none solid solid; border-color: rgb(192, 192, 192); border-image: initial;
+	background-color: rgb(238, 238, 238); font-weight: bold;
+}
+
+<div title="Page-1" oncontextmenu="return false;" draggable="true" style="">Page-1</div>
+<div title="Page-3" oncontextmenu="return false;" draggable="true" style="display: inline-block; white-space: nowrap; box-sizing: border-box; position: relative; overflow: hidden; margin-left: -1px; height: 30px; padding: 8px 4px; border: 1px solid rgb(192, 192, 192); 																	   background-color: rgb(220, 220, 220); cursor: default; color: gray; max-width: 140px; width: 140px; text-overflow: ellipsis;">Page-3</div>
+
+
+
+.FlowTabsContainer {
+	touch-action: none;
+}
+
+.div-block {
+	display: block;
+}
+
+
+.FlowToolBar {
+	background:whiteSmoke;
+	border-bottom:1px solid #e5e5e5;
+	padding:5px;
+	_padding:1px;
+	padding-bottom:12px;
+	overflow:hidden;
+}
+
+.flowItem {
+	overflow: hidden;
+	height:"52px";
+	padding: "1px";
+}
+
+.flowItem  svg {
+	width: 125px;
+	height: 48px;
+	display: block;
+	position: relative;
+	overflow: hidden;
+	cursor: move;
+	left: 2px;
+	top: 2px;
+}
+
+
+.flowGItem {
+ visibility:visible;
+}
+
+.selected-flow-element {
+		stroke-width:3;
+}
+
+
+.textFlowGItem {
+	cursor: move;
+	visibility: visible;
+}
+
+
+.textFlowGItem foreignObject {
+	overflow:visible;
+}
+
+.textFlowGItem foreignObject > div {
+	display: inline-block;
+	font-size: 12px;
+	font-family: Helvetica;
+	color: rgb(0, 0, 0);
+	line-height: 1.2;
+	vertical-align: top;
+	white-space: nowrap;
+	word-wrap: normal;
+	text-align: center;
+	overflow: hidden;
+	padding-left: 4px;
+	padding-right: 4px;
+
+}
+
+.textFlowGItem foreignObject > div > div {
+	display:inline-block;
+	text-align:inherit;
+	text-decoration:inherit;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.newNodeElement {
+  position: absolute;
+ visibility:visible;
+}
+
+.outputConnector {
+	fill:white;
+}
+
+.outputConnector:hover {
+	fill:green;
+}
+
+
+.asyncOutputConnector {
+	fill:cyan;
+}
+
+.asyncOutputConnector:hover {
+	fill:blue;
+}
+
+
+
+.input-connector {
+	stroke-width:1;
+	stroke:black;
+	fill:none;
+  pointer-events:visibleFill;
+}
+
+
+.input-connector-hover {
+	stroke-width:3;
+	stroke:green;
+	fill:none;
+  pointer-events:visibleFill;
+}
+
+.input-connector-hover {
+  transform: scale(1);
+}
+
+.input-connector rect{
+	fill:none;
+	stroke-width:0;
+}
+
+.input-connector rect:hover{
+	fill:yellow;
+}
+
+.input-connector {
+  transform: scale(1);
+}
+
+.input-connector rect:pressed{
+	fill:yellow;
+}
+
+
+.input-connector rect:hover:pressed{
+	fill:yellow;
+}
+.input-connector rect {
+  transform: scale(1);
+}
+
+
+
+
+.input-connector-hover rect{
+	fill:yellow;
+	stroke-width:0;
+}
+
+.input-connector-hover rect {
+  transform: scale(1);
+}
+
+
+.FluxLogoSection {
+	display: block; position: absolute; width: 80px;color:#76FF03; background-color: #01579B; height: 60px;line-height: 60px;
+	; background-repeat: no-repeat; 	 vertical-align:middle; font-size:1.8em;font-family: 'Architects Daughter', cursive;
+}
+
+.FluxActivityTitle {
+	position: absolute;  left: 90px; top: 6px; height: 26px; display: block; overflow: hidden; text-overflow: ellipsis;
+	font-size: 18px;
+}
+
+.FluxMainMenu {
+	top: 0px; left: 0px; right: 0px; height: 60px;
+}
+
+.FluxMenuBar {
+	position: absolute; padding-left: 90px; box-sizing: border-box; top: 32px;
+}
+
+.flowMenuItem {
+    vertical-align: top;
+    display: inline-block;
+	cursor:pointer !important;
+
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+
+	padding:6px 8px 6px 8px;
+	cursor:default;
+}
+
+
+.flowMenuItem:hover {
+	background:#eeeeee;
+}
+
+.fluxPopupMenu {
+display: inline; z-index: 10006; left: 90px; top: 60px; overflow-y: auto; overflow-x: hidden; max-height: 576px;
+
+	text-align:left;
+}
+
+
+.fluxPopupMenuItem {
+
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+
+td.fluxPopupMenuIcon div {
+	width:16px;
+	height:16px;
+}
+html div.fluxPopupMenu {
+	-webkit-box-shadow:2px 2px 3px #d5d5d5;
+	-moz-box-shadow:2px 2px 3px #d5d5d5;
+	box-shadow:2px 2px 3px #d5d5d5;
+	_filter:progid:DXImageTransform.Microsoft.DropShadow(OffX=2, OffY=2, Color='#d0d0d0', Positive='true');
+	background:white;
+	position:absolute;
+	border:3px solid #e7e7e7;
+	padding:3px;
+}
+html table.fluxPopupMenu {
+	border-collapse:collapse;
+	margin:0px;
+}
+html td.fluxPopupMenuItem {
+	padding:7px 30px 7px 30px;
+	font-family:Helvetica Neue,Helvetica,Arial Unicode MS,Arial;
+	font-size:10pt;
+}
+html td.fluxPopupMenuIcon {
+	background-color:white;
+	padding:0px;
+}
+td.fluxPopupMenuIcon .geIcon {
+	padding:2px;
+	padding-bottom:4px;
+	margin:2px;
+	border:1px solid transparent;
+	opacity:0.5;
+	_width:26px;
+	_height:26px;
+}
+td.fluxPopupMenuIcon .geIcon:hover {
+	border:1px solid gray;
+	border-radius:2px;
+	opacity:1;
+}
+html tr.fluxPopupMenuItemHover {
+	background-color: #eeeeee;
+	color: black;
+}
+
+.fluxPopupMenuItem:hover {
+	background:#eeeeee;
+}
+
+table.fluxPopupMenu hr {
+	color:#cccccc;
+	background-color:#cccccc;
+	border:none;
+	height:1px;
+}
+table.fluxPopupMenu tr {
+	font-size:4pt;
+}
+
+
+.JobSelector-gt-hc {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.JobSelector-gt-hc {
+	height: 20px;
+	position: absolute;
+    left: 0;
+    right: 0;
+	top:0
+}
+
+.JobSelectorTitle {
+	display: inline-block;
+    font-size: 20px;
+    vertical-align: top;
+    padding: 17px 20px;
+	text-align:left;
+}
+
+.JobSelectorPicker {
+	left: 224px; top: 43px; z-index: 13000;
+	position:absolute;
+	background-color: #FFF;
+    border: 1px solid #ACACAC;
+    width: 806px;
+	height: 498px;
+    padding: 0;
+	box-shadow: rgba(0,0,0,.2) 0 4px 16px;
+	max-height:498px;
+}
+
+
+.PluginManagerPopup {
+	left: 180px; top: 40px; z-index: 14000;
+	position:absolute;
+	background-color: #FFF;
+    border: 1px solid #ACACAC;
+    width: 900px;
+	height: 498px;
+    padding: 0;
+	box-shadow: rgba(0,0,0,.2) 0 4px 16px;
+	max-height:498px;
+}
+
+
+.CloseIcon {
+	position:absolute;
+	right:12px;
+	top:20px;
+	cursor: pointer;
+}
+
+
+.CloseIcon .toolTipClose {
+	visibility:hidden;
+    width: 40px;
+	left: -30px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+	top:15px;
+    z-index: 1;
+
+}
+
+
+.CloseIcon:hover .toolTipClose {
+	visibility:visible;
+}
+
+.JobSelectorHeaderCell {
+    height: 48px;
+    line-height: 48px;
+	color: #565656;
+    display: table-cell;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0;
+    text-align: left;
+    vertical-align: middle;
+	display: table;
+    table-layout: fixed;
+    width: 100%;
+    bottom: 0;
+    border-top: 1px solid #e1e1e1;
+    left: 0;
+    margin-top: 20px;
+    overflow-y: auto;
+    right: 0;
+    top: 43px;
+	font-family: Roboto,Arial,sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+.JobSelectorContentHeader {
+    padding-left: 16px;
+    display: table;
+    table-layout: fixed;
+    width: 98%;
+	border-top: 1px solid #e1e1e1;
+	left: 0;
+    overflow-y: auto;
+    position: absolute;
+	background-color:#fafafa;
+	top:43px;
+
+}
+
+
+.JobSelectorContent {
+	position:absolute;
+	top:92px;
+	right:0px;
+	left:0px;
+	overflow-y:scroll;
+	max-height:400px;
+	padding-left: 16px;
+	height:100%;
+}
+
+.JobSelectorHeader {
+	overflow-y:visible;
+}
+
+
+.JobSelectorContentCell {
+    height: 48px;
+    line-height: 48px;
+	   color: #565656;
+    display: table-cell;
+    font-size: 13px;
+    font-weight: normal;
+    padding: 0;
+    text-align: left;
+    vertical-align: middle;
+	   display: table;
+    table-layout: fixed;
+    width: 100%;
+    bottom: 0;
+    border-top: 1px solid #e1e1e1;
+    left: 0;
+    margin-top: 20px;
+    overflow-y: auto;
+    right: 0;
+    top: 43px;
+	font-family: Roboto,Arial,sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+	cursor:pointer;
+}
+
+.JobSelectorContentCell span {
+  height:24px;
+  margin-left:10px;
+}
+.JobSelectorContentCell button {
+  height:13px;
+  margin-left:10px;
+  padding:0 0 0 0;
+
+}
+.JobSelectorContentCell img {
+  height:13px;
+  width:15px;
+  margin-left:10px;
+
+}
+.SaveAsDialogStyle {
+	width: 450px; height: 120px; left: 400px; top: 153px; z-index: 10005;
+
+
+	position:absolute;
+	background-color: #FFF;
+    border: 1px solid #ACACAC;
+    padding: 0;
+	box-shadow: rgba(0,0,0,.2) 0 4px 16px;
+	max-height:120px;
+
+}
+
+.SaveAsDialogMainContent {
+	position:absolute;
+	top:30px;
+	height:80px;
+	left:30px;
+  right:30px;
+}
+
+
+.InputSaveAs {
+    border-radius: 10px;
+    border: whiteSmoke solid 3px;
+	margin-left: 4px;
+	width: 240px;
+}
+
+.UploadPluginDialogStyle {
+	width: 950px; height: 120px; left: 200px; top: 153px; z-index: 10005;
+
+
+	position:absolute;
+	background-color: #FFF;
+    border: 1px solid #ACACAC;
+    padding: 0;
+	box-shadow: rgba(0,0,0,.2) 0 4px 16px;
+	max-height:120px;
+
+}
+
+
+
+.CancelButton {
+	  background: whiteSmoke;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+
+
+	  background-color: #f5f5f5;
+    border-radius: 2px;
+    border: 1px solid #d8d8d8;
+    color: #333;
+    cursor: default;
+    font-size: 11px;
+    font-weight: bold;
+    height: 29px;
+    line-height: 27px;
+    margin: 20px 0 0 8px;
+    min-width: 72px;
+    outline: 0;
+    padding: 0 8px;
+    cursor: pointer;
+
+}
+
+
+.AcceptButton {
+	    background-color: #357ae8;
+    background-image: linear-gradient(#4d90fe 0px,#357ae8 100%);
+    border: 1px solid #2f5bb7;
+    color: #fff;
+	    box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+		    font-size: 11px;
+    font-weight: bold;
+    height: 29px;
+    line-height: 27px;
+    margin: 0 0 0 8px;
+    min-width: 72px;
+    outline: 0;
+    padding: 0 8px;
+    cursor: pointer;
+
+}
+
+.PropertiesMainContent {
+    right: 0px;
+    z-index: 1;
+    background-color: whitesmoke;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    font-size: 12px;
+    top: 95px;
+    width: 240px;
+    height: 100%;
+}
+
+.PropertiesInnerContent {
+    white-space: nowrap;
+    color: rgb(112, 112, 112);
+    text-align: left;
+    cursor: default;
+}
+
+.PropertiesMainTitle {
+    border-width: 0px 0px 1px;
+    border-style: solid;
+    border-color: rgb(192, 192, 192);
+    border-image: initial; text-align: center; font-weight: bold;
+    display: inline-block; padding-top: 8px; height: 25px; width: 100%;
+}
+
+.PropertiesContent {
+}
+
+.PropertiesLabel {
+margin: 0px 6px 0px 0px;
+}
+
+.ProbertiesSubLabel {
+display: block;
+}
+
+
+.PropertiesInput {
+margin: 0px 6px 0px 0px;
+}
+
+.PropertiesInput .PropertiesLabel {
+font-style: italic;
+}
+
+.PropertiesSection {
+	padding: 12px 0px 12px 18px;
+	border-bottom: 1px solid rgb(192, 192, 192);
+
+}
+
+.HelpSection, .ErrorsSection {
+	padding: 12px 0px 12px 18px;
+	border-bottom: 1px solid rgb(192, 192, 192);
+
+}
+
+.HelpSection textarea {
+  background-color:#FFF9C4;
+
+}
+
+.ErrorsSection textarea {
+ 	background-color:#FFC4C4;
+}
+
+.PropertiesField {
+padding: 6px 0px 1px; white-space: nowrap; width: 200px;
+}
+
+.footerSplit {
+  cursor: row-resize;
+  background-color: #e5e5e5;
+  z-index:13000;
+  position:absolute;
+
+}

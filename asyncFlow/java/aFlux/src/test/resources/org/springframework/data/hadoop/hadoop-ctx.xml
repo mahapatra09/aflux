@@ -1,0 +1,73 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:hdp="http://www.springframework.org/schema/hadoop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/hadoop http://www.springframework.org/schema/hadoop/spring-hadoop.xsd">
+
+	<!--use the bean definition to go beyond the configuration options provided by the namespace -->
+	<bean name="ppc" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" 
+		p:valueSeparator="|" p:location="test.properties" p:systemPropertiesModeName="SYSTEM_PROPERTIES_MODE_OVERRIDE" p:order="100"/>
+	
+	<!-- 
+	<bean id="chainedResourceLoader" class="org.springframework.data.hadoop.fs.ChainedResourceLoader">
+		<property name="loaders">
+			<map>
+				<entry key="hdfs" value-ref="hadoop-resource-loader"/>
+			</map>
+		</property>
+	</bean>
+ 	-->
+ 
+	<!--  automatically picks the hadoopConfiguration reference -->
+	<hdp:file-system depends-on="fs-init"/>
+	
+	<hdp:resource-loader file-system-ref="hadoopFs" use-codecs="true" depends-on="rl-init"/>	
+
+	<!-- For Window users -->
+	<!-- if mapred.job.tracker is specified (non-local), Hadoop won't execute locally -->
+	<!-- however the permissions are checked locally by the client        -->
+	<!-- which can conflict with the TestUtils.hackHadoopStagingOnWin     -->
+	
+	<!--  default id is 'hadoopConfiguration' /   -->
+	<!--  properties-location="s3.properties" -->
+	<!--  -->
+	<hdp:configuration register-url-handler="false" depends-on="cfg-init" file-system-uri="${hadoop.fs}" rm-manager-uri="${hadoop.rm}" job-history-uri="${hadoop.jh}">
+		mapreduce.framework.name=yarn
+		javax.jdo.option.ConnectionURL=jdbc:derby:;databaseName=build/metastore_db;create=true
+		cfg=main
+		someparam=somevalue
+	</hdp:configuration>
+	
+	<bean id="cfg-init" class="org.springframework.data.hadoop.InitBeforeHadoop" lazy-init="true" />
+	<bean id="fs-init" class="org.springframework.data.hadoop.InitBeforeHadoop" lazy-init="true" />
+	<bean id="rl-init" class="org.springframework.data.hadoop.InitBeforeHadoop" lazy-init="true" />
+
+	<hdp:script language="javascript" run-at-startup="true">
+		// set System 'path.separator' to ':' - see HADOOP-9123
+		if (java.lang.System.getProperty("os.name").toLowerCase().startsWith("win")) {
+			print("Fudging the 'path.separator' on Win for DistributedCache to work")
+			java.lang.System.setProperty("path.separator", ":")
+		}
+	
+		if (fsh.test(".staging"))
+			fsh.rmr(".staging")
+	</hdp:script>	
+	<!-- 
+	<bean id="fs-config" class="org.springframework.data.hadoop.configuration.ConfigurationFactoryBean">
+	 <property name="properties">
+	    <map>
+	      <entry key="fs.defaultFS" value="${hd.fs}"/>
+	    </map>
+	  </property>
+	</bean>
+	 
+	<bean id="hdfs-writer" class="org.springframework.data.hadoop.batch.ResourcesItemWriter" 
+		p:resource-loader-ref="hadoop-resource-loader"
+		p:generator-ref="name-generator"
+		p:overwrite="true">
+	</bean>
+	 -->
+	
+</beans>

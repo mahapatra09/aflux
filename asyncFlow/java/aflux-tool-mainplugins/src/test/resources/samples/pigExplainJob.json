@@ -1,0 +1,2645 @@
+{
+    "_id" : ObjectId("599c5c8c0faaabc0a39e89c1"),
+    "_class" : "de.tum.in.aflux.model.FlowJob",
+    "name" : "pigExplainJob",
+    "activities" : [ 
+        {
+            "_id" : NumberLong(1),
+            "name" : "activity-1",
+            "index" : 1,
+            "elements" : [ 
+                {
+                    "_id" : NumberLong(3),
+                    "name" : "Pig LOAD Movies",
+                    "type" : {
+                        "_id" : ObjectId("599ac6990faaab838efd6c41"),
+                        "name" : "Pig LOAD",
+                        "style" : "",
+                        "color" : "#9FA8DA",
+                        "type" : "EXECUTOR",
+                        "jarLocation" : "20170821083954276/",
+                        "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                        "className" : "de.tum.in.aflux.component.pig.PigLoad",
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 1,
+                        "properties" : [ 
+                            {
+                                "name" : "name",
+                                "initialValue" : "Pig LOAD",
+                                "type" : "TEXT",
+                                "hint" : "name of the element",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "type" : "TEXT",
+                                "hint" : "width in pixels of visual component",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "type" : "COLOR",
+                                "hint" : "visual element color background",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "source data",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "The name of the file or directory, with NO single quotes.",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "function",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "The load function",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "schema",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "A schema using the AS keyword, not enclosed in parentheses (see Schemas).",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "alias",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "Variable name to get the loaded data and be used in subsequent sentences",
+                                "html" : "",
+                                "readOnly" : false
+                            }
+                        ],
+                        "asyncInterface" : false
+                    },
+                    "color" : "#9FA8DA",
+                    "x" : 52,
+                    "y" : 41,
+                    "width" : 120,
+                    "height" : 28,
+                    "inputInterfaces" : 1,
+                    "outputInterfaces" : 1,
+                    "deleted" : false,
+                    "properties" : [ 
+                        {
+                            "value" : "Pig LOAD Movies",
+                            "name" : "name",
+                            "initialValue" : "Pig LOAD",
+                            "hint" : "name of the element",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "120",
+                            "name" : "width",
+                            "initialValue" : "120",
+                            "hint" : "width in pixels of visual component",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "#90CAF9",
+                            "name" : "color",
+                            "initialValue" : "#90CAF9",
+                            "hint" : "visual element color background",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "dispatcher",
+                            "initialValue" : "",
+                            "hint" : "name of the dispatcher configuration to be used",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "mailbox",
+                            "initialValue" : "",
+                            "hint" : "name of the mailbox configuration for threads manipulation",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "/user/root/pig_data/movies.csv",
+                            "name" : "source data",
+                            "initialValue" : "",
+                            "hint" : "The name of the file or directory, with NO single quotes.",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "PigStorage(',')",
+                            "name" : "function",
+                            "initialValue" : "",
+                            "hint" : "The load function",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "movieId:int,title:chararray,genres:chararray",
+                            "name" : "schema",
+                            "initialValue" : "",
+                            "hint" : "A schema using the AS keyword, not enclosed in parentheses (see Schemas).",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "B",
+                            "name" : "alias",
+                            "initialValue" : "",
+                            "hint" : "Variable name to get the loaded data and be used in subsequent sentences",
+                            "html" : ""
+                        }
+                    ],
+                    "asyncInterface" : false,
+                    "dispatcher" : "",
+                    "mailbox" : ""
+                }, 
+                {
+                    "_id" : NumberLong(6),
+                    "name" : "show value",
+                    "type" : {
+                        "_id" : ObjectId("599ac6990faaab838efd6c4f"),
+                        "name" : "show value",
+                        "style" : "",
+                        "color" : "#80DEEA",
+                        "type" : "EXECUTOR",
+                        "jarLocation" : "20170821083954276/",
+                        "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                        "className" : "de.tum.in.aflux.component.strings.ShowStringValue",
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 0,
+                        "properties" : [ 
+                            {
+                                "name" : "name",
+                                "initialValue" : "show value",
+                                "type" : "TEXT",
+                                "hint" : "name of the element",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "type" : "TEXT",
+                                "hint" : "width in pixels of visual component",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "type" : "COLOR",
+                                "hint" : "visual element color background",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : "",
+                                "readOnly" : false
+                            }
+                        ],
+                        "asyncInterface" : false
+                    },
+                    "color" : "#80DEEA",
+                    "x" : 616,
+                    "y" : 316,
+                    "width" : 120,
+                    "height" : 28,
+                    "inputInterfaces" : 1,
+                    "outputInterfaces" : 0,
+                    "deleted" : false,
+                    "properties" : [ 
+                        {
+                            "value" : "show value",
+                            "name" : "name",
+                            "initialValue" : "show value",
+                            "hint" : "name of the element",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "120",
+                            "name" : "width",
+                            "initialValue" : "120",
+                            "hint" : "width in pixels of visual component",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "#90CAF9",
+                            "name" : "color",
+                            "initialValue" : "#90CAF9",
+                            "hint" : "visual element color background",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "dispatcher",
+                            "initialValue" : "",
+                            "hint" : "name of the dispatcher configuration to be used",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "mailbox",
+                            "initialValue" : "",
+                            "hint" : "name of the mailbox configuration for threads manipulation",
+                            "html" : ""
+                        }
+                    ],
+                    "asyncInterface" : false,
+                    "dispatcher" : "",
+                    "mailbox" : ""
+                }, 
+                {
+                    "_id" : NumberLong(8),
+                    "name" : "Pig GROUP",
+                    "type" : {
+                        "_id" : ObjectId("599b8eca0faaabbf24a90c70"),
+                        "name" : "Pig GROUP",
+                        "style" : "",
+                        "color" : "#9FA8DA",
+                        "type" : "EXECUTOR",
+                        "jarLocation" : "20170821224349511/",
+                        "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                        "className" : "de.tum.in.aflux.component.pig.PigGroup",
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 1,
+                        "properties" : [ 
+                            {
+                                "name" : "name",
+                                "initialValue" : "Pig GROUP",
+                                "type" : "TEXT",
+                                "hint" : "name of the element",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "type" : "TEXT",
+                                "hint" : "width in pixels of visual component",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "type" : "COLOR",
+                                "hint" : "visual element color background",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "source alias",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "Alias to be grouped",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "by",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "Keyword. Use this clause to group the relation by field, tuple or expression. If it is empty groups by ALL",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "collected",
+                                "initialValue" : "false",
+                                "type" : "TEXT",
+                                "hint" : "Allows for more efficient computation of a group if the loader guarantees that the data for the same key is continuous and is given to a single map",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "parallel",
+                                "initialValue" : "1",
+                                "type" : "TEXT",
+                                "hint" : "Increase the parallelism of a job by specifying the number of reduce tasks, n",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "target alias",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "Variable name to get the grouped data and be used in subsequent sentences",
+                                "html" : "",
+                                "readOnly" : false
+                            }
+                        ],
+                        "asyncInterface" : false
+                    },
+                    "color" : "#9FA8DA",
+                    "x" : 143,
+                    "y" : 182,
+                    "width" : 120,
+                    "height" : 28,
+                    "inputInterfaces" : 1,
+                    "outputInterfaces" : 1,
+                    "deleted" : false,
+                    "properties" : [ 
+                        {
+                            "value" : "Pig GROUP",
+                            "name" : "name",
+                            "initialValue" : "Pig GROUP",
+                            "hint" : "name of the element",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "120",
+                            "name" : "width",
+                            "initialValue" : "120",
+                            "hint" : "width in pixels of visual component",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "#90CAF9",
+                            "name" : "color",
+                            "initialValue" : "#90CAF9",
+                            "hint" : "visual element color background",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "dispatcher",
+                            "initialValue" : "",
+                            "hint" : "name of the dispatcher configuration to be used",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "mailbox",
+                            "initialValue" : "",
+                            "hint" : "name of the mailbox configuration for threads manipulation",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "source alias",
+                            "initialValue" : "",
+                            "hint" : "Alias to be grouped",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "genres",
+                            "name" : "by",
+                            "initialValue" : "",
+                            "hint" : "Keyword. Use this clause to group the relation by field, tuple or expression. If it is empty groups by ALL",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "false",
+                            "name" : "collected",
+                            "initialValue" : "false",
+                            "hint" : "Allows for more efficient computation of a group if the loader guarantees that the data for the same key is continuous and is given to a single map",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "1",
+                            "name" : "parallel",
+                            "initialValue" : "1",
+                            "hint" : "Increase the parallelism of a job by specifying the number of reduce tasks, n",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "GROUPEDB",
+                            "name" : "target alias",
+                            "initialValue" : "",
+                            "hint" : "Variable name to get the grouped data and be used in subsequent sentences",
+                            "html" : ""
+                        }
+                    ],
+                    "asyncInterface" : false,
+                    "dispatcher" : "",
+                    "mailbox" : ""
+                }, 
+                {
+                    "_id" : NumberLong(9),
+                    "name" : "Pig FOREACH",
+                    "type" : {
+                        "_id" : ObjectId("599b8eca0faaabbf24a90c6f"),
+                        "name" : "Pig FOREACH",
+                        "style" : "",
+                        "color" : "#9FA8DA",
+                        "type" : "EXECUTOR",
+                        "jarLocation" : "20170821224349511/",
+                        "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                        "className" : "de.tum.in.aflux.component.pig.PigForEach",
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 1,
+                        "properties" : [ 
+                            {
+                                "name" : "name",
+                                "initialValue" : "Pig FOREACH",
+                                "type" : "TEXT",
+                                "hint" : "name of the element",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "type" : "TEXT",
+                                "hint" : "width in pixels of visual component",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "type" : "COLOR",
+                                "hint" : "visual element color background",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "source alias",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "The name of the file or directory, with NO single quotes.",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "bag",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "Bag precedding generate clase",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "generate",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "The load function",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "schema",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "A schema using the AS keyword, not enclosed in parentheses (see Schemas).",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "target alias",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "Variable name to get the loaded data and be used in subsequent sentences",
+                                "html" : "",
+                                "readOnly" : false
+                            }
+                        ],
+                        "asyncInterface" : false
+                    },
+                    "color" : "#9FA8DA",
+                    "x" : 268,
+                    "y" : 98,
+                    "width" : 120,
+                    "height" : 28,
+                    "inputInterfaces" : 1,
+                    "outputInterfaces" : 1,
+                    "deleted" : false,
+                    "properties" : [ 
+                        {
+                            "value" : "Pig FOREACH",
+                            "name" : "name",
+                            "initialValue" : "Pig FOREACH",
+                            "hint" : "name of the element",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "120",
+                            "name" : "width",
+                            "initialValue" : "120",
+                            "hint" : "width in pixels of visual component",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "#90CAF9",
+                            "name" : "color",
+                            "initialValue" : "#90CAF9",
+                            "hint" : "visual element color background",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "dispatcher",
+                            "initialValue" : "",
+                            "hint" : "name of the dispatcher configuration to be used",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "mailbox",
+                            "initialValue" : "",
+                            "hint" : "name of the mailbox configuration for threads manipulation",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "source alias",
+                            "initialValue" : "",
+                            "hint" : "The name of the file or directory, with NO single quotes.",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "bag",
+                            "initialValue" : "",
+                            "hint" : "Bag precedding generate clase",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "SUM(B.movieId)",
+                            "name" : "generate",
+                            "initialValue" : "",
+                            "hint" : "The load function",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "schema",
+                            "initialValue" : "",
+                            "hint" : "A schema using the AS keyword, not enclosed in parentheses (see Schemas).",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "FOREACHED",
+                            "name" : "target alias",
+                            "initialValue" : "",
+                            "hint" : "Variable name to get the loaded data and be used in subsequent sentences",
+                            "html" : ""
+                        }
+                    ],
+                    "asyncInterface" : false,
+                    "dispatcher" : "",
+                    "mailbox" : ""
+                }, 
+                {
+                    "_id" : NumberLong(10),
+                    "name" : "Pig EXPLAIN",
+                    "type" : {
+                        "_id" : ObjectId("599b8eca0faaabbf24a90c6d"),
+                        "name" : "Pig EXPLAIN",
+                        "style" : "",
+                        "color" : "#9FA8DA",
+                        "type" : "EXECUTOR",
+                        "jarLocation" : "20170821224349511/",
+                        "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                        "className" : "de.tum.in.aflux.component.pig.PigExplain",
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 1,
+                        "properties" : [ 
+                            {
+                                "name" : "name",
+                                "initialValue" : "Pig EXPLAIN",
+                                "type" : "TEXT",
+                                "hint" : "name of the element",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "type" : "TEXT",
+                                "hint" : "width in pixels of visual component",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "type" : "COLOR",
+                                "hint" : "visual element color background",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "alias",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "Alias name associated to the collection to be describede",
+                                "html" : "",
+                                "readOnly" : false
+                            }
+                        ],
+                        "asyncInterface" : false
+                    },
+                    "color" : "#9FA8DA",
+                    "x" : 304,
+                    "y" : 237,
+                    "width" : 120,
+                    "height" : 28,
+                    "inputInterfaces" : 1,
+                    "outputInterfaces" : 1,
+                    "deleted" : false,
+                    "properties" : [ 
+                        {
+                            "value" : "Pig EXPLAIN",
+                            "name" : "name",
+                            "initialValue" : "Pig EXPLAIN",
+                            "hint" : "name of the element",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "120",
+                            "name" : "width",
+                            "initialValue" : "120",
+                            "hint" : "width in pixels of visual component",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "#90CAF9",
+                            "name" : "color",
+                            "initialValue" : "#90CAF9",
+                            "hint" : "visual element color background",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "dispatcher",
+                            "initialValue" : "",
+                            "hint" : "name of the dispatcher configuration to be used",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "mailbox",
+                            "initialValue" : "",
+                            "hint" : "name of the mailbox configuration for threads manipulation",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "alias",
+                            "initialValue" : "",
+                            "hint" : "Alias name associated to the collection to be describede",
+                            "html" : ""
+                        }
+                    ],
+                    "asyncInterface" : false,
+                    "dispatcher" : "",
+                    "mailbox" : ""
+                }, 
+                {
+                    "_id" : NumberLong(11),
+                    "name" : "Pig Execute",
+                    "type" : {
+                        "_id" : ObjectId("599c9b760faaab083b681d7c"),
+                        "name" : "Pig Execute",
+                        "style" : "",
+                        "color" : "#9FA8DA",
+                        "type" : "EXECUTOR",
+                        "jarLocation" : "20170822175918262/",
+                        "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                        "className" : "de.tum.in.aflux.component.pig.PigExecute",
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 3,
+                        "properties" : [ 
+                            {
+                                "name" : "name",
+                                "initialValue" : "Pig Execute",
+                                "type" : "TEXT",
+                                "hint" : "name of the element",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "type" : "TEXT",
+                                "hint" : "width in pixels of visual component",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "type" : "COLOR",
+                                "hint" : "visual element color background",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : "",
+                                "readOnly" : false
+                            }, 
+                            {
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "type" : "TEXT",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : "",
+                                "readOnly" : false
+                            }
+                        ],
+                        "asyncInterface" : false
+                    },
+                    "color" : "#9FA8DA",
+                    "x" : 504,
+                    "y" : 81,
+                    "width" : 120,
+                    "height" : 28,
+                    "inputInterfaces" : 1,
+                    "outputInterfaces" : 3,
+                    "deleted" : false,
+                    "properties" : [ 
+                        {
+                            "value" : "Pig Execute",
+                            "name" : "name",
+                            "initialValue" : "Pig Execute",
+                            "hint" : "name of the element",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "120",
+                            "name" : "width",
+                            "initialValue" : "120",
+                            "hint" : "width in pixels of visual component",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "#90CAF9",
+                            "name" : "color",
+                            "initialValue" : "#90CAF9",
+                            "hint" : "visual element color background",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "dispatcher",
+                            "initialValue" : "",
+                            "hint" : "name of the dispatcher configuration to be used",
+                            "html" : ""
+                        }, 
+                        {
+                            "value" : "",
+                            "name" : "mailbox",
+                            "initialValue" : "",
+                            "hint" : "name of the mailbox configuration for threads manipulation",
+                            "html" : ""
+                        }
+                    ],
+                    "asyncInterface" : false,
+                    "dispatcher" : "",
+                    "mailbox" : ""
+                }
+            ],
+            "connectors" : [ 
+                {
+                    "_id" : NumberLong(6),
+                    "sourceElement" : {
+                        "_id" : NumberLong(3),
+                        "name" : "Pig LOAD Movies",
+                        "type" : {
+                            "_id" : ObjectId("599ac6990faaab838efd6c41"),
+                            "name" : "Pig LOAD",
+                            "style" : "",
+                            "color" : "#9FA8DA",
+                            "type" : "EXECUTOR",
+                            "jarLocation" : "20170821083954276/",
+                            "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                            "className" : "de.tum.in.aflux.component.pig.PigLoad",
+                            "inputInterfaces" : 1,
+                            "outputInterfaces" : 1,
+                            "properties" : [ 
+                                {
+                                    "name" : "name",
+                                    "initialValue" : "Pig LOAD",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the element",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "width",
+                                    "initialValue" : "120",
+                                    "type" : "TEXT",
+                                    "hint" : "width in pixels of visual component",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "color",
+                                    "initialValue" : "#90CAF9",
+                                    "type" : "COLOR",
+                                    "hint" : "visual element color background",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "dispatcher",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the dispatcher configuration to be used",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "mailbox",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the mailbox configuration for threads manipulation",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "source data",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "The name of the file or directory, with NO single quotes.",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "function",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "The load function",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "schema",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "A schema using the AS keyword, not enclosed in parentheses (see Schemas).",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "alias",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "Variable name to get the loaded data and be used in subsequent sentences",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }
+                            ],
+                            "asyncInterface" : false
+                        },
+                        "color" : "#9FA8DA",
+                        "x" : 52,
+                        "y" : 41,
+                        "width" : 120,
+                        "height" : 28,
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 1,
+                        "deleted" : false,
+                        "properties" : [ 
+                            {
+                                "value" : "Pig LOAD Movies",
+                                "name" : "name",
+                                "initialValue" : "Pig LOAD",
+                                "hint" : "name of the element",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "120",
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "hint" : "width in pixels of visual component",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "#90CAF9",
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "hint" : "visual element color background",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "/user/root/pig_data/movies.csv",
+                                "name" : "source data",
+                                "initialValue" : "",
+                                "hint" : "The name of the file or directory, with NO single quotes.",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "PigStorage(',')",
+                                "name" : "function",
+                                "initialValue" : "",
+                                "hint" : "The load function",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "movieId:int,title:chararray,genres:chararray",
+                                "name" : "schema",
+                                "initialValue" : "",
+                                "hint" : "A schema using the AS keyword, not enclosed in parentheses (see Schemas).",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "B",
+                                "name" : "alias",
+                                "initialValue" : "",
+                                "hint" : "Variable name to get the loaded data and be used in subsequent sentences",
+                                "html" : ""
+                            }
+                        ],
+                        "asyncInterface" : false,
+                        "dispatcher" : "",
+                        "mailbox" : ""
+                    },
+                    "sourceIndex" : 1,
+                    "targetElement" : {
+                        "_id" : NumberLong(8),
+                        "name" : "Pig GROUP",
+                        "type" : {
+                            "_id" : ObjectId("599b8eca0faaabbf24a90c70"),
+                            "name" : "Pig GROUP",
+                            "style" : "",
+                            "color" : "#9FA8DA",
+                            "type" : "EXECUTOR",
+                            "jarLocation" : "20170821224349511/",
+                            "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                            "className" : "de.tum.in.aflux.component.pig.PigGroup",
+                            "inputInterfaces" : 1,
+                            "outputInterfaces" : 1,
+                            "properties" : [ 
+                                {
+                                    "name" : "name",
+                                    "initialValue" : "Pig GROUP",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the element",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "width",
+                                    "initialValue" : "120",
+                                    "type" : "TEXT",
+                                    "hint" : "width in pixels of visual component",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "color",
+                                    "initialValue" : "#90CAF9",
+                                    "type" : "COLOR",
+                                    "hint" : "visual element color background",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "dispatcher",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the dispatcher configuration to be used",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "mailbox",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the mailbox configuration for threads manipulation",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "source alias",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "Alias to be grouped",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "by",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "Keyword. Use this clause to group the relation by field, tuple or expression. If it is empty groups by ALL",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "collected",
+                                    "initialValue" : "false",
+                                    "type" : "TEXT",
+                                    "hint" : "Allows for more efficient computation of a group if the loader guarantees that the data for the same key is continuous and is given to a single map",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "parallel",
+                                    "initialValue" : "1",
+                                    "type" : "TEXT",
+                                    "hint" : "Increase the parallelism of a job by specifying the number of reduce tasks, n",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "target alias",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "Variable name to get the grouped data and be used in subsequent sentences",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }
+                            ],
+                            "asyncInterface" : false
+                        },
+                        "color" : "#9FA8DA",
+                        "x" : 143,
+                        "y" : 182,
+                        "width" : 120,
+                        "height" : 28,
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 1,
+                        "deleted" : false,
+                        "properties" : [ 
+                            {
+                                "value" : "Pig GROUP",
+                                "name" : "name",
+                                "initialValue" : "Pig GROUP",
+                                "hint" : "name of the element",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "120",
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "hint" : "width in pixels of visual component",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "#90CAF9",
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "hint" : "visual element color background",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "source alias",
+                                "initialValue" : "",
+                                "hint" : "Alias to be grouped",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "genres",
+                                "name" : "by",
+                                "initialValue" : "",
+                                "hint" : "Keyword. Use this clause to group the relation by field, tuple or expression. If it is empty groups by ALL",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "false",
+                                "name" : "collected",
+                                "initialValue" : "false",
+                                "hint" : "Allows for more efficient computation of a group if the loader guarantees that the data for the same key is continuous and is given to a single map",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "1",
+                                "name" : "parallel",
+                                "initialValue" : "1",
+                                "hint" : "Increase the parallelism of a job by specifying the number of reduce tasks, n",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "target alias",
+                                "initialValue" : "",
+                                "hint" : "Variable name to get the grouped data and be used in subsequent sentences",
+                                "html" : ""
+                            }
+                        ],
+                        "asyncInterface" : false,
+                        "dispatcher" : "",
+                        "mailbox" : ""
+                    },
+                    "targetIndex" : 1,
+                    "deleted" : false,
+                    "sourceId" : NumberLong(3),
+                    "targetId" : NumberLong(8)
+                }, 
+                {
+                    "_id" : NumberLong(7),
+                    "sourceElement" : {
+                        "_id" : NumberLong(8),
+                        "name" : "Pig GROUP",
+                        "type" : {
+                            "_id" : ObjectId("599b8eca0faaabbf24a90c70"),
+                            "name" : "Pig GROUP",
+                            "style" : "",
+                            "color" : "#9FA8DA",
+                            "type" : "EXECUTOR",
+                            "jarLocation" : "20170821224349511/",
+                            "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                            "className" : "de.tum.in.aflux.component.pig.PigGroup",
+                            "inputInterfaces" : 1,
+                            "outputInterfaces" : 1,
+                            "properties" : [ 
+                                {
+                                    "name" : "name",
+                                    "initialValue" : "Pig GROUP",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the element",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "width",
+                                    "initialValue" : "120",
+                                    "type" : "TEXT",
+                                    "hint" : "width in pixels of visual component",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "color",
+                                    "initialValue" : "#90CAF9",
+                                    "type" : "COLOR",
+                                    "hint" : "visual element color background",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "dispatcher",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the dispatcher configuration to be used",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "mailbox",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the mailbox configuration for threads manipulation",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "source alias",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "Alias to be grouped",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "by",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "Keyword. Use this clause to group the relation by field, tuple or expression. If it is empty groups by ALL",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "collected",
+                                    "initialValue" : "false",
+                                    "type" : "TEXT",
+                                    "hint" : "Allows for more efficient computation of a group if the loader guarantees that the data for the same key is continuous and is given to a single map",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "parallel",
+                                    "initialValue" : "1",
+                                    "type" : "TEXT",
+                                    "hint" : "Increase the parallelism of a job by specifying the number of reduce tasks, n",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "target alias",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "Variable name to get the grouped data and be used in subsequent sentences",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }
+                            ],
+                            "asyncInterface" : false
+                        },
+                        "color" : "#9FA8DA",
+                        "x" : 143,
+                        "y" : 182,
+                        "width" : 120,
+                        "height" : 28,
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 1,
+                        "deleted" : false,
+                        "properties" : [ 
+                            {
+                                "value" : "Pig GROUP",
+                                "name" : "name",
+                                "initialValue" : "Pig GROUP",
+                                "hint" : "name of the element",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "120",
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "hint" : "width in pixels of visual component",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "#90CAF9",
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "hint" : "visual element color background",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "source alias",
+                                "initialValue" : "",
+                                "hint" : "Alias to be grouped",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "genres",
+                                "name" : "by",
+                                "initialValue" : "",
+                                "hint" : "Keyword. Use this clause to group the relation by field, tuple or expression. If it is empty groups by ALL",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "false",
+                                "name" : "collected",
+                                "initialValue" : "false",
+                                "hint" : "Allows for more efficient computation of a group if the loader guarantees that the data for the same key is continuous and is given to a single map",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "1",
+                                "name" : "parallel",
+                                "initialValue" : "1",
+                                "hint" : "Increase the parallelism of a job by specifying the number of reduce tasks, n",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "target alias",
+                                "initialValue" : "",
+                                "hint" : "Variable name to get the grouped data and be used in subsequent sentences",
+                                "html" : ""
+                            }
+                        ],
+                        "asyncInterface" : false,
+                        "dispatcher" : "",
+                        "mailbox" : ""
+                    },
+                    "sourceIndex" : 1,
+                    "targetElement" : {
+                        "_id" : NumberLong(9),
+                        "name" : "Pig FOREACH",
+                        "type" : {
+                            "_id" : ObjectId("599b8eca0faaabbf24a90c6f"),
+                            "name" : "Pig FOREACH",
+                            "style" : "",
+                            "color" : "#9FA8DA",
+                            "type" : "EXECUTOR",
+                            "jarLocation" : "20170821224349511/",
+                            "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                            "className" : "de.tum.in.aflux.component.pig.PigForEach",
+                            "inputInterfaces" : 1,
+                            "outputInterfaces" : 1,
+                            "properties" : [ 
+                                {
+                                    "name" : "name",
+                                    "initialValue" : "Pig FOREACH",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the element",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "width",
+                                    "initialValue" : "120",
+                                    "type" : "TEXT",
+                                    "hint" : "width in pixels of visual component",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "color",
+                                    "initialValue" : "#90CAF9",
+                                    "type" : "COLOR",
+                                    "hint" : "visual element color background",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "dispatcher",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the dispatcher configuration to be used",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "mailbox",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the mailbox configuration for threads manipulation",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "source alias",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "The name of the file or directory, with NO single quotes.",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "bag",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "Bag precedding generate clase",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "generate",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "The load function",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "schema",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "A schema using the AS keyword, not enclosed in parentheses (see Schemas).",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "target alias",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "Variable name to get the loaded data and be used in subsequent sentences",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }
+                            ],
+                            "asyncInterface" : false
+                        },
+                        "color" : "#9FA8DA",
+                        "x" : 268,
+                        "y" : 98,
+                        "width" : 120,
+                        "height" : 28,
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 1,
+                        "deleted" : false,
+                        "properties" : [ 
+                            {
+                                "value" : "Pig FOREACH",
+                                "name" : "name",
+                                "initialValue" : "Pig FOREACH",
+                                "hint" : "name of the element",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "120",
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "hint" : "width in pixels of visual component",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "#90CAF9",
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "hint" : "visual element color background",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "source alias",
+                                "initialValue" : "",
+                                "hint" : "The name of the file or directory, with NO single quotes.",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "bag",
+                                "initialValue" : "",
+                                "hint" : "Bag precedding generate clase",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "SUM(A.movieId)",
+                                "name" : "generate",
+                                "initialValue" : "",
+                                "hint" : "The load function",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "schema",
+                                "initialValue" : "",
+                                "hint" : "A schema using the AS keyword, not enclosed in parentheses (see Schemas).",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "target alias",
+                                "initialValue" : "",
+                                "hint" : "Variable name to get the loaded data and be used in subsequent sentences",
+                                "html" : ""
+                            }
+                        ],
+                        "asyncInterface" : false,
+                        "dispatcher" : "",
+                        "mailbox" : ""
+                    },
+                    "targetIndex" : 1,
+                    "deleted" : false,
+                    "sourceId" : NumberLong(8),
+                    "targetId" : NumberLong(9)
+                }, 
+                {
+                    "_id" : NumberLong(8),
+                    "sourceElement" : {
+                        "_id" : NumberLong(9),
+                        "name" : "Pig FOREACH",
+                        "type" : {
+                            "_id" : ObjectId("599b8eca0faaabbf24a90c6f"),
+                            "name" : "Pig FOREACH",
+                            "style" : "",
+                            "color" : "#9FA8DA",
+                            "type" : "EXECUTOR",
+                            "jarLocation" : "20170821224349511/",
+                            "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                            "className" : "de.tum.in.aflux.component.pig.PigForEach",
+                            "inputInterfaces" : 1,
+                            "outputInterfaces" : 1,
+                            "properties" : [ 
+                                {
+                                    "name" : "name",
+                                    "initialValue" : "Pig FOREACH",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the element",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "width",
+                                    "initialValue" : "120",
+                                    "type" : "TEXT",
+                                    "hint" : "width in pixels of visual component",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "color",
+                                    "initialValue" : "#90CAF9",
+                                    "type" : "COLOR",
+                                    "hint" : "visual element color background",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "dispatcher",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the dispatcher configuration to be used",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "mailbox",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the mailbox configuration for threads manipulation",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "source alias",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "The name of the file or directory, with NO single quotes.",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "bag",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "Bag precedding generate clase",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "generate",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "The load function",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "schema",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "A schema using the AS keyword, not enclosed in parentheses (see Schemas).",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "target alias",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "Variable name to get the loaded data and be used in subsequent sentences",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }
+                            ],
+                            "asyncInterface" : false
+                        },
+                        "color" : "#9FA8DA",
+                        "x" : 268,
+                        "y" : 98,
+                        "width" : 120,
+                        "height" : 28,
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 1,
+                        "deleted" : false,
+                        "properties" : [ 
+                            {
+                                "value" : "Pig FOREACH",
+                                "name" : "name",
+                                "initialValue" : "Pig FOREACH",
+                                "hint" : "name of the element",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "120",
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "hint" : "width in pixels of visual component",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "#90CAF9",
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "hint" : "visual element color background",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "source alias",
+                                "initialValue" : "",
+                                "hint" : "The name of the file or directory, with NO single quotes.",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "bag",
+                                "initialValue" : "",
+                                "hint" : "Bag precedding generate clase",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "SUM(A.movieId)",
+                                "name" : "generate",
+                                "initialValue" : "",
+                                "hint" : "The load function",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "schema",
+                                "initialValue" : "",
+                                "hint" : "A schema using the AS keyword, not enclosed in parentheses (see Schemas).",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "target alias",
+                                "initialValue" : "",
+                                "hint" : "Variable name to get the loaded data and be used in subsequent sentences",
+                                "html" : ""
+                            }
+                        ],
+                        "asyncInterface" : false,
+                        "dispatcher" : "",
+                        "mailbox" : ""
+                    },
+                    "sourceIndex" : 1,
+                    "targetElement" : {
+                        "_id" : NumberLong(10),
+                        "name" : "Pig EXPLAIN",
+                        "type" : {
+                            "_id" : ObjectId("599b8eca0faaabbf24a90c6d"),
+                            "name" : "Pig EXPLAIN",
+                            "style" : "",
+                            "color" : "#9FA8DA",
+                            "type" : "EXECUTOR",
+                            "jarLocation" : "20170821224349511/",
+                            "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                            "className" : "de.tum.in.aflux.component.pig.PigExplain",
+                            "inputInterfaces" : 1,
+                            "outputInterfaces" : 1,
+                            "properties" : [ 
+                                {
+                                    "name" : "name",
+                                    "initialValue" : "Pig EXPLAIN",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the element",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "width",
+                                    "initialValue" : "120",
+                                    "type" : "TEXT",
+                                    "hint" : "width in pixels of visual component",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "color",
+                                    "initialValue" : "#90CAF9",
+                                    "type" : "COLOR",
+                                    "hint" : "visual element color background",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "dispatcher",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the dispatcher configuration to be used",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "mailbox",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the mailbox configuration for threads manipulation",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "alias",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "Alias name associated to the collection to be describede",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }
+                            ],
+                            "asyncInterface" : false
+                        },
+                        "color" : "#9FA8DA",
+                        "x" : 252,
+                        "y" : 316,
+                        "width" : 120,
+                        "height" : 28,
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 1,
+                        "deleted" : false,
+                        "properties" : [ 
+                            {
+                                "value" : "Pig EXPLAIN",
+                                "name" : "name",
+                                "initialValue" : "Pig EXPLAIN",
+                                "hint" : "name of the element",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "120",
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "hint" : "width in pixels of visual component",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "#90CAF9",
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "hint" : "visual element color background",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "alias",
+                                "initialValue" : "",
+                                "hint" : "Alias name associated to the collection to be describede",
+                                "html" : ""
+                            }
+                        ],
+                        "asyncInterface" : false,
+                        "dispatcher" : "",
+                        "mailbox" : ""
+                    },
+                    "targetIndex" : 1,
+                    "deleted" : false,
+                    "sourceId" : NumberLong(9),
+                    "targetId" : NumberLong(10)
+                }, 
+                {
+                    "_id" : NumberLong(9),
+                    "sourceElement" : {
+                        "_id" : NumberLong(10),
+                        "name" : "Pig EXPLAIN",
+                        "type" : {
+                            "_id" : ObjectId("599b8eca0faaabbf24a90c6d"),
+                            "name" : "Pig EXPLAIN",
+                            "style" : "",
+                            "color" : "#9FA8DA",
+                            "type" : "EXECUTOR",
+                            "jarLocation" : "20170821224349511/",
+                            "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                            "className" : "de.tum.in.aflux.component.pig.PigExplain",
+                            "inputInterfaces" : 1,
+                            "outputInterfaces" : 1,
+                            "properties" : [ 
+                                {
+                                    "name" : "name",
+                                    "initialValue" : "Pig EXPLAIN",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the element",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "width",
+                                    "initialValue" : "120",
+                                    "type" : "TEXT",
+                                    "hint" : "width in pixels of visual component",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "color",
+                                    "initialValue" : "#90CAF9",
+                                    "type" : "COLOR",
+                                    "hint" : "visual element color background",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "dispatcher",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the dispatcher configuration to be used",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "mailbox",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the mailbox configuration for threads manipulation",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "alias",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "Alias name associated to the collection to be describede",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }
+                            ],
+                            "asyncInterface" : false
+                        },
+                        "color" : "#9FA8DA",
+                        "x" : 252,
+                        "y" : 316,
+                        "width" : 120,
+                        "height" : 28,
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 1,
+                        "deleted" : false,
+                        "properties" : [ 
+                            {
+                                "value" : "Pig EXPLAIN",
+                                "name" : "name",
+                                "initialValue" : "Pig EXPLAIN",
+                                "hint" : "name of the element",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "120",
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "hint" : "width in pixels of visual component",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "#90CAF9",
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "hint" : "visual element color background",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "alias",
+                                "initialValue" : "",
+                                "hint" : "Alias name associated to the collection to be describede",
+                                "html" : ""
+                            }
+                        ],
+                        "asyncInterface" : false,
+                        "dispatcher" : "",
+                        "mailbox" : ""
+                    },
+                    "sourceIndex" : 1,
+                    "targetElement" : {
+                        "_id" : NumberLong(11),
+                        "name" : "Pig Execute",
+                        "type" : {
+                            "_id" : ObjectId("599c9b760faaab083b681d7c"),
+                            "name" : "Pig Execute",
+                            "style" : "",
+                            "color" : "#9FA8DA",
+                            "type" : "EXECUTOR",
+                            "jarLocation" : "20170822175918262/",
+                            "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                            "className" : "de.tum.in.aflux.component.pig.PigExecute",
+                            "inputInterfaces" : 1,
+                            "outputInterfaces" : 3,
+                            "properties" : [ 
+                                {
+                                    "name" : "name",
+                                    "initialValue" : "Pig Execute",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the element",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "width",
+                                    "initialValue" : "120",
+                                    "type" : "TEXT",
+                                    "hint" : "width in pixels of visual component",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "color",
+                                    "initialValue" : "#90CAF9",
+                                    "type" : "COLOR",
+                                    "hint" : "visual element color background",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "dispatcher",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the dispatcher configuration to be used",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "mailbox",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the mailbox configuration for threads manipulation",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }
+                            ],
+                            "asyncInterface" : false
+                        },
+                        "color" : "#9FA8DA",
+                        "x" : 436,
+                        "y" : 216,
+                        "width" : 120,
+                        "height" : 28,
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 3,
+                        "deleted" : false,
+                        "properties" : [ 
+                            {
+                                "value" : "Pig Execute",
+                                "name" : "name",
+                                "initialValue" : "Pig Execute",
+                                "hint" : "name of the element",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "120",
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "hint" : "width in pixels of visual component",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "#90CAF9",
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "hint" : "visual element color background",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : ""
+                            }
+                        ],
+                        "asyncInterface" : false,
+                        "dispatcher" : "",
+                        "mailbox" : ""
+                    },
+                    "targetIndex" : 1,
+                    "deleted" : false,
+                    "sourceId" : NumberLong(10),
+                    "targetId" : NumberLong(11)
+                }, 
+                {
+                    "_id" : NumberLong(10),
+                    "sourceElement" : {
+                        "_id" : NumberLong(11),
+                        "name" : "Pig Execute",
+                        "type" : {
+                            "_id" : ObjectId("599c9b760faaab083b681d7c"),
+                            "name" : "Pig Execute",
+                            "style" : "",
+                            "color" : "#9FA8DA",
+                            "type" : "EXECUTOR",
+                            "jarLocation" : "20170822175918262/",
+                            "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                            "className" : "de.tum.in.aflux.component.pig.PigExecute",
+                            "inputInterfaces" : 1,
+                            "outputInterfaces" : 3,
+                            "properties" : [ 
+                                {
+                                    "name" : "name",
+                                    "initialValue" : "Pig Execute",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the element",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "width",
+                                    "initialValue" : "120",
+                                    "type" : "TEXT",
+                                    "hint" : "width in pixels of visual component",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "color",
+                                    "initialValue" : "#90CAF9",
+                                    "type" : "COLOR",
+                                    "hint" : "visual element color background",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "dispatcher",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the dispatcher configuration to be used",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "mailbox",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the mailbox configuration for threads manipulation",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }
+                            ],
+                            "asyncInterface" : false
+                        },
+                        "color" : "#9FA8DA",
+                        "x" : 436,
+                        "y" : 216,
+                        "width" : 120,
+                        "height" : 28,
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 3,
+                        "deleted" : false,
+                        "properties" : [ 
+                            {
+                                "value" : "Pig Execute",
+                                "name" : "name",
+                                "initialValue" : "Pig Execute",
+                                "hint" : "name of the element",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "120",
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "hint" : "width in pixels of visual component",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "#90CAF9",
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "hint" : "visual element color background",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : ""
+                            }
+                        ],
+                        "asyncInterface" : false,
+                        "dispatcher" : "",
+                        "mailbox" : ""
+                    },
+                    "sourceIndex" : 1,
+                    "targetElement" : {
+                        "_id" : NumberLong(6),
+                        "name" : "show value",
+                        "type" : {
+                            "_id" : ObjectId("599ac6990faaab838efd6c4f"),
+                            "name" : "show value",
+                            "style" : "",
+                            "color" : "#80DEEA",
+                            "type" : "EXECUTOR",
+                            "jarLocation" : "20170821083954276/",
+                            "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                            "className" : "de.tum.in.aflux.component.strings.ShowStringValue",
+                            "inputInterfaces" : 1,
+                            "outputInterfaces" : 0,
+                            "properties" : [ 
+                                {
+                                    "name" : "name",
+                                    "initialValue" : "show value",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the element",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "width",
+                                    "initialValue" : "120",
+                                    "type" : "TEXT",
+                                    "hint" : "width in pixels of visual component",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "color",
+                                    "initialValue" : "#90CAF9",
+                                    "type" : "COLOR",
+                                    "hint" : "visual element color background",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "dispatcher",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the dispatcher configuration to be used",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "mailbox",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the mailbox configuration for threads manipulation",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }
+                            ],
+                            "asyncInterface" : false
+                        },
+                        "color" : "#80DEEA",
+                        "x" : 677,
+                        "y" : 288,
+                        "width" : 120,
+                        "height" : 28,
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 0,
+                        "deleted" : false,
+                        "properties" : [ 
+                            {
+                                "value" : "show value",
+                                "name" : "name",
+                                "initialValue" : "show value",
+                                "hint" : "name of the element",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "120",
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "hint" : "width in pixels of visual component",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "#90CAF9",
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "hint" : "visual element color background",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : ""
+                            }
+                        ],
+                        "asyncInterface" : false,
+                        "dispatcher" : "",
+                        "mailbox" : ""
+                    },
+                    "targetIndex" : 1,
+                    "deleted" : false,
+                    "sourceId" : NumberLong(11),
+                    "targetId" : NumberLong(6)
+                }, 
+                {
+                    "_id" : NumberLong(11),
+                    "sourceElement" : {
+                        "_id" : NumberLong(11),
+                        "name" : "Pig Execute",
+                        "type" : {
+                            "_id" : ObjectId("599c9b760faaab083b681d7c"),
+                            "name" : "Pig Execute",
+                            "style" : "",
+                            "color" : "#9FA8DA",
+                            "type" : "EXECUTOR",
+                            "jarLocation" : "20170822175918262/",
+                            "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                            "className" : "de.tum.in.aflux.component.pig.PigExecute",
+                            "inputInterfaces" : 1,
+                            "outputInterfaces" : 3,
+                            "properties" : [ 
+                                {
+                                    "name" : "name",
+                                    "initialValue" : "Pig Execute",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the element",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "width",
+                                    "initialValue" : "120",
+                                    "type" : "TEXT",
+                                    "hint" : "width in pixels of visual component",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "color",
+                                    "initialValue" : "#90CAF9",
+                                    "type" : "COLOR",
+                                    "hint" : "visual element color background",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "dispatcher",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the dispatcher configuration to be used",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "mailbox",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the mailbox configuration for threads manipulation",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }
+                            ],
+                            "asyncInterface" : false
+                        },
+                        "color" : "#9FA8DA",
+                        "x" : 436,
+                        "y" : 216,
+                        "width" : 120,
+                        "height" : 28,
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 3,
+                        "deleted" : false,
+                        "properties" : [ 
+                            {
+                                "value" : "Pig Execute",
+                                "name" : "name",
+                                "initialValue" : "Pig Execute",
+                                "hint" : "name of the element",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "120",
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "hint" : "width in pixels of visual component",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "#90CAF9",
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "hint" : "visual element color background",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : ""
+                            }
+                        ],
+                        "asyncInterface" : false,
+                        "dispatcher" : "",
+                        "mailbox" : ""
+                    },
+                    "sourceIndex" : 2,
+                    "targetElement" : {
+                        "_id" : NumberLong(6),
+                        "name" : "show value",
+                        "type" : {
+                            "_id" : ObjectId("599ac6990faaab838efd6c4f"),
+                            "name" : "show value",
+                            "style" : "",
+                            "color" : "#80DEEA",
+                            "type" : "EXECUTOR",
+                            "jarLocation" : "20170821083954276/",
+                            "jarName" : "aflux-tool-mainplugins-0.0.3-SNAPSHOT-plugin-jar-with-dependencies.jar",
+                            "className" : "de.tum.in.aflux.component.strings.ShowStringValue",
+                            "inputInterfaces" : 1,
+                            "outputInterfaces" : 0,
+                            "properties" : [ 
+                                {
+                                    "name" : "name",
+                                    "initialValue" : "show value",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the element",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "width",
+                                    "initialValue" : "120",
+                                    "type" : "TEXT",
+                                    "hint" : "width in pixels of visual component",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "color",
+                                    "initialValue" : "#90CAF9",
+                                    "type" : "COLOR",
+                                    "hint" : "visual element color background",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "dispatcher",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the dispatcher configuration to be used",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }, 
+                                {
+                                    "name" : "mailbox",
+                                    "initialValue" : "",
+                                    "type" : "TEXT",
+                                    "hint" : "name of the mailbox configuration for threads manipulation",
+                                    "html" : "",
+                                    "readOnly" : false
+                                }
+                            ],
+                            "asyncInterface" : false
+                        },
+                        "color" : "#80DEEA",
+                        "x" : 677,
+                        "y" : 288,
+                        "width" : 120,
+                        "height" : 28,
+                        "inputInterfaces" : 1,
+                        "outputInterfaces" : 0,
+                        "deleted" : false,
+                        "properties" : [ 
+                            {
+                                "value" : "show value",
+                                "name" : "name",
+                                "initialValue" : "show value",
+                                "hint" : "name of the element",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "120",
+                                "name" : "width",
+                                "initialValue" : "120",
+                                "hint" : "width in pixels of visual component",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "#90CAF9",
+                                "name" : "color",
+                                "initialValue" : "#90CAF9",
+                                "hint" : "visual element color background",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "dispatcher",
+                                "initialValue" : "",
+                                "hint" : "name of the dispatcher configuration to be used",
+                                "html" : ""
+                            }, 
+                            {
+                                "value" : "",
+                                "name" : "mailbox",
+                                "initialValue" : "",
+                                "hint" : "name of the mailbox configuration for threads manipulation",
+                                "html" : ""
+                            }
+                        ],
+                        "asyncInterface" : false,
+                        "dispatcher" : "",
+                        "mailbox" : ""
+                    },
+                    "targetIndex" : 1,
+                    "deleted" : false,
+                    "sourceId" : NumberLong(11),
+                    "targetId" : NumberLong(6)
+                }
+            ],
+            "properties" : [ 
+                {
+                    "value" : "activity-1",
+                    "name" : "name",
+                    "initialValue" : "",
+                    "type" : "TEXT",
+                    "hint" : "",
+                    "html" : "",
+                    "readOnly" : false
+                }, 
+                {
+                    "value" : "false",
+                    "name" : "subFlow",
+                    "initialValue" : "false",
+                    "type" : "CHECKBOX",
+                    "hint" : "",
+                    "html" : "",
+                    "readOnly" : false
+                }, 
+                {
+                    "value" : "general",
+                    "name" : "category",
+                    "initialValue" : "general",
+                    "type" : "TEXT",
+                    "hint" : "taxonomy value to group the subflows",
+                    "html" : "",
+                    "readOnly" : false
+                }, 
+                {
+                    "value" : "#90CAF9",
+                    "name" : "color",
+                    "initialValue" : "#90CAF9",
+                    "type" : "TEXT",
+                    "hint" : "visual element color background",
+                    "html" : "",
+                    "readOnly" : false
+                }
+            ],
+            "parentActivityId" : NumberLong(-1),
+            "parentNodeId" : NumberLong(-1)
+        }
+    ]
+}

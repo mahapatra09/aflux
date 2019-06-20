@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Tue Jun 27 00:48:30 ART 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-015c-e7aa-3016-00000593af10 
+on database directory /Users/jguastav/Projects/async-flux/sources/asyncFlow/java/aFlux/build/metastore_db with class loader sun.misc.Launcher$AppClassLoader@47089e5f 
+Loaded from file:/Users/jguastav/.m2/repository/org/apache/derby/derby/10.13.1.1/derby-10.13.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_65-b17
+user.dir=/Users/jguastav/Projects/async-flux/sources/asyncFlow/java/aFlux
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.12.5
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

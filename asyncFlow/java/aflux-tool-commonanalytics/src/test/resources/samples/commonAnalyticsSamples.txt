@@ -1,0 +1,117 @@
+CA LOAD
+CA SELECT
+CA SUMMARIZE
+CA SELECT
+CA SUMMARIZE
+CA JOIN
+CA SHOW
+CA Execute
+show value
+
+Parameters
+CA LOAD
+file name: /user/root/pig_data/movies.csv
+structure: movieId:INT,title:STRING,genres:STRING
+alias: MOVIES
+
+CA SELECT 
+target alias: MOVIES_D
+source alias: MOVIES
+columns: *
+filter: title<'D'
+
+CA GROUP
+target alias: GROUP_D
+source alias: MOVIES_D
+group list: genres
+summary list: COUNT() AS COUNT_D
+
+
+CA SELECT 
+target alias: MOVIES_T
+source alias: MOVIES
+columns: *
+filter: title>'T'
+
+CA GROUP
+target alias: GROUP_T
+source alias: MOVIES_T
+group list: genres
+summary list: COUNT() AS COUNT_T
+ 
+ 
+CA JOIN
+alias 1: GROUP_D
+alias 2: GROUP_T
+target alias: FINAL_MOVIES
+columns: GROUP_D.genres,COUNT_T,COUNT_D
+match: genres=genres
+
+CA EXECUTE
+executor: PIG
+run: true
+
+This flow produces the following CA Script
+
+
+
+LOAD '/user/root/pig_data/movies.csv' TO MOVIES STRUCTURE(movieId:INT,title:STRING,genres:STRING); 
+MOVIES_D = SELECT MOVIES (*) FILTER (title<'D'); 
+GROUP_D = SUMMARIZE MOVIES_D (COUNT() AS COUNT_D) KEYS (genres); 
+MOVIES_T = SELECT MOVIES (*) FILTER (title>'T'); 
+GROUP_T = SUMMARIZE MOVIES_T (COUNT() AS COUNT_T) KEYS (genres); 
+FINAL_MOVIES = JOIN GROUP_D AND GROUP_T COLUMNS(*) MATCH(group=group); 
+SHOW FINAL_MOVIES; 
+
+
+And produces the following Pig Sentences
+
+MOVIES = LOAD '/user/root/pig_data/movies.csv' USING PigStorage(',') AS (movieId:int,title:chararray,genres:chararray);
+MOVIES_D = FILTER MOVIES BY title<'D';
+GROUP_D_tmp_20170824004350835 = GROUP MOVIES_D BY genres;
+GROUP_D = FOREACH GROUP_D_tmp_20170824004350835 GENERATE group AS genres,COUNT(MOVIES_D) AS COUNT_D;
+MOVIES_T = FILTER MOVIES BY title>'T';
+GROUP_T_tmp_20170824004350840 = GROUP MOVIES_T BY genres;
+GROUP_T = FOREACH GROUP_T_tmp_20170824004350840 GENERATE group AS genres,COUNT(MOVIES_T) AS COUNT_T;
+FINAL_MOVIES = JOIN GROUP_D BY genres, GROUP_T BY genres;
+STORE FINAL_MOVIES INTO 'FINAL_MOVIES_tmp_20170824004350842' USING PigStorage(',');
+
+
+Produces the following Hive Sentences
+CREATE EXTERNAL TABLE IF NOT EXISTS MOVIES (movieId INT,title STRING,genres STRING) ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde' WITH SERDEPROPERTIES ("separatorChar" = ",","quoteChar" = "'","escapeChar" = "\\") STORED AS TEXTFILE LOCATION '/user/root/pig_data/movies.csv'
+CREATE TABLE IF NOT EXISTS MOVIES_D row format delimited fields terminated by '|' STORED AS RCFile AS SELECT ALL * FROM MOVIES WHERE title<'D'
+CREATE TABLE IF NOT EXISTS GROUP_D row format delimited fields terminated by '|' STORED AS RCFile AS SELECT ALL genres,COUNT(*) AS COUNT_D FROM MOVIES_D GROUP BY genres
+CREATE TABLE IF NOT EXISTS MOVIES_T row format delimited fields terminated by '|' STORED AS RCFile AS SELECT ALL * FROM MOVIES WHERE title>'T'
+CREATE TABLE IF NOT EXISTS GROUP_T row format delimited fields terminated by '|' STORED AS RCFile AS SELECT ALL genres,COUNT(*) AS COUNT_T FROM MOVIES_T GROUP BY genres
+CREATE TABLE IF NOT EXISTS FINAL_MOVIES row format delimited fields terminated by '|' STORED AS RCFile AS SELECT ALL GROUP_D.genres,COUNT_T,COUNT_D FROM GROUP_D JOIN GROUP_T ON (GROUP_D.genres=GROUP_T.genres)
+SELECT ALL * FROM FINAL_MOVIES
+
+
+
+
+Output:
+
+
+Show Processes
+OutputElement [fluxId=7, timeStamp=Thu Aug 24 18:11:00 ART 2017, message=(Crime,4,Crime,1)(Drama,166,Drama,144)(Action,10,Action,4)(Comedy,141,Comedy,89)(Horror,30,Horror,18)(Sci-Fi,4,Sci-Fi,1)(Musical,3,Musical,2)(Western,5,Western,5)(Thriller,13,Thriller,4)(Adventure,2,Adventure,3)(Animation,2,Animation,1)(Drama|War,19,Drama|War,7)(Action|War,2,Action|War,1)(Crime|Drama,40,Crime|Drama,10)(Documentary,62,Documentary,47)(Action|Crime,3,Action|Crime,1)(Action|Drama,6,Action|Drama,6)(Comedy|Crime,7,Comedy|Crime,13)(Comedy|Drama,66,Comedy|Drama,48)(Drama|Horror,7,Drama|Horror,2)(Drama|Sci-Fi,8,Drama|Sci-Fi,1)(Action|Comedy,8,Action|Comedy,9)(Action|Sci-Fi,7,Action|Sci-Fi,6)(Comedy|Horror,13,Comedy|Horror,8)(Comedy|Sci-Fi,7,Comedy|Sci-Fi,2)(Drama|Fantasy,6,Drama|Fantasy,2)(Drama|Musical,10,Drama|Musical,6)(Drama|Mystery,9,Drama|Mystery,2)(Drama|Romance,61,Drama|Romance,41)(Drama|Western,2,Drama|Western,3)(Horror|Sci-Fi,7,Horror|Sci-Fi,5)(Action|Western,1,Action|Western,1)(Comedy|Fantasy,5,Comedy|Fantasy,6)(Comedy|Musical,10,Comedy|Musical,4)(Comedy|Romance,52,Comedy|Romance,47)(Comedy|Western,5,Comedy|Western,2)(Crime|Thriller,9,Crime|Thriller,6)(Drama|Thriller,34,Drama|Thriller,15)(Fantasy|Horror,1,Fantasy|Horror,1)(Fantasy|Sci-Fi,2,Fantasy|Sci-Fi,1)(Horror|Mystery,1,Horror|Mystery,2)(Horror|Western,1,Horror|Western,1)(Action|Thriller,10,Action|Thriller,4)(Adventure|Drama,2,Adventure|Drama,3)(Children|Comedy,13,Children|Comedy,1)(Comedy|Thriller,5,Comedy|Thriller,2)(Crime|Film-Noir,2,Crime|Film-Noir,1)(Documentary|War,1,Documentary|War,2)(Drama|Film-Noir,2,Drama|Film-Noir,1)(Horror|Thriller,17,Horror|Thriller,16)(Sci-Fi|Thriller,1,Sci-Fi|Thriller,2)(Action|Adventure,5,Action|Adventure,6)(Action|Drama|War,7,Action|Drama|War,10)(Adventure|Comedy,7,Adventure|Comedy,4)(Adventure|Sci-Fi,3,Adventure|Sci-Fi,2)(Animation|Comedy,3,Animation|Comedy,4)(Comedy|Drama|War,1,Comedy|Drama|War,3)(Drama|Sci-Fi|War,1,Drama|Sci-Fi|War,1)(Mystery|Thriller,5,Mystery|Thriller,3)(Animation|Fantasy,1,Animation|Fantasy,1)(Drama|Romance|War,6,Drama|Romance|War,1)(Drama|Sci-Fi|IMAX,1,Drama|Sci-Fi|IMAX,1)((no genres listed),4,(no genres listed),3)(Action|Crime|Drama,9,Action|Crime|Drama,2)(Adventure|Children,6,Adventure|Children,3)(Animation|Children,4,Animation|Children,2)(Comedy|Crime|Drama,6,Comedy|Crime|Drama,5)(Comedy|Documentary,5,Comedy|Documentary,3)(Drama|Thriller|War,3,Drama|Thriller|War,3)(Action|Comedy|Crime,10,Action|Comedy|Crime,2)(Crime|Drama|Mystery,3,Crime|Drama|Mystery,1)(Crime|Drama|Romance,3,Crime|Drama|Romance,2)(Documentary|Musical,4,Documentary|Musical,3)(Action|Comedy|Horror,1,Action|Comedy|Horror,2)(Action|Comedy|Sci-Fi,1,Action|Comedy|Sci-Fi,1)(Action|Horror|Sci-Fi,5,Action|Horror|Sci-Fi,1)(Comedy|Drama|Fantasy,2,Comedy|Drama|Fantasy,1)(Comedy|Drama|Musical,3,Comedy|Drama|Musical,2)(Comedy|Drama|Romance,49,Comedy|Drama|Romance,27)(Comedy|Horror|Sci-Fi,2,Comedy|Horror|Sci-Fi,3)(Crime|Drama|Thriller,19,Crime|Drama|Thriller,16)(Action|Comedy|Romance,2,Action|Comedy|Romance,1)(Action|Comedy|Western,1,Action|Comedy|Western,1)(Action|Crime|Thriller,4,Action|Crime|Thriller,10)(Action|Drama|Thriller,4,Action|Drama|Thriller,7)(Adventure|Documentary,1,Adventure|Documentary,2)(Children|Comedy|Drama,3,Children|Comedy|Drama,2)(Comedy|Crime|Thriller,1,Comedy|Crime|Thriller,2)(Comedy|Drama|Thriller,1,Comedy|Drama|Thriller,3)(Crime|Drama|Film-Noir,3,Crime|Drama|Film-Noir,2)(Crime|Horror|Thriller,1,Crime|Horror|Thriller,1)(Drama|Fantasy|Romance,7,Drama|Fantasy|Romance,4)(Drama|Horror|Thriller,6,Drama|Horror|Thriller,6)(Drama|Musical|Romance,5,Drama|Musical|Romance,4)(Drama|Romance|Western,1,Drama|Romance|Western,1)(Drama|Sci-Fi|Thriller,2,Drama|Sci-Fi|Thriller,2)(Action|Adventure|Drama,2,Action|Adventure|Drama,3)(Action|Horror|Thriller,4,Action|Horror|Thriller,1)(Action|Sci-Fi|Thriller,4,Action|Sci-Fi|Thriller,7)(Adventure|Comedy|Drama,1,Adventure|Comedy|Drama,1)(Adventure|Drama|Sci-Fi,3,Adventure|Drama|Sci-Fi,2)(Comedy|Fantasy|Romance,2,Comedy|Fantasy|Romance,2)(Comedy|Musical|Romance,6,Comedy|Musical|Romance,4)(Crime|Mystery|Thriller,1,Crime|Mystery|Thriller,1)(Drama|Mystery|Thriller,3,Drama|Mystery|Thriller,6)(Drama|Romance|Thriller,2,Drama|Romance|Thriller,4)(Horror|Sci-Fi|Thriller,4,Horror|Sci-Fi|Thriller,5)(Action|Adventure|Comedy,8,Action|Adventure|Comedy,4)(Action|Adventure|Sci-Fi,3,Action|Adventure|Sci-Fi,7)(Action|Animation|Comedy,1,Action|Animation|Comedy,1)(Action|Children|Fantasy,1,Action|Children|Fantasy,1)(Action|Mystery|Thriller,1,Action|Mystery|Thriller,1)(Animation|Drama|Romance,1,Animation|Drama|Romance,1)(Comedy|Mystery|Thriller,1,Comedy|Mystery|Thriller,1)(Fantasy|Musical|Romance,1,Fantasy|Musical|Romance,1)(Horror|Mystery|Thriller,2,Horror|Mystery|Thriller,3)(Action|Adventure|Fantasy,3,Action|Adventure|Fantasy,5)(Adventure|Children|Drama,4,Adventure|Children|Drama,1)(Adventure|Drama|Thriller,2,Adventure|Drama|Thriller,1)(Children|Fantasy|Musical,1,Children|Fantasy|Musical,1)(Action|Adventure|Thriller,6,Action|Adventure|Thriller,2)(Action|Drama|Thriller|War,2,Action|Drama|Thriller|War,1)(Adventure|Children|Comedy,6,Adventure|Children|Comedy,2)(Animation|Children|Comedy,2,Animation|Children|Comedy,3)(Action|Adventure|Drama|War,2,Action|Adventure|Drama|War,3)(Adventure|Animation|Sci-Fi,1,Adventure|Animation|Sci-Fi,1)(Animation|Children|Musical,1,Animation|Children|Musical,1)(Action|Crime|Drama|Thriller,8,Action|Crime|Drama|Thriller,5)(Action|Sci-Fi|Thriller|IMAX,1,Action|Sci-Fi|Thriller|IMAX,2)(Adventure|Drama|War|Western,1,Adventure|Drama|War|Western,1)(Crime|Drama|Sci-Fi|Thriller,1,Crime|Drama|Sci-Fi|Thriller,1)(Action|Adventure|Sci-Fi|IMAX,3,Action|Adventure|Sci-Fi|IMAX,3)(Action|Comedy|Crime|Thriller,4,Action|Comedy|Crime|Thriller,1)(Comedy|Drama|Fantasy|Romance,5,Comedy|Drama|Fantasy|Romance,1)(Crime|Drama|Mystery|Thriller,5,Crime|Drama|Mystery|Thriller,4)(Action|Adventure|Drama|Sci-Fi,1,Action|Adventure|Drama|Sci-Fi,1)(Action|Drama|Romance|Thriller,1,Action|Drama|Romance|Thriller,1)(Drama|Horror|Mystery|Thriller,3,Drama|Horror|Mystery|Thriller,2)(Drama|Horror|Romance|Thriller,1,Drama|Horror|Romance|Thriller,1)(Action|Adventure|Drama|Fantasy,1,Action|Adventure|Drama|Fantasy,1)(Action|Fantasy|Horror|Thriller,3,Action|Fantasy|Horror|Thriller,1)(Drama|Mystery|Romance|Thriller,2,Drama|Mystery|Romance|Thriller,2)(Fantasy|Horror|Sci-Fi|Thriller,1,Fantasy|Horror|Sci-Fi|Thriller,2)(Action|Adventure|Comedy|Fantasy,1,Action|Adventure|Comedy|Fantasy,1)(Action|Adventure|Drama|Thriller,1,Action|Adventure|Drama|Thriller,1)(Action|Adventure|Fantasy|Sci-Fi,2,Action|Adventure|Fantasy|Sci-Fi,2)(Adventure|Comedy|Fantasy|Sci-Fi,1,Adventure|Comedy|Fantasy|Sci-Fi,1)(Children|Comedy|Fantasy|Musical,1,Children|Comedy|Fantasy|Musical,1)(Action|Adventure|Sci-Fi|Thriller,2,Action|Adventure|Sci-Fi|Thriller,6)(Action|Adventure|Children|Fantasy,1,Action|Adventure|Children|Fantasy,2)(Action|Adventure|Fantasy|Thriller,1,Action|Adventure|Fantasy|Thriller,1)(Action|Comedy|Crime|Drama|Thriller,2,Action|Comedy|Crime|Drama|Thriller,1)(Action|Crime|Drama|Mystery|Thriller,2,Action|Crime|Drama|Mystery|Thriller,1)(Adventure|Animation|Children|Comedy,1,Adventure|Animation|Children|Comedy,1)(Adventure|Animation|Children|Sci-Fi,1,Adventure|Animation|Children|Sci-Fi,1)(Action|Adventure|Sci-Fi|Thriller|War,1,Action|Adventure|Sci-Fi|Thriller|War,1)(Adventure|Animation|Children|Fantasy,1,Adventure|Animation|Children|Fantasy,1)(Crime|Drama|Mystery|Romance|Thriller,1,Crime|Drama|Mystery|Romance|Thriller,1)(Action|Adventure|Drama|Sci-Fi|Thriller,1,Action|Adventure|Drama|Sci-Fi|Thriller,1)(Action|Adventure|Animation|Children|Comedy,2,Action|Adventure|Animation|Children|Comedy,1)(Adventure|Animation|Children|Comedy|Fantasy,2,Adventure|Animation|Children|Comedy|Fantasy,4)]
+OutputElement [fluxId=7, timeStamp=Thu Aug 24 18:11:00 ART 2017, message=de.tum.in.aflux.tools.core.AbstractMainExecutor$DummyMessage@3f4cd008]
+OutputElement [fluxId=7, timeStamp=Thu Aug 24 18:11:00 ART 2017, message=22799 ms]
+OutputElement [fluxId=1, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=added class de.tum.in.aflux.component.commonanalytics.actor.CommonAnalyticsExecuteActor]
+OutputElement [fluxId=2, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=added class de.tum.in.aflux.component.commonanalytics.actor.CommonAnalyticsJoinActor]
+OutputElement [fluxId=3, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=added class de.tum.in.aflux.component.commonanalytics.actor.CommonAnalyticsLoadActor]
+OutputElement [fluxId=4, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=added class de.tum.in.aflux.component.commonanalytics.actor.CommonAnalyticsShowActor]
+OutputElement [fluxId=5, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=added class de.tum.in.aflux.component.commonanalytics.actor.CommonAnalyticsSummarizeActor]
+OutputElement [fluxId=6, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=added class de.tum.in.aflux.component.commonanalytics.actor.CommonAnalyticsSelectActor]
+OutputElement [fluxId=7, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=added class de.tum.in.aflux.component.strings.actor.ShowStringValueActor]
+OutputElement [fluxId=8, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=added class de.tum.in.aflux.component.commonanalytics.actor.CommonAnalyticsSelectActor]
+OutputElement [fluxId=9, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=added class de.tum.in.aflux.component.commonanalytics.actor.CommonAnalyticsSummarizeActor]
+OutputElement [fluxId=3, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=LOAD '/user/root/pig_data/movies.csv' TO MOVIES STRUCTURE(movieId:INT,title:STRING,genres:STRING); ]
+OutputElement [fluxId=6, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=GROUP_D = SUMMARIZE MOVIES_D (COUNT() AS COUNT_D) KEYS (genres); ]
+OutputElement [fluxId=5, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=GROUP_T = SUMMARIZE MOVIES_T (COUNT() AS COUNT_T) KEYS (genres); ]
+OutputElement [fluxId=9, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=GROUP_T = SUMMARIZE MOVIES_T (COUNT() AS COUNT_T) KEYS (genres); ]
+OutputElement [fluxId=8, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=GROUP_T = SUMMARIZE MOVIES_T (COUNT() AS COUNT_T) KEYS (genres); ]
+OutputElement [fluxId=2, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=FINAL_MOVIES = JOIN GROUP_D AND GROUP_T COLUMNS(GROUP_D.genres,COUNT_T,COUNT_D) MATCH(genres=genres); ]
+OutputElement [fluxId=4, timeStamp=Thu Aug 24 18:12:37 ART 2017, message=SHOW FINAL_MOVIES; ]
+OutputElement [fluxId=7, timeStamp=Thu Aug 24 18:12:57 ART 2017, message=(Crime,4,Crime,1)(Drama,166,Drama,144)(Action,10,Action,4)(Comedy,141,Comedy,89)(Horror,30,Horror,18)(Sci-Fi,4,Sci-Fi,1)(Musical,3,Musical,2)(Western,5,Western,5)(Thriller,13,Thriller,4)(Adventure,2,Adventure,3)(Animation,2,Animation,1)(Drama|War,19,Drama|War,7)(Action|War,2,Action|War,1)(Crime|Drama,40,Crime|Drama,10)(Documentary,62,Documentary,47)(Action|Crime,3,Action|Crime,1)(Action|Drama,6,Action|Drama,6)(Comedy|Crime,7,Comedy|Crime,13)(Comedy|Drama,66,Comedy|Drama,48)(Drama|Horror,7,Drama|Horror,2)(Drama|Sci-Fi,8,Drama|Sci-Fi,1)(Action|Comedy,8,Action|Comedy,9)(Action|Sci-Fi,7,Action|Sci-Fi,6)(Comedy|Horror,13,Comedy|Horror,8)(Comedy|Sci-Fi,7,Comedy|Sci-Fi,2)(Drama|Fantasy,6,Drama|Fantasy,2)(Drama|Musical,10,Drama|Musical,6)(Drama|Mystery,9,Drama|Mystery,2)(Drama|Romance,61,Drama|Romance,41)(Drama|Western,2,Drama|Western,3)(Horror|Sci-Fi,7,Horror|Sci-Fi,5)(Action|Western,1,Action|Western,1)(Comedy|Fantasy,5,Comedy|Fantasy,6)(Comedy|Musical,10,Comedy|Musical,4)(Comedy|Romance,52,Comedy|Romance,47)(Comedy|Western,5,Comedy|Western,2)(Crime|Thriller,9,Crime|Thriller,6)(Drama|Thriller,34,Drama|Thriller,15)(Fantasy|Horror,1,Fantasy|Horror,1)(Fantasy|Sci-Fi,2,Fantasy|Sci-Fi,1)(Horror|Mystery,1,Horror|Mystery,2)(Horror|Western,1,Horror|Western,1)(Action|Thriller,10,Action|Thriller,4)(Adventure|Drama,2,Adventure|Drama,3)(Children|Comedy,13,Children|Comedy,1)(Comedy|Thriller,5,Comedy|Thriller,2)(Crime|Film-Noir,2,Crime|Film-Noir,1)(Documentary|War,1,Documentary|War,2)(Drama|Film-Noir,2,Drama|Film-Noir,1)(Horror|Thriller,17,Horror|Thriller,16)(Sci-Fi|Thriller,1,Sci-Fi|Thriller,2)(Action|Adventure,5,Action|Adventure,6)(Action|Drama|War,7,Action|Drama|War,10)(Adventure|Comedy,7,Adventure|Comedy,4)(Adventure|Sci-Fi,3,Adventure|Sci-Fi,2)(Animation|Comedy,3,Animation|Comedy,4)(Comedy|Drama|War,1,Comedy|Drama|War,3)(Drama|Sci-Fi|War,1,Drama|Sci-Fi|War,1)(Mystery|Thriller,5,Mystery|Thriller,3)(Animation|Fantasy,1,Animation|Fantasy,1)(Drama|Romance|War,6,Drama|Romance|War,1)(Drama|Sci-Fi|IMAX,1,Drama|Sci-Fi|IMAX,1)((no genres listed),4,(no genres listed),3)(Action|Crime|Drama,9,Action|Crime|Drama,2)(Adventure|Children,6,Adventure|Children,3)(Animation|Children,4,Animation|Children,2)(Comedy|Crime|Drama,6,Comedy|Crime|Drama,5)(Comedy|Documentary,5,Comedy|Documentary,3)(Drama|Thriller|War,3,Drama|Thriller|War,3)(Action|Comedy|Crime,10,Action|Comedy|Crime,2)(Crime|Drama|Mystery,3,Crime|Drama|Mystery,1)(Crime|Drama|Romance,3,Crime|Drama|Romance,2)(Documentary|Musical,4,Documentary|Musical,3)(Action|Comedy|Horror,1,Action|Comedy|Horror,2)(Action|Comedy|Sci-Fi,1,Action|Comedy|Sci-Fi,1)(Action|Horror|Sci-Fi,5,Action|Horror|Sci-Fi,1)(Comedy|Drama|Fantasy,2,Comedy|Drama|Fantasy,1)(Comedy|Drama|Musical,3,Comedy|Drama|Musical,2)(Comedy|Drama|Romance,49,Comedy|Drama|Romance,27)(Comedy|Horror|Sci-Fi,2,Comedy|Horror|Sci-Fi,3)(Crime|Drama|Thriller,19,Crime|Drama|Thriller,16)(Action|Comedy|Romance,2,Action|Comedy|Romance,1)(Action|Comedy|Western,1,Action|Comedy|Western,1)(Action|Crime|Thriller,4,Action|Crime|Thriller,10)(Action|Drama|Thriller,4,Action|Drama|Thriller,7)(Adventure|Documentary,1,Adventure|Documentary,2)(Children|Comedy|Drama,3,Children|Comedy|Drama,2)(Comedy|Crime|Thriller,1,Comedy|Crime|Thriller,2)(Comedy|Drama|Thriller,1,Comedy|Drama|Thriller,3)(Crime|Drama|Film-Noir,3,Crime|Drama|Film-Noir,2)(Crime|Horror|Thriller,1,Crime|Horror|Thriller,1)(Drama|Fantasy|Romance,7,Drama|Fantasy|Romance,4)(Drama|Horror|Thriller,6,Drama|Horror|Thriller,6)(Drama|Musical|Romance,5,Drama|Musical|Romance,4)(Drama|Romance|Western,1,Drama|Romance|Western,1)(Drama|Sci-Fi|Thriller,2,Drama|Sci-Fi|Thriller,2)(Action|Adventure|Drama,2,Action|Adventure|Drama,3)(Action|Horror|Thriller,4,Action|Horror|Thriller,1)(Action|Sci-Fi|Thriller,4,Action|Sci-Fi|Thriller,7)(Adventure|Comedy|Drama,1,Adventure|Comedy|Drama,1)(Adventure|Drama|Sci-Fi,3,Adventure|Drama|Sci-Fi,2)(Comedy|Fantasy|Romance,2,Comedy|Fantasy|Romance,2)(Comedy|Musical|Romance,6,Comedy|Musical|Romance,4)(Crime|Mystery|Thriller,1,Crime|Mystery|Thriller,1)(Drama|Mystery|Thriller,3,Drama|Mystery|Thriller,6)(Drama|Romance|Thriller,2,Drama|Romance|Thriller,4)(Horror|Sci-Fi|Thriller,4,Horror|Sci-Fi|Thriller,5)(Action|Adventure|Comedy,8,Action|Adventure|Comedy,4)(Action|Adventure|Sci-Fi,3,Action|Adventure|Sci-Fi,7)(Action|Animation|Comedy,1,Action|Animation|Comedy,1)(Action|Children|Fantasy,1,Action|Children|Fantasy,1)(Action|Mystery|Thriller,1,Action|Mystery|Thriller,1)(Animation|Drama|Romance,1,Animation|Drama|Romance,1)(Comedy|Mystery|Thriller,1,Comedy|Mystery|Thriller,1)(Fantasy|Musical|Romance,1,Fantasy|Musical|Romance,1)(Horror|Mystery|Thriller,2,Horror|Mystery|Thriller,3)(Action|Adventure|Fantasy,3,Action|Adventure|Fantasy,5)(Adventure|Children|Drama,4,Adventure|Children|Drama,1)(Adventure|Drama|Thriller,2,Adventure|Drama|Thriller,1)(Children|Fantasy|Musical,1,Children|Fantasy|Musical,1)(Action|Adventure|Thriller,6,Action|Adventure|Thriller,2)(Action|Drama|Thriller|War,2,Action|Drama|Thriller|War,1)(Adventure|Children|Comedy,6,Adventure|Children|Comedy,2)(Animation|Children|Comedy,2,Animation|Children|Comedy,3)(Action|Adventure|Drama|War,2,Action|Adventure|Drama|War,3)(Adventure|Animation|Sci-Fi,1,Adventure|Animation|Sci-Fi,1)(Animation|Children|Musical,1,Animation|Children|Musical,1)(Action|Crime|Drama|Thriller,8,Action|Crime|Drama|Thriller,5)(Action|Sci-Fi|Thriller|IMAX,1,Action|Sci-Fi|Thriller|IMAX,2)(Adventure|Drama|War|Western,1,Adventure|Drama|War|Western,1)(Crime|Drama|Sci-Fi|Thriller,1,Crime|Drama|Sci-Fi|Thriller,1)(Action|Adventure|Sci-Fi|IMAX,3,Action|Adventure|Sci-Fi|IMAX,3)(Action|Comedy|Crime|Thriller,4,Action|Comedy|Crime|Thriller,1)(Comedy|Drama|Fantasy|Romance,5,Comedy|Drama|Fantasy|Romance,1)(Crime|Drama|Mystery|Thriller,5,Crime|Drama|Mystery|Thriller,4)(Action|Adventure|Drama|Sci-Fi,1,Action|Adventure|Drama|Sci-Fi,1)(Action|Drama|Romance|Thriller,1,Action|Drama|Romance|Thriller,1)(Drama|Horror|Mystery|Thriller,3,Drama|Horror|Mystery|Thriller,2)(Drama|Horror|Romance|Thriller,1,Drama|Horror|Romance|Thriller,1)(Action|Adventure|Drama|Fantasy,1,Action|Adventure|Drama|Fantasy,1)(Action|Fantasy|Horror|Thriller,3,Action|Fantasy|Horror|Thriller,1)(Drama|Mystery|Romance|Thriller,2,Drama|Mystery|Romance|Thriller,2)(Fantasy|Horror|Sci-Fi|Thriller,1,Fantasy|Horror|Sci-Fi|Thriller,2)(Action|Adventure|Comedy|Fantasy,1,Action|Adventure|Comedy|Fantasy,1)(Action|Adventure|Drama|Thriller,1,Action|Adventure|Drama|Thriller,1)(Action|Adventure|Fantasy|Sci-Fi,2,Action|Adventure|Fantasy|Sci-Fi,2)(Adventure|Comedy|Fantasy|Sci-Fi,1,Adventure|Comedy|Fantasy|Sci-Fi,1)(Children|Comedy|Fantasy|Musical,1,Children|Comedy|Fantasy|Musical,1)(Action|Adventure|Sci-Fi|Thriller,2,Action|Adventure|Sci-Fi|Thriller,6)(Action|Adventure|Children|Fantasy,1,Action|Adventure|Children|Fantasy,2)(Action|Adventure|Fantasy|Thriller,1,Action|Adventure|Fantasy|Thriller,1)(Action|Comedy|Crime|Drama|Thriller,2,Action|Comedy|Crime|Drama|Thriller,1)(Action|Crime|Drama|Mystery|Thriller,2,Action|Crime|Drama|Mystery|Thriller,1)(Adventure|Animation|Children|Comedy,1,Adventure|Animation|Children|Comedy,1)(Adventure|Animation|Children|Sci-Fi,1,Adventure|Animation|Children|Sci-Fi,1)(Action|Adventure|Sci-Fi|Thriller|War,1,Action|Adventure|Sci-Fi|Thriller|War,1)(Adventure|Animation|Children|Fantasy,1,Adventure|Animation|Children|Fantasy,1)(Crime|Drama|Mystery|Romance|Thriller,1,Crime|Drama|Mystery|Romance|Thriller,1)(Action|Adventure|Drama|Sci-Fi|Thriller,1,Action|Adventure|Drama|Sci-Fi|Thriller,1)(Action|Adventure|Animation|Children|Comedy,2,Action|Adventure|Animation|Children|Comedy,1)(Adventure|Animation|Children|Comedy|Fantasy,2,Adventure|Animation|Children|Comedy|Fantasy,4)]
+OutputElement [fluxId=7, timeStamp=Thu Aug 24 18:12:57 ART 2017, message=de.tum.in.aflux.tools.core.AbstractMainExecutor$DummyMessage@59491b7]
+OutputElement [fluxId=7, timeStamp=Thu Aug 24 18:12:57 ART 2017, message=20573 ms]
