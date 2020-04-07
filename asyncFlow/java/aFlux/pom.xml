@@ -85,7 +85,7 @@
 		<dependency>
 			<groupId>com.typesafe.akka</groupId>
 			<artifactId>akka-http-core_2.11</artifactId>
-			<version>10.0.5</version>
+			<version>10.0.6</version>
 			
 			<exclusions>
 				<exclusion>
